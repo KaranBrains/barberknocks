@@ -44,9 +44,9 @@ exports.registerUser = (req, res) => {
 exports.changePassword = (req,res) => {
   if (
     !req.body.email ||
-    !req.body.token ||
     !req.body.pass
   ) {
+    console.log(req.body);
     return res.status(400).json({ msg: 'Invalid data' });
   }
   User.findOne({ email: req.body.email }, (err, user) => {
