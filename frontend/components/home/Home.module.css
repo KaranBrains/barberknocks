@@ -1,0 +1,30 @@
+.home{
+    background-image: url('/images/home.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    min-height: 85vh;
+}
+
+.pySection{
+    padding: 80px 0px;
+}
+.w-home{
+    width: 150px !important;
+}
+
+.workNumber{
+    background: var(--tertiaryColor);
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+@media( max-width: 760px){
+    .pySection{
+        padding: 40px 0px;
+    }    
+    .mobileCenter{
+        text-align: center;
+    }
+}
