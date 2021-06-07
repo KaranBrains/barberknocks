@@ -7,9 +7,9 @@ body {
 
 /* Root variables */
 :root {
-  --primaryColor: #264861;
-  --secondaryColor: #04B1ED;
-  --tertiaryColor: #e0f6ff;
+  --primaryColor: #6419b9;
+  --secondaryColor: #730fe4;
+  --tertiaryColor: #f3f5fd;
 }
 
 /* Srollbar */
@@ -167,7 +167,7 @@ body {
   transition: all 0.5s ease-in;
 }
 .btn-blue:hover{
-  background: #138FC1;
+  background:  #7801ff;
 }
 .padding-left-mobile-table{
   padding-left:70px !important;
@@ -509,10 +509,19 @@ table tbody{
   margin-left: 20px;
 }
 .auth-bg{
-  background: url('../public/images/auth-bg.png');
+  background: url('../public/images/auth-bg.jpg');
   background-repeat: no-repeat;
   background-position:center;
   background-size: cover;
+  height: 800px;
+}
+
+.auth-bg-signup{
+  background: url('../public/images/auth-bg.jpg');
+  background-repeat: no-repeat;
+  background-position:center;
+  background-size: cover;
+  height: 900px;
 }
 
 .how-it-works {

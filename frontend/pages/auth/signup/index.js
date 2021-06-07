@@ -28,13 +28,13 @@ function Signup() {
   };
 
   return (
-    <div className="auth-bg">
-      <div className="container my-5">
+    <div className="auth-bg-signup">
+      <div className="container">
         <div className="row d-flex justify-content-center">
           <div className="col-lg-6 col-md-8 col-sm-12 col-12">
-            <div className="card shadow px-lg-5 py-5 px-3 bg-white">
+            <div className="card shadow px-lg-5 py-5 px-3 bg-white mt-5">
               <h1 className="text-center font-bold text-primaryColor mb-4">
-                Welcome to Road-Rules, Signup here...
+                Welcome to Barberknocks, Signup here...
               </h1>
               <form onSubmit={handleSubmit}>
                 <div className="mt-4">
@@ -141,10 +141,10 @@ function Signup() {
             </div>
             <Link href="/auth/login">
               <div
-                className={`font-demi text-primaryColor text-center mt-4 py-3 px-3 bg-white ${styles.greyHover}`}
+                className={`font-demi text-white text-center mt-4 py-3 px-3 hoverable`}
               >
-                Already a member?{" "}
-                <span className="ml-2 text-secondaryColor">Signin</span>
+                Already a member ?{" "}
+                <span className="ml-2 text-white">Signin</span>
               </div>
             </Link>
           </div>
