@@ -34,9 +34,9 @@ function NavbarComponent() {
       >
         <Navbar.Brand href="/" className="mx-0">
           <img
-            src="/images/logo-roadrules.svg"
+            src="/images/logo-barberknocks.png"
             alt="logo"
-            className={`img-fluid py-0 my-0 ${styles.logo}`}
+            className={`img-fluid py-0 my-0 ${styles.logo} bg-tertiaryColor`}
           />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />

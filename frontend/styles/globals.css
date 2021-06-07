@@ -9,7 +9,11 @@ body {
 :root {
   --primaryColor: #6419b9;
   --secondaryColor: #730fe4;
-  --tertiaryColor: #f3f5fd;
+  --tertiaryColor: #f7e9fc;
+}
+
+.nav-background{
+  background-color: var(--tertiaryColor);
 }
 
 /* Srollbar */
