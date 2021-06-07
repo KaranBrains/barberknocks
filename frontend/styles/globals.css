@@ -7,7 +7,7 @@ body {
 
 /* Root variables */
 :root {
-  --primaryColor: #6419b9;
+  --primaryColor: #420a83;
   --secondaryColor: #730fe4;
   --tertiaryColor: #f7e9fc;
 }
@@ -812,4 +812,67 @@ color: rgb(8, 0, 0);
   .w-50 {
       width:44% !important;
   }
+}
+
+.datepicker-button-previous, .datepicker-button-next {
+  border: none;
+  text-decoration: none;
+  background:var(--primaryColor) !important;
+  cursor: pointer;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.date-day-Item-selected {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  border: 2px solid #fff !important;
+  background-color: var(--tertiaryColor);
+  color: var(--primaryColor) !important;
+  font-family: Avenir-bold;
+}
+
+.date-day-Item-selected:hover {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 50%;
+  background: var(--primaryColor) !important;
+  color: #fff !important;
+}
+.datepicker-date-day-Item {
+  font-weight: bold;
+  display: flex;
+  margin: 3px !important;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  width: 50px !important;
+  height: 50px !important;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 2px solid #fdfbfb;
+  font-family: Avenir-bold;
+  color: #fff;
+}
+
+.datepicker-date-day-Item:hover {
+  background-color: var(--primaryColor) !important;
+  border: 2px solid transparent;
+  color: #fff;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+
+.datepicker-month-label {
+  margin-left: 12px;
+  font-size: 20px !important;
+  color: var(--tertiaryColor) !important;
+  font-family: Avenir-bold;
 }

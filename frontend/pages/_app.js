@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "../styles/globals.css";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "../node_modules/react-big-calendar/lib/css/react-big-calendar.css";
+import "react-horizontal-strip-datepicker/dist/ReactHorizontalDatePicker.css";
 import { wrapper } from "../redux/store";
 import Head from "next/head";
 import Footer from "../components/footer/Footer";
