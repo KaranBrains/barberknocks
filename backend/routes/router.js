@@ -4,10 +4,10 @@ const routes = [
     'verify',
     'admin',
     'contact',
-    'slot',
-    'instructor',
+    // 'slot',
+    'stylist',
     'payment',
-    'ride',
+    // 'ride',
     'address',
     'services'
 ];

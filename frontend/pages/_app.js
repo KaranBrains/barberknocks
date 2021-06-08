@@ -10,7 +10,7 @@ import { useRouter } from "next/router";
 import NavbarComponent from "../components/navbar/Navbar";
 import jwt_decode from "jwt-decode";
 import Home from "./index.js";
-import AdminHome from "./admin/dashboard/index";
+import AdminHome from "./admin/users/index";
 
 
 function MyApp({ Component, pageProps }) {

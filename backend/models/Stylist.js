@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 const RatingSchema = new mongoose.Schema({
-  ride: {
+  booking: {
     type: String,
     required: true,
   },
@@ -19,8 +19,12 @@ const RatingSchema = new mongoose.Schema({
   }
 });
 
-const InstructorSchema = new mongoose.Schema({
+const StylistSchema = new mongoose.Schema({
   fullName: {
+    type: String,
+    required: true,
+  },
+  service: {
     type: String,
     required: true,
   },
@@ -39,4 +43,4 @@ const InstructorSchema = new mongoose.Schema({
   rating: [RatingSchema],
 });
 
-module.exports = mongoose.model('Instructor', InstructorSchema);
+module.exports = mongoose.model('Stylist', StylistSchema);

@@ -147,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
           </div>
           <Divider />
           <List>
-            <ListItem button>
+            {/* <ListItem button>
               <ListItemIcon>
                 <Link href="/admin/dashboard">
                   <a><DashboardIcon /></a>
@@ -156,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
               <Link href="/admin/dashboard">
                 <a><ListItemText primary="Dashboard" /></a>
               </Link>
-            </ListItem>
+            </ListItem> */}
             <ListItem button>
               <ListItemIcon>
                 <Link href="/admin/users">
@@ -179,12 +179,12 @@ const useStyles = makeStyles((theme) => ({
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <Link href="/admin/instructor">
+                <Link href="/admin/stylist">
                   <a><GroupIcon /></a>
                 </Link>
               </ListItemIcon>
-              <Link href="/admin/instructor">
-                <a><ListItemText primary="Instructor" /></a>
+              <Link href="/admin/stylist">
+                <a><ListItemText primary="Stylist" /></a>
               </Link>
             </ListItem>
             <ListItem button>
