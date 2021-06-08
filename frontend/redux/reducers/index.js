@@ -6,6 +6,7 @@ import instructor from "./instructor";
 import user from "./user";
 import rides from "./rides";
 import ride from "./ride";
+import service from "./service";
 
 const rootReducer = combineReducers({
   main,
@@ -14,7 +15,8 @@ const rootReducer = combineReducers({
   user,
   contact,
   rides,
-  ride
+  ride,
+  service
 });
 
 export default rootReducer;

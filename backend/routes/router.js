@@ -8,7 +8,8 @@ const routes = [
     'instructor',
     'payment',
     'ride',
-    'address'
+    'address',
+    'services'
 ];
 
 module.exports = {
