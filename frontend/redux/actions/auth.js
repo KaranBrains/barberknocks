@@ -24,7 +24,7 @@ export const signIn = (formData, router) => async (dispatch) => {
     dispatch({ type: SIGN_IN, data });
     const role = jwt(data.token).role;
     if (role === 'admin') {
-      window.location.href="/admin/dashboard";
+      window.location.href="/admin/users";
       return;
     }
     window.location.href="/";
