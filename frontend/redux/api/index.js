@@ -36,6 +36,11 @@ export const addInstructor = (formdata) =>
 export const allInstructor = () => axios.get(`${url}/get-instructors`);
 export const removeInstructor = (id) =>
   axios.delete(`${url}/delete-instructor?id=${id}`);
+  export const addService = (formdata) =>
+  axios.post(`${url}/add-service`, formdata);
+export const allService = () => axios.get(`${url}/get-services`);
+export const removeService = (id) =>
+  axios.delete(`${url}/delete-services?id=${id}`);
 export const getInstructorById = (id) =>
   axios.get(`${url}/instructor?id=${id}`);
 export const getSlotById = (id) => axios.get(`${url}/slot?id=${id}`);
