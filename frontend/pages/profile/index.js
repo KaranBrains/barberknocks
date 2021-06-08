@@ -48,50 +48,56 @@ function UserProfile() {
         <div className="container mb-5 col-lg-9 col-md-12 col-sm-12 col-12">
           <div className="row mt-5 d-flex justify-content-center">
             <div className="col-lg-9 col-md-12 col-sm-12 col-12">
-              <div className="bg-tertiaryColor h-100 py-5 px-3">
-                <form>
-                  <div className="input-group font-medium">
-                    <input
-                      required
-                      name="Name"
-                      type="text"
-                      value={user?.fullName}
-                      className="form-control"
-                      placeholder="Full Name"
-                      disabled
-                    />
-                  </div>
-                  <div className="d-flex">
-                    <div
-                      className="input-group mt-4 font-medium"
-                      style={{ marginRight: "20px" }}
-                    >
-                      <input
-                        required
-                        name="email"
-                        type="text"
-                        value={user?.email}
-                        className="form-control w-50"
-                        placeholder="Email"
-                        disabled
-                      />
-                    </div>
-                    <div className="input-group mt-4 ml-3 font-medium">
-                      <input
-                        required
-                        name="phone no"
-                        type="text"
-                        value={"+" + user?.phone}
-                        className="form-control w-50"
-                        placeholder="Contact Number"
-                        disabled
-                      />
-                    </div>
-                  </div>
-                </form>
-              </div>
+            <div className="card shadow profile-shadow px-3 px-lg-5 py-5 bg-white">
+              <h1 className="text-center font-bold text-primaryColor mb-4">
+                User Profile
+              </h1>
+              <form>
+                <div className="mt-4">
+                  <label className="font-demi text-primaryColor">Name</label>
+                  <input
+                    required
+                    value={user?.fullName}
+                    name="email"
+                    type="text"
+                    className="form-control"
+                    disabled
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="font-demi text-primaryColor">Email</label>
+                  <input
+                    required
+                    value={user?.email}
+                    name="email"
+                    type="text"
+                    className="form-control"
+                    disabled
+                  />
+                </div>
+                <div className="mt-4">
+                  <label className="font-demi text-primaryColor">Phone</label>
+                  <input
+                    required
+                    value={user?.phone}
+                    name="email"
+                    type="text"
+                    className="form-control"
+                    disabled
+                  />
+                </div>
+                <div className="text-center mt-5 mb-3">
+                  <button
+                    className="text-white bg-secondaryColor font-demi btn-blue w-100 submit-button"
+                    type="submit"
+                  >
+                    Edit
+                  </button>
+                </div>
+              </form>
             </div>
-          </div>
+            </div>
+           </div> 
         </div>
       </div>
     </>
