@@ -6,56 +6,52 @@ function About() {
   return (
     <div>
       <div className="main">
-        <div className="container text-center font-bold text-white py-5">
-          <h1 className="pt-5">Road Rules</h1>
-          <p className="font-18 font-medium mt-3">
-            We’re passionate about creating tools that bridge the gaps between
-            digital and physical workplace experiences.
-          </p>
-          <p className="font-medium">
-          Road Rules . 
-          The best driving school in area today. 
-          Get cheap driving lessons by Indian professional 
-          instructor. We provide excellent lessons for both manual and
-           automatic vehicles. Well-known for careful and responsible 
-           driving classes. No matter where ever you are in the city, 
-           We give you highly professional and user friendly
-            drivers. You would love to get associated with us as we make sure 
-            to give you best driving lessons that will let you 
-            start your first drive with full confidence and eventually make
-             you quite professional. There are perhaps a wide variety of 
-             services offered to all age groups as per their need and requirement. 
-          </p>
-          <div className="d-flex justify-content-center my-5">
-            <button
-              className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
-              style={{ marginRight: "20px" }}
-              onClick={()=>
-                router.push('/fullCalendar')
-              }
-            >
-              View Slots
-            </button>
-            <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
-              onClick={()=>
-                router.push('/contact')
-              }>
-              Contact Us
-            </button>
-          </div>
+        <div
+          className="container text-center font-bold text-tertiaryColor py-5 center"
+          style={{ minHeight: "70vh" }}
+        >
+          <div className="">
+            <h1 className="pt-5" style={{ lineHeight: "3rem" }}>
+              Inspired by Global experiences,
+              <br />
+              Fueled by hard work and passion
+            </h1>
+          </div>          
         </div>
       </div>
 
-      <div className="container text-center my-5 text-primaryColor">
-        <h1 className="font-bold pt-5">Four Brands. One Mission.</h1>
-        <p className="font-18 font-medium mt-3 pb-5">
+      <div className="container my-5 text-primaryColor">
+        <p className="font-18 font-medium mt-3 pb-5 px-lg-5 text-justify mt-5">
           iOFFICE, Teem, ManagerPlus and Hippo CMMS brands are one family,
           working together to serve thousands of organizations and their
           millions of employees around the world. We are creative, curious and
           collaborative with a passion for inspiring the heart and soul of
           today’s workplace. See what defines our culture and why we're truly
-          stronger together.
+          stronger together. Lorem Ipsum is simply dummy text of the printing
+          and typesetting industry. Lorem Ipsum has been the industry's standard
+          dummy text ever since the 1500s, when an unknown printer took a galley
+          of type and scrambled it to make a type specimen book. It has survived
+          not only five centuries, but also the leap into electronic
+          typesetting, remaining essentially unchanged. It was popularised in
+          the 1960s with the release of Letraset sheets containing Lorem Ipsum
+          passages, and more recently with desktop publishing software like
+          Aldus PageMaker including versions of Lorem Ipsum.
         </p>
+        <div className="d-flex justify-content-center">
+            <button
+              className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
+              style={{ marginRight: "20px" }}
+              onClick={() => router.push("/fullCalendar")}
+            >
+              View Slots
+            </button>
+            <button
+              className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
+              onClick={() => router.push("/contact")}
+            >
+              Contact Us
+            </button>
+          </div>
       </div>
 
       <div className="text-center my-5 container">
@@ -72,10 +68,10 @@ function About() {
           eliminate hurdles to productivity and enable exceptional workplace
           experiences.
         </p>
-        <button className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
-          onClick={()=>
-            router.push('/fullCalendar')
-          }>
+        <button
+          className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
+          onClick={() => router.push("/fullCalendar")}
+        >
           Book your First Class
         </button>
       </div>
