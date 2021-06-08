@@ -57,7 +57,7 @@ function Address() {
           </div>
         </div>
         <div className="container">
-          <h1 className="text-primaryColor font-bold text-center">
+          <h1 className="text-primaryColor font-bold text-center mt-3">
             Add Address{" "}
             <button onClick={handleChange} className="btn">
               <div className="text-primaryColor bg-white">
@@ -71,13 +71,13 @@ function Address() {
                   
                 {user ? user?.address.map((add) => (
                   <>
-                    <div className="bg-tertiaryColor h-100 py-3 px-3 mb-4 shadow">
+                    <div className="bg-white h-100 py-3 px-3 mb-4 shadow">
                     <div className="w-100 font-medium mt-3">
                         <div
                           required
                           name="Name"
                           type="text"
-                          className="bg-white px-3 py-2"
+                          className="bg-tertiaryColor rounded border px-3 py-2"
                         >
                           {add?.street}
                         </div>
@@ -87,7 +87,7 @@ function Address() {
                           required
                           name="Name"
                           type="text"
-                          className="bg-white px-3 py-2"
+                          className="bg-tertiaryColor rounded border px-3 py-2"
                         >
                           {add?.city}
                         </div>
@@ -98,7 +98,7 @@ function Address() {
                             required
                             name="Name"
                             type="text"
-                            className="bg-white px-3 py-2"
+                            className="bg-tertiaryColor rounded border px-3 py-2"
                           >
                             {add?.postalCode}
                           </div>
@@ -110,7 +110,7 @@ function Address() {
                           required
                           name="Name"
                           type="text"
-                          className="bg-white px-3 py-2"
+                          className="bg-tertiaryColor rounded border px-3 py-2"
                         >
                           {add?.province}
                         </div>
