@@ -12,9 +12,6 @@ body {
   --tertiaryColor: rgb(243, 239, 253);
 }
 
-.nav-background{
-  background-color: var(--tertiaryColor);
-}
 
 /* Srollbar */
 ::-webkit-scrollbar {
@@ -862,10 +859,12 @@ color: rgb(8, 0, 0);
 }
 
 .heading-button{
-  background-color: #0d6efd !important;
+  background-color: #05214d !important;
   margin-left: 50px;
   margin-top: 20px !important; 
   margin-bottom: 10px !important;
+  border-radius: 10px !important;
+  padding: 10px 30px !important;
 }
 
 .custom-padding-showcase-2{

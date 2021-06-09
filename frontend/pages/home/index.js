@@ -1,4 +1,5 @@
-import React from 'react';
+import React, {useState,useEffect} from 'react';
+import { useDispatch, useSelector } from "react-redux";
 import Image from "next/image";
 import { makeStyles } from '@material-ui/core/styles';
 import Accordion from '@material-ui/core/Accordion';
@@ -8,6 +9,9 @@ import Typography from '@material-ui/core/Typography';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Carousel from 'react-bootstrap/Carousel'
 import Navbar from '../../components/navbar/Navabar_road'
+import {baseUrl} from "../../redux/api/index"
+import { allService } from "../../redux/actions/service";
+import { AllStylist } from "../../redux/actions/stylist";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,6 +33,17 @@ export default function HomeNew(){
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
+  const dispatch = useDispatch();
+
+  useEffect(() =>{
+    dispatch(allService());
+    dispatch(AllStylist());
+  },[])
+
+  const allServices = useSelector(state => state.service?.AllData?.services);
+  const allStylists = useSelector(state => state.stylist?.AllData?.stylists);
+  console.log(allStylists)
+
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
@@ -39,8 +54,8 @@ export default function HomeNew(){
            <div className="main-showcase-content">
            <Navbar />
            <div className="d-flex py-5 justify-content-center align-items-start flex-column text-white px-4">
-             <span className="heading-1">Beauty demands at doorstep</span>
-             <span className="heading-2">Book your mobile hair and beauty service <br></br>from top-stylists around the city today -</span>
+             <span className="heading-1 font-demi">Beauty demands at doorstep</span>
+             <span className="heading-2 font-regular">Book your mobile hair and beauty service <br></br>from top-stylists around the city today -</span>
              <button className="btn btn-dark heading-button">Book Now</button>
            </div>
            </div>
@@ -67,54 +82,20 @@ export default function HomeNew(){
                 Popular Services 
              </div>
              <div className="row py-5">
-               <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
-                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                 <i class="fas fa-user-alt fa-4x"></i>
-                 <h5 className="mt-2">Men’s Haircut</h5>
-                 </div>
-               </div>
-               <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
-                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                 <i class="fas fa-user-alt fa-4x"></i>
-                 <h5 className="mt-2">Men’s Haircut</h5>
-                 </div>
-               </div>
-               <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
-                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                 <i class="fas fa-user-alt fa-4x"></i>
-                 <h5 className="mt-2">Men’s Haircut</h5>
-                 </div>
-               </div>
-               <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
-                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                 <i class="fas fa-user-alt fa-4x"></i>
-                 <h5 className="mt-2">Men’s Haircut</h5>
-                 </div>
-               </div>
-               <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
-                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                 <i class="fas fa-user-alt fa-4x"></i>
-                 <h5 className="mt-2">Men’s Haircut</h5>
-                 </div>
-               </div>
-               <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
-                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                 <i class="fas fa-user-alt fa-4x"></i>
-                 <h5 className="mt-2">Men’s Haircut</h5>
-                 </div>
-               </div>
-               <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
-                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                 <i class="fas fa-user-alt fa-4x"></i>
-                 <h5 className="mt-2">Men’s Haircut</h5>
-                 </div>
-               </div>
-               <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
-                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                 <i class="fas fa-user-alt fa-4x"></i>
-                 <h5 className="mt-2">Men’s Haircut</h5>
-                 </div>
-               </div>
+             {allServices && allServices.length>0 ? (
+                        allServices.map(val => {
+                            return (
+                              <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
+                                <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
+                                  <img src={baseUrl + val.icon}  width={95} height={75}></img>
+                                  <h5 className="mt-2">{val.name}</h5>
+                                </div>
+                              </div>
+                            )
+                        })
+                    ) : (
+                        ''
+                    )}   
              </div>
           </div>
            <div className="bg-customColor pb-5">
@@ -122,21 +103,16 @@ export default function HomeNew(){
            Expert Stylists
           </div>
           <div className="row custom-padding-company align-items-center">
-             <div className="col-lg-4 py-3 col-md-4 col-sm-12 col-12 custom-margin">
-              <Image className="stylist-image" src="/images/dac.jpg"  width={280} height={300}></Image>
-              <h4 className="mt-3">Emily Ross</h4>
-              <h6 className="experience-color">7+ years in styling</h6>
-             </div>
-             <div className="col-lg-4 py-3 col-md-4 col-sm-12 col-12 custom-margin">
-             <Image className="stylist-image" src="/images/dac.jpg"  width={280} height={300}></Image>
-              <h4 className="mt-3">Emily Ross</h4>
-              <h6 className="experience-color">7+ years in styling</h6>
-             </div>
-             <div className="col-lg-4 py-3 col-md-4 col-sm-12 col-12 custom-margin">
-             <Image className="stylist-image" src="/images/dac.jpg"  width={280} height={300}></Image>
-              <h4 className="mt-3">Emily Ross</h4>
-              <h6 className="experience-color">7+ years in styling</h6>
-             </div>
+            {allServices && allServices.length>0 ? 
+                allServices.map((val,i)=>{
+                return (
+                  <div className="col-lg-4 py-3 col-md-4 col-sm-12 col-12 custom-margin">
+                    <img className="stylist-image" src={baseUrl + val.icon}  width={280} height={300}></img>
+                    <h4 className="mt-3">{val.name}</h4>
+                    <h6 className="experience-color">{val.experience}</h6>
+                  </div>
+                )
+            }): ''}
            </div>
           </div>
           <div className="d-flex">
