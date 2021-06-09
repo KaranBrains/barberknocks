@@ -6,7 +6,7 @@ import { wrapper } from "../redux/store";
 import Head from "next/head";
 import Footer from "../components/footer/Footer";
 import { useRouter } from "next/router";
-import NavbarComponent from "../components/navbar/Navbar";
+// import NavbarComponent from "../components/navbar/Navbar";
 import jwt_decode from "jwt-decode";
 import Home from "./index.js";
 import AdminHome from "./admin/dashboard/index";
@@ -45,7 +45,7 @@ function MyApp({ Component, pageProps }) {
       ) : (   
         route=="admin" && user && user.role=="user" ? (
           <>
-          <NavbarComponent />
+          {/* <NavbarComponent /> */}
           {/* {allowed ? <Component {...pageProps}/>  : <Home /> } */}
           <Home />  
           <Footer />
@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
           ) : (
             route!="admin" &&  user && user.role=="user" ? (
               <>
-              <NavbarComponent />
+              {/* <NavbarComponent /> */}
                   <Component {...pageProps}/>
               <Footer />
               </>
@@ -71,7 +71,7 @@ function MyApp({ Component, pageProps }) {
                 </>
               ) : (
               <>
-              <NavbarComponent />
+              {/* <NavbarComponent /> */}
                   <Component {...pageProps}/>
               <Footer />
               </>

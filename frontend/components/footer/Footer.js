@@ -1,106 +1,117 @@
 import Link from "next/link";
 import Image from "next/image";
-import PhoneAndroidIcon from '@material-ui/icons/PhoneAndroid';
-import MailIcon from '@material-ui/icons/Mail';
+import InstagramIcon from '@material-ui/icons/Instagram';
+import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import FacebookIcon from '@material-ui/icons/Facebook';
 
 function Footer() {
   return (
-    <div className="gradient-background pt-5">
-      <div className="container py-section">
-        <div className="row">
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
-            <div className="card px-3">
+        <div className="row border-top-custom">
+         <div className="pt-5 width-60">
+           <div className="row  pl-5">
+           <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
+            <div className="card">
               <h3
-                className="text-primaryColor font-bold mb-4"
-                style={{ fontSize: "20px" }}
+                className="font-weight-bold mb-4"
+                style={{ fontSize: "24px" }}
               >
-                Company
+                About Us
               </h3>
-              <Link href="/about">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                  About Us
+              <Link href="/contact">
+                <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
+                Get to know us
                 </div>
               </Link>
               <Link href="/contact">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                  Work with us
-                </div>
-              </Link>
-              <Link href="https://www.privacypolicies.com/live/cc1b5360-1d97-42e7-9dac-321d08b592aa">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                  Privacy Notice
-                </div>
-              </Link>
-              <Link href="https://www.termsofservicegenerator.net/live.php?token=QzSOTrwxvy4POYCeSLGm4HhpCK1Y0j5T">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                  Term of Service
-                </div>
-              </Link>
-              <Link href="">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                <PhoneAndroidIcon/> +1&nbsp;(778)&nbsp;889-7804
-                </div>
-              </Link>
-              <Link href="">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                <MailIcon /> roadrulescanada@gmail.com
+                <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
+                Privacy policy
                 </div>
               </Link>
             </div>
           </div>
           <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
-            <div className="card px-3">
+            <div className="card">
               <h3
-                className="text-primaryColor font-bold mb-4"
-                style={{ fontSize: "20px" }}
+                className="font-weight-bold mb-4"
+                style={{ fontSize: "24px" }}
               >
-                Support
+                Contact Us 
               </h3>
               <Link href="/contact">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                  Help Center
-                </div>
-              </Link>
-
-              <Link href="/contact">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                  Contact Us
+                <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
+                Help
                 </div>
               </Link>
               <Link href="/contact">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                  Request a New Feature
-                </div>
-              </Link>
-              <Link href="/contact">
-                <div className="text-primaryColor font-demi font-15 mb-lg-3 mb-2 hoverable">
-                  Report an Outage
+                <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
+                Terms of Use
                 </div>
               </Link>
             </div>
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12 my-4">
-            <div className="card px-3">
+          <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
+            <div className="card">
               <h3
-                className="text-primaryColor font-bold mb-4"
-                style={{ fontSize: "30px" }}
+                className="font-weight-bold mb-4"
+                style={{ fontSize: "24px" }}
               >
-                <Image
-                  src="/images/logo.svg"
+                Inquiries
+              </h3>
+              <Link href="/contact">
+                <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
+                Become a stylist ? 
+                </div>
+              </Link>
+              <Link href="/contact">
+                <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
+                General inquiries
+                </div>
+              </Link>
+            </div>
+           </div>
+           <div className="row pt-2">
+            <div className="col-lg-12 col-md-12 col-sm-12 col-12 my-4">
+            <div className="card">
+                <div className="d-flex flex-row">
+                  <Link href="/linkedin">
+                   <a className="social-icon"><LinkedInIcon style={{ fontSize: 44 }} /></a>
+                 </Link>
+                <Link href="/instagram">
+                  <a className="social-icon"><InstagramIcon style={{ fontSize: 44 }} /></a>
+                </Link>
+                <Link href="/facebook">
+                  <a className="social-icon"><FacebookIcon style={{ fontSize: 44 }} /></a>
+                </Link>
+                </div>
+             <div className="font-demi font-17 mt-2 mb-lg-3 mb-2 small-screen-hidden">
+               <span>BarberKnocks @2021 All Rights Reserved</span>
+             </div>
+            </div>
+          </div>
+          </div>
+          </div>
+         </div>
+          <div className="footer-image">
+               <div>
+               <Image
+                  src="/images/Group_12.svg"
                   alt="logo"
-                  className="img-fluid logo"
-                  width={300}
-                  height={300}
+                  className="img-fluid-custom"
+                  layout="fill"
                 />
-              </h3>
+               </div>
+              <div className="card-custom">
+              <div className="d-flex justify-content-center align-items-start flex-column text-white footer-content-padding">
+             <span className="footer-heading-1 font-bold">Get Started</span>
+             <span className="footer-heading-2 pb-4">Book your mobile hair and beauty</span>
+             <button className="btn btn-light footer-button">Book Today</button>
+             </div>
             </div>
           </div>
-          <div className="text-primaryColor text-center font-demi font-15 mb-lg-3 mb-2">
-            <span>@ 2021 all rights reserved</span>
-            </div>
-        </div>
-      </div>
-    </div>
+          <div className="font-demi w-100 text-center font-17 mt-2 mb-lg-3 mb-2 small-screen-hidden-2">
+               <span>BarberKnocks @2021 All Rights Reserved</span>
+             </div>
+         </div>
   );
 }
 
