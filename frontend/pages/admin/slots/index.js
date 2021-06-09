@@ -4,15 +4,15 @@ import { useRouter } from "next/router";
 import dynamic from 'next/dynamic';
 import { Modal } from "react-bootstrap";
 import { AddSlot, AllSlots, RemoveSlot, UpdateSlot } from "../../../redux/actions/slot";
-import { AllInstructor } from "../../../redux/actions/instructor";
-import { allSlot } from "../../../redux/api";
+import { AllStylist } from "../../../redux/actions/stylist";
+
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
   <div class="loader">Loading...</div>
 </div> });
 
 export default function Slots() {
   let i = 0;
-  const initialState = { date: "", time: "", clientLimit: "", instructor: "", bookings:""};
+  const initialState = { date: "", time: "", clientLimit: "", stylist: "", bookings:""};
   const [showModal, setShowModal] = useState(false);
   const [editModal, setEditModal] = useState(false);
   const [formData, setformData] = useState(initialState);
@@ -25,8 +25,7 @@ export default function Slots() {
     id : "",
     date: "", 
     time: "", 
-    clientLimit: "", 
-    instructor:"",
+    stylist:"",
     price: ""
   }
 
@@ -40,13 +39,12 @@ export default function Slots() {
 
   const handleEditShow = () => setEditModal(true);
 
-  const EditSlot = (id,date,time,clientLimit,price,instructor) => {
+  const EditSlot = (id,date,time,price,stylist) => {
     setEditFormData({ 
       id: id,
       date: date,
       time: time, 
-      clientLimit: clientLimit, 
-      instructor: instructor,
+      stylist: stylist,
       price: price
     })
     handleEditShow();
@@ -58,11 +56,11 @@ export default function Slots() {
   }
 
   useEffect(() =>{
-    dispatch(AllInstructor());
+    dispatch(AllStylist());
     dispatch(AllSlots());
   },[])
 
-  const allInstructors = useSelector(state => state.instructor?.AllData?.instructors)
+  const allStylists = useSelector(state => state.stylist?.AllData?.stylists);
   let allSlots = useSelector(state => state.slot?.slotData?.slots);
 
   allSlots = sortedSlots.length > 0 ? sortedSlots : allSlots;
@@ -83,7 +81,6 @@ export default function Slots() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData)
     dispatch(AddSlot(formData, router))
     .then(() =>{
       handleClose();
@@ -155,23 +152,6 @@ export default function Slots() {
                   />
                 </div>
                 <div className="form-group mt-4">
-                <label className="font-20 py-2">Client Limit</label>
-                  <input
-                    required
-                    value={editFormData.clientLimit}
-                    onChange={(e) => {
-                      setEditFormData({
-                        ...editFormData,
-                        [e.target.name]: e.target.value,
-                      });
-                    }}
-                    name="clientLimit"
-                    type="number"
-                    className="form-control"
-                    placeholder="Client Limit"
-                  />
-                </div>
-                <div className="form-group mt-4">
                 <label className="font-20 py-2">Price</label>
                   <input
                     required
@@ -189,10 +169,10 @@ export default function Slots() {
                   />
                 </div>
                 <div className="form-group mt-4">
-                <label className="font-20 py-2">Instructor</label>
+                <label className="font-20 py-2">Stylist</label>
                 <select
-                    name="instructor"
-                    value={editFormData.instructor}
+                    name="stylist"
+                    value={editFormData.stylist}
                     onChange={(e) => {
                       setEditFormData({
                         ...editFormData,
@@ -202,8 +182,8 @@ export default function Slots() {
                     className="form-control"
                     required
                   >
-                    {allInstructors && allInstructors.length>0 ? 
-                    allInstructors.map((c,i)=>{
+                    {allStylists && allStylists.length>0 ? 
+                    allStylists.map((c,i)=>{
                        return <option value={c._id} key={i}>{c.fullName}</option>
                     }): ''}
                   </select>
@@ -283,27 +263,10 @@ export default function Slots() {
                   />
                 </div>
                 <div className="form-group mt-4">
-                <label className="font-20 py-2">Client Limit</label>
-                  <input
-                    required
-                    value={formData.clientLimit}
-                    onChange={(e) => {
-                      setformData({
-                        ...formData,
-                        [e.target.name]: e.target.value,
-                      });
-                    }}
-                    name="clientLimit"
-                    type="number"
-                    className="form-control"
-                    placeholder="Client Limit"
-                  />
-                </div>
-                <div className="form-group mt-4">
-                <label className="font-20 py-2">Instructor</label>
+                <label className="font-20 py-2">Stylist</label>
                 <select
-                    name="instructor"
-                    value={formData.instructor}
+                    name="stylist"
+                    value={formData.stylist}
                     onChange={(e) => {
                       setformData({
                         ...formData,
@@ -314,8 +277,8 @@ export default function Slots() {
                     required
                   >
                     <option className="hidden" value=""></option>
-                    {allInstructors && allInstructors.length>0 ? 
-                    allInstructors.map((c,i)=>{
+                    {allStylists && allStylists.length>0 ? 
+                    allStylists.map((c,i)=>{
                        return <option value={c._id} key={i}>{c.fullName}</option>
                     }): ''}
                   </select>
@@ -349,9 +312,8 @@ export default function Slots() {
                   <th scope="col">S.No</th>
                   <th scope="col"  onClick={sortDate}>Date &#8645;</th>
                   <th scope="col">Time</th>    
-                  <th scope="col">Client Limit</th>
                   <th scope="col">Price</th>
-                  <th scope="col">Instructor</th>    
+                  <th scope="col">Stylist</th>    
                   <th scope="col">Action</th>
                   <th scope="col">Remove</th>               
                 </tr>
@@ -365,10 +327,9 @@ export default function Slots() {
                         <td>{i}</td>
                         <td className="user-name">{val.date}</td>
                         <td>{val.time}</td>
-                        <td>{val.clientLimit}</td>
                         <td>{val.price}</td>
-                        <td>{val.instructorName}</td>
-                        <td><button class="btn btn-primary" onClick={() => EditSlot(val._id, val.date, val.time, val.clientLimit ,val.price, val.instructor)}>Edit</button></td>
+                        <td>{val.stylistName}</td>
+                        <td><button class="btn btn-primary" onClick={() => EditSlot(val._id, val.date, val.time ,val.price, val.stylist)}>Edit</button></td>
                         <td><button class="btn btn-danger" onClick={() => deleteSlot(val._id)}>Remove</button></td>
                       </tr>
                     )

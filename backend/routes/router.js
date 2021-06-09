@@ -4,7 +4,7 @@ const routes = [
     'verify',
     'admin',
     'contact',
-    // 'slot',
+    'slot',
     'stylist',
     'payment',
     // 'ride',
