@@ -7,7 +7,7 @@ function DateSlot() {
   return (
     <div className="container">
       <div className="row d-flex justify-content-center">
-        <div className="col-lg-10 col-md-10 col-12 col-sm-12 my-5">
+        <div className="col-lg-10 col-md-8 col-12 col-sm-12 my-5">
           <div className="shadow">
             <div className="bg-primaryColor px-lg-5 px-2 pt-2">
               <ReactHorizontalDatePicker
@@ -16,7 +16,10 @@ function DateSlot() {
                 enableDays={90}
               />
             </div>
-            <div className="slots px-lg-5 py-5 px-2 bg-tertiaryColor">
+            <div
+              className="slots px-lg-5 py-5 px-2"
+              style={{ minHeight: "50vh" }}
+            >
               <div className="d-flex justify-content-center">
                 <div
                   className="bg-secondaryColor text-white font-demi py-2 px-3 mx-2 text-center"
@@ -42,16 +45,16 @@ function DateSlot() {
                 >
                   5:00
                 </div>
-              </div>             
+              </div>
             </div>
             <div className="text-center mb-3">
-                <button
-                  className="text-white bg-primaryColor font-demi w-100 btn-blue submit-button"
-                  type="submit"
-                >
-                  Book Appointment
-                </button>
-              </div>
+              <button
+                className="text-white bg-primaryColor font-demi btn-blue submit-button mb-5"
+                type="submit"
+              >
+                Book Appointment
+              </button>
+            </div>
           </div>
         </div>
       </div>
