@@ -19,7 +19,7 @@ exports.addStylist = async (req,res,next) => {
     let extension = mime.extension(type);
     let fileName = req.body.fullName + '.' + extension;
     try {
-        fs.writeFileSync("./assets/images/" + fileName, imageBuffer, 'utf8');
+        fs.writeFileSync("./assets/images/barberknocks/" + fileName, imageBuffer, 'utf8');
         let product = {
             ...req.body,
             img : "images/" +  fileName
