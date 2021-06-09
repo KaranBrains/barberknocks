@@ -3,7 +3,7 @@ require('dotenv').config();
 const Payment = require("../models/Payment");
 const Slot = require("../models/Slot");
 const User = require("../models/User");
-const Ride = require("../models/Rides");
+const Booking = require("../models/Booking");
 const sgMail = require('@sendgrid/mail');
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
@@ -68,17 +68,17 @@ exports.confirmRideOnline = async (req,res,next) => {
             }
             const client = await User.findById(payment.client);
             const address = client.address.filter(a=> a._id == req.query.address)[0];
-            const ride = {
+            const booking = {
                 client : client._id,
                 clientName : client.fullName,
-                instructor : slot.instructor,
+                stylist : slot.stylist,
                 slot : slot._id,
                 status : "scheduled",
                 modeOfPayment : "online",
                 price : slot.price,
                 time : slot.time,
                 date : slot.date,
-                instructorName: slot.instructorName,
+                stylistName: slot.stylistName,
                 address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
             }
             slot.status = "booked";
@@ -86,8 +86,8 @@ exports.confirmRideOnline = async (req,res,next) => {
                 if (err) {
                     return res.status(400).json({ msg: err.message });
                 }
-                let newRide = Ride(ride); 
-                newRide.save((err, ride) => {
+                let newBooking= Booking(booking); 
+                newBooking.save((err, ride) => {
                     if (err) {
                         return res.status(400).json({ msg: err.message });
                     }
@@ -99,16 +99,16 @@ exports.confirmRideOnline = async (req,res,next) => {
                         const msg = {
                             to: client.email,
                             from: process.env.SENDGRID_EMAIL, // Change to your verified sender
-                            subject: 'Road-Rules Class Confirmed',
-                            text: 'Class Confirmed',
-                            html: `<h1>Class Details</h1>
+                            subject: 'Barberknocks slot Confirmed',
+                            text: 'Slot Confirmed',
+                            html: `<h1>Slot Details</h1>
                                    <pre> Date  : ${slot.date} </pre>
                                    <pre> Time  : ${slot.time} </pre>
                                    <pre> Mode of Payment : Online </pre>`,
                           }
                           sgMail.send(msg)
                           .then(info => {
-                              return res.status(201).json(ride);
+                              return res.status(201).json({booking:ride});
                           })
                           .catch(err => {
                               res.status(400).send({msg: "Some error"})

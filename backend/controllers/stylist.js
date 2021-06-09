@@ -61,6 +61,22 @@ exports.getAll = async (req,res) => {
     } 
 }
 
+exports.getStylistsByService= async (req,res) => {
+    try {
+        Stylist.find({service:req.query.id , city:req.query.city}, (err, stylists) => {
+            if (err) {
+                return res.status(400).json({ msg: err });
+            }
+
+            if (stylists) {
+                return res.status(200).json({ stylists: stylists });
+            }
+        });
+    } catch (e) {
+        return res.status(400).json({ msg: e });
+    } 
+}
+
 exports.getStylistById = (req, res) => {
     Stylist.findById(req.query.id , (err, stylist) => {
         if (err) {

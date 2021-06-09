@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const RideSchema = new mongoose.Schema({
+const BookingSchema = new mongoose.Schema({
   client : {
     type: String,
     required: true,
@@ -9,11 +9,11 @@ const RideSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  instructor : {
+  stylist : {
     type: String,
     required: true,
   },
-  instructorName : {
+  stylistName : {
     type: String,
     required: true,
   },
@@ -53,4 +53,4 @@ const RideSchema = new mongoose.Schema({
   }
 });
 
-module.exports = mongoose.model('Ride', RideSchema);
+module.exports = mongoose.model('Booking', BookingSchema);
