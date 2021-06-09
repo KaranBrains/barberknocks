@@ -1,27 +1,29 @@
 import dynamic from 'next/dynamic';
-import { useState, useContext, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch , useSelector} from "react-redux";
-import { ReactReduxContext } from 'react-redux'
 import { useRouter } from "next/router";
 import { Modal } from "react-bootstrap";
-import { AddInstructor, AllInstructor, RemoveInstructor } from "../../../redux/actions/instructor";
+import { AddStylist, AllStylist, RemoveStylist } from "../../../redux/actions/stylist";
+import { allService,} from "../../../redux/actions/service";
 import {baseUrl} from "../../../redux/api/index"
 import Link from "next/link";
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
   <div class="loader">Loading...</div>
 </div> });
 
-export default function Instructor() {
+export default function Stylist() {
   var i = 0;
   const dispatch = useDispatch();
 
   useEffect(() =>{
-    dispatch(AllInstructor());
+    dispatch(AllStylist());
+    dispatch(allService());
   },[])
 
-  const allInstructors = useSelector(state => state.instructor?.AllData?.instructors);
+  const allServices = useSelector(state => state.service?.AllData?.services);
+  const allStylists = useSelector(state => state.stylist?.AllData?.stylists);
 
-  const initialState = { fullName: "", img: "", phone: "", email:""};
+  const initialState = { fullName: "", img: "", phone: "", email:"" ,service:""};
   const [showModal, setShowModal] = useState(false);
   const [formData, setformData] = useState(initialState);
   const [fileOneValue, setFileOneValue] = useState('');
@@ -36,21 +38,22 @@ export default function Instructor() {
   };
 
   const handleSubmit = (e) => {
+    console.log(formData)
     e.preventDefault();
-    dispatch(AddInstructor(formData, router))
+    dispatch(AddStylist(formData, router))
     .then(() =>{
       handleClose();
-      dispatch(AllInstructor());
+      dispatch(AllStylist());
     }).catch(() =>{
     });
     setformData(initialState);
     setFileOne("");
   };
 
-  const deleteInstructor = (id) => {
-    dispatch(RemoveInstructor(id))
+  const deleteStylist = (id) => {
+    dispatch(RemoveStylist(id))
     .then(() =>{
-      dispatch(AllInstructor());
+      dispatch(AllStylist());
     });
   }
 
@@ -68,7 +71,7 @@ export default function Instructor() {
         <Modal className="mt-5 modal-card" show={showModal} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>
-              <div className="font-bold ml-1">Add a Instructor</div>
+              <div className="font-bold ml-1">Add a Stylist</div>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
@@ -90,6 +93,28 @@ export default function Instructor() {
                     placeholder="Full Name"
                   />
                 </div>
+                <div className="form-group mt-4">
+                <label className="font-20 py-2">Service</label>
+                <select
+                    required
+                    value={formData.service}
+                    onChange={(e) => {
+                      setformData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
+                    name="service"
+                    type="text"
+                    className="form-control"
+                  >
+                    <option value=""  disabled defaultValue>Select Service</option>
+                    {allServices && allServices.length>0 ? 
+                    allServices.map((c,i)=>{
+                       return <option value={c._id} key={i}>{c.name}</option>
+                    }): ''}
+                  </select>
+                </div>
                 <div className="form-group">
                   <label className="font-20 py-2">Image</label>
                   <img src={fileOne} className="img-fluid"/>
@@ -109,7 +134,7 @@ export default function Instructor() {
                     class="hidden"
                     id="uploading"
                     accept=".png, .jpg, .jpeg"
-                    placeholder="Instructor Image"
+                    placeholder="Stylist Image"
                     required
                   />
                 </div>
@@ -165,9 +190,9 @@ export default function Instructor() {
         <Sidebar />
         <div class="container padding-left-mobile-table">
           <div class="d-flex justify-content-between align-items-center">
-          <h3>Instructor</h3>
+          <h3>Stylist</h3>
           <button class="btn btn-primary" onClick={handleShow}>
-                Add Instructor
+                Add Stylist
           </button>
           </div>
           <div class="row mb-5 mt-3 user-table table-responsive">
@@ -177,6 +202,7 @@ export default function Instructor() {
                   <th scope="col">S.No</th>
                   <th scope="col">Image</th>    
                   <th scope="col">Name</th>
+                  <th scope="col">Service</th>
                   <th scope="col">Email</th>  
                   <th scope="col">Phone</th>   
                   <th scope="col">Ratings</th>   
@@ -185,8 +211,8 @@ export default function Instructor() {
                 </tr>
               </thead>
               <tbody>
-              {allInstructors && allInstructors.length>0 ? (
-                        allInstructors.map(val => {
+              {allStylists && allStylists.length>0 ? (
+                        allStylists.map(val => {
                           i++;
                             return (
                               <tr className="font-demi align-middle" key={val._id}>
@@ -199,11 +225,12 @@ export default function Instructor() {
                               />
                               </td>
                               <td className="user-name">{val.fullName}</td>
+                              <td className="user-name">{val.service}</td>
                               <td>{val.email}</td>
                               <td>{val.phone}</td>
                               <td>Ratings</td>
                               <td>
-                              <Link href={'/admin/instructor/'+val._id}>
+                              <Link href={'/admin/stylist/'+val._id}>
                                 <a>
                                 <div class="btn btn-primary user-button" onClick={() => router.push('/admin/instructor/'+[val._id])} >View Details</div>
                                 </a>

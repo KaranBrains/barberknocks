@@ -1,8 +1,8 @@
-const Instructor = require("../models/Instructor");
+const Stylist = require("../models/Stylist");
 const mime = require('mime');
 const fs = require('fs');
 
-exports.addInstructor = async (req,res,next) => {
+exports.addStylist = async (req,res,next) => {
     var matches = req.body.img.match(/^data:([A-Za-z-+/]+);base64,(.+)$/),
     response = {}; 
     if (matches.length !== 3) {
@@ -24,8 +24,8 @@ exports.addInstructor = async (req,res,next) => {
             ...req.body,
             img : "images/" +  fileName
         }
-        let instructor = Instructor(product);
-        instructor.save()
+        let stylist = Stylist(product);
+        stylist.save()
         .then((data,error)=>{
             if (error) {
                 return res.status(400).send({
@@ -33,7 +33,7 @@ exports.addInstructor = async (req,res,next) => {
                 });
             }
             return res.status(200).send({
-                msg: "Instructor Added succesfully",
+                msg: "Stylist Added succesfully",
                 data: data,
             }); 
         });
@@ -47,13 +47,13 @@ exports.addInstructor = async (req,res,next) => {
 // get all
 exports.getAll = async (req,res) => {
     try {
-        Instructor.find({}, (err, instructors) => {
+        Stylist.find({}, (err, stylists) => {
             if (err) {
                 return res.status(400).json({ msg: err });
             }
 
-            if (instructors) {
-                return res.status(200).json({ instructors: instructors });
+            if (stylists) {
+                return res.status(200).json({ stylists: stylists });
             }
         });
     } catch (e) {
@@ -61,23 +61,23 @@ exports.getAll = async (req,res) => {
     } 
 }
 
-exports.getInstructorById = (req, res) => {
-    Instructor.findById(req.query.id , (err, instructor) => {
+exports.getStylistById = (req, res) => {
+    Stylist.findById(req.query.id , (err, stylist) => {
         if (err) {
             return res.status(400).json({ msg: err });
         }
-        return res.status(201).json({instructor: instructor});
+        return res.status(201).json({Stylist: Stylist});
     })
 };
 
-exports.deleteInstructor = (req, res) => {
+exports.deleteStylist = (req, res) => {
     if ( !req.query.id ) {
         return res.status(400).json({ msg: 'Invalid data' });
     }
-    Instructor.findByIdAndDelete(req.query.id , (err,instructor) => {
+    Stylist.findByIdAndDelete(req.query.id , (err,stylist) => {
         if (err) {
             return res.status(400).json({ msg: err });
         }
-        return res.status(201).json(instructor);
+        return res.status(201).json(stylist);
     })
 };
