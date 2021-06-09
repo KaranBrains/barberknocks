@@ -9,7 +9,7 @@ import Footer from "../components/footer/Footer";
 import { useRouter } from "next/router";
 import NavbarComponent from "../components/navbar/Navbar";
 import jwt_decode from "jwt-decode";
-import Home from "./index.js";
+import Home from "../pages/home";
 import AdminHome from "./admin/users/index";
 
 
@@ -46,7 +46,7 @@ function MyApp({ Component, pageProps }) {
       ) : (   
         route=="admin" && user && user.role=="user" ? (
           <>
-          <NavbarComponent />
+          {/* <NavbarComponent /> */}
           {/* {allowed ? <Component {...pageProps}/>  : <Home /> } */}
           <Home />  
           {/* <Footer /> */}
@@ -59,18 +59,25 @@ function MyApp({ Component, pageProps }) {
           ) : (
             route!="admin" &&  user && user.role=="user" ? (
               <>
-              <NavbarComponent />
+              {/* <NavbarComponent /> */}
                   <Component {...pageProps}/>
               {/* <Footer /> */}
               </>
             ) : (
               !user && route=="admin" ? (
                 <>
-                <NavbarComponent />
+                {/* <NavbarComponent /> */}
                     <Home />
                 {/* <Footer /> */}
                 </>
               ) : (
+                route=="home" ? (
+                  <>
+                  {/* <NavbarComponent /> */}
+                      <Home />
+                  <Footer />
+                  </>
+                ) : (
               <>
               <NavbarComponent />
                   <Component {...pageProps}/>
@@ -79,6 +86,7 @@ function MyApp({ Component, pageProps }) {
               )
             )
           ) 
+          )
         ) 
       )}
     </>

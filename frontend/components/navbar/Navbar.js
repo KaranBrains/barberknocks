@@ -24,43 +24,65 @@ function NavbarComponent() {
     setisLoggedIn(localStorage.getItem("token"));
   }, [isLoggedIn]);
   return (
-    <>
+    <div className="bg-image">
       <Navbar
         expand="lg"
-        className="nav-background  py-2 px-5"
+        className="nav-background navbar align-items-center pt-3 px-5"
         sticky="top"
         collapseOnSelect={true}
         variant="light"
       >
-        <Navbar.Brand href="/" className="mx-0">
-          <img
-            src="/images/logo-barberknocks.png"
+        <Navbar.Brand href="/" className="font-demi mx-0">
+          {/* <img
+            src="/images/logo-roadrules.svg"
             alt="logo"
-            className={`img-fluid py-0 my-0 ${styles.logo} bg-tertiaryColor`}
-          />
+            className={`img-fluid py-0 my-0 ${styles.logo}`}
+          /> */}
+          BarberKnocks
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
+        <Navbar.Toggle className="toggle-icon" aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`${styles.mlAuto}`}>
             <Nav.Link
               href="/about"
               className="font-demi font-17 px-3 navbar-item
-                text-primaryColor text-center"
+                 text-center"
             >
-              About
+              Services
+            </Nav.Link>
+            <Nav.Link
+              href="/about"
+              className="font-demi font-17 px-3 navbar-item
+                 text-center"
+            >
+              FAQ’s
             </Nav.Link>
             <Nav.Link
               href="/contact"
               className="font-demi font-17
-                  px-3 navbar-item text-primaryColor text-center"
+                  px-3 navbar-item  text-center"
             >
-              Contact Us
+              Contact Us 
+            </Nav.Link>
+            <Nav.Link
+              href="/contact"
+              className="font-demi font-17
+                  px-3 navbar-item  text-center"
+            >
+              Join Us
+            </Nav.Link>
+            <Nav.Link
+              href="/serviceLocation"
+              className="font-demi font-17
+                  px-3 navbar-item  text-center"
+            >
+              <button className="btn btn-dark black-button">Book Now</button>
             </Nav.Link>
             {!isLoggedIn ? (
               <Nav.Link
               href="/auth/login"
               className="font-demi font-17
-                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+                  px-3 navbar-item  text-center navbar-desktop-hidden"
             >
               Login/Signup
             </Nav.Link>
@@ -68,7 +90,7 @@ function NavbarComponent() {
               <Nav.Link
               href="/profile"
               className="font-demi font-17
-                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+                  px-3 navbar-item  text-center navbar-desktop-hidden"
             >
               User Profile
             </Nav.Link>
@@ -77,7 +99,7 @@ function NavbarComponent() {
             <Nav.Link
               href="/address"
               className="font-demi font-17
-                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+                  px-3 navbar-item  text-center navbar-desktop-hidden"
             >
             Addresses
           </Nav.Link>
@@ -86,7 +108,7 @@ function NavbarComponent() {
             <Nav.Link
               href="/ride"
               className="font-demi font-17
-                  px-3 navbar-item text-primaryColor text-center navbar-desktop-hidden"
+                  px-3 navbar-item  text-center navbar-desktop-hidden"
             >
             My Classes
           </Nav.Link>
@@ -123,7 +145,7 @@ function NavbarComponent() {
               >
                 <NavDropdown.Item>
                   <Link href="/profile">
-                    <div className="font-demi text-primaryColor">
+                    <div className="font-demi ">
                       <SettingsIcon />
                       &nbsp;User Profile
                     </div>
@@ -131,14 +153,14 @@ function NavbarComponent() {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link href="/ride">
-                    <div className="font-demi text-primaryColor">
+                    <div className="font-demi ">
                       <ClassIcon />
                       &nbsp;My Classes
                     </div>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <div className="font-demi text-primaryColor" onClick={logout}>
+                  <div className="font-demi " onClick={logout}>
                     <ExitToAppIcon />
                     &nbsp;&nbsp;Logout
                   </div>
@@ -165,7 +187,7 @@ function NavbarComponent() {
               >
                 <NavDropdown.Item>
                   <Link href="/auth/login">
-                    <div className="font-demi text-primaryColor">
+                    <div className="">
                       <i className="fas fa-sign-in-alt mr-2"></i>
                       &nbsp;Login
                     </div>
@@ -173,7 +195,7 @@ function NavbarComponent() {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link href="/auth/signup">
-                    <div className="font-demi text-primaryColor">
+                    <div className="">
                       <i className="fas fa-user-circle mr-2"></i>
                       &nbsp;Signup
                     </div>
@@ -184,7 +206,7 @@ function NavbarComponent() {
           </Nav>
         </Navbar.Collapse>
       </Navbar>
-    </>
+    </div>
   );
 }
 
