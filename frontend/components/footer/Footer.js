@@ -17,12 +17,12 @@ function Footer() {
               >
                 About Us
               </h3>
-              <Link href="/contact">
+              <Link href="/about">
                 <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
                 Get to know us
                 </div>
               </Link>
-              <Link href="/contact">
+              <Link href="/about">
                 <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
                 Privacy policy
                 </div>
@@ -104,7 +104,11 @@ function Footer() {
               <div className="d-flex justify-content-center align-items-start flex-column text-white footer-content-padding">
              <span className="footer-heading-1 font-bold">Get Started</span>
              <span className="footer-heading-2 pb-4">Book your mobile hair and beauty</span>
-             <button className="btn btn-light footer-button">Book Today</button>
+             <Link href={'/serviceLocation'}>
+               <a>
+                <button className="btn btn-light footer-button">Book Today</button>
+               </a>
+             </Link>
              </div>
             </div>
           </div>

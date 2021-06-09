@@ -27,12 +27,12 @@ function NavbarComponent() {
     <div className="bg-image">
       <Navbar
         expand="lg"
-        className="nav-background navbar align-items-center pt-3 pb-5 px-5"
+        className="nav-background navbar align-items-center pt-3 pb-navbar-new-5 px-5"
         sticky="top"
         collapseOnSelect={true}
         variant="light"
       >
-        <Navbar.Brand href="/" className="font-demi mx-0">
+        <Navbar.Brand href="/" className="font-demi color-white mx-0">
           {/* <img
             src="/images/logo-roadrules.svg"
             alt="logo"
@@ -45,35 +45,35 @@ function NavbarComponent() {
           <Nav className={`${styles.mlAuto}`}>
             <Nav.Link
               href="/about"
-              className="font-demi font-17 px-3 navbar-item
+              className="font-demi color-white font-17 px-3 navbar-item
                  text-center"
             >
               Services
             </Nav.Link>
             <Nav.Link
               href="/about"
-              className="font-demi font-17 px-3 navbar-item
+              className="font-demi color-white font-17 px-3 navbar-item
                  text-center"
             >
               FAQ’s
             </Nav.Link>
             <Nav.Link
               href="/contact"
-              className="font-demi font-17
+              className="font-demi color-white font-17
                   px-3 navbar-item  text-center"
             >
               Contact Us 
             </Nav.Link>
             <Nav.Link
               href="/contact"
-              className="font-demi font-17
+              className="font-demi color-white font-17
                   px-3 navbar-item  text-center"
             >
               Join Us
             </Nav.Link>
             <Nav.Link
-              href="/contact"
-              className="font-demi font-17
+              href="/serviceLocation"
+              className="font-demi color-white font-17
                   px-3 navbar-item  text-center"
             >
               <button className="btn btn-dark black-button">Book Now</button>
@@ -81,7 +81,7 @@ function NavbarComponent() {
             {!isLoggedIn ? (
               <Nav.Link
               href="/auth/login"
-              className="font-demi font-17
+              className="font-demi color-white font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
               Login/Signup
@@ -89,7 +89,7 @@ function NavbarComponent() {
             ) : (
               <Nav.Link
               href="/profile"
-              className="font-demi font-17
+              className="font-demi color-white font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
               User Profile
@@ -98,7 +98,7 @@ function NavbarComponent() {
           {isLoggedIn ? (
             <Nav.Link
               href="/address"
-              className="font-demi font-17
+              className="font-demi color-white font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
             Addresses
@@ -107,7 +107,7 @@ function NavbarComponent() {
             {isLoggedIn ? (
             <Nav.Link
               href="/ride"
-              className="font-demi font-17
+              className="font-demi color-white font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
             My Classes
@@ -115,7 +115,7 @@ function NavbarComponent() {
             ) : ''}
           {isLoggedIn ? (
             <Nav.Link
-              className="font-demi font-17
+              className="font-demi color-white font-17
                   px-3 navbar-item text-white bg-secondaryColor text-center navbar-desktop-hidden"
                   onClick={logout}
             >
@@ -145,7 +145,7 @@ function NavbarComponent() {
               >
                 <NavDropdown.Item>
                   <Link href="/profile">
-                    <div className="font-demi ">
+                    <div className="font-demi color-white ">
                       <SettingsIcon />
                       &nbsp;User Profile
                     </div>
@@ -153,14 +153,14 @@ function NavbarComponent() {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link href="/ride">
-                    <div className="font-demi ">
+                    <div className="font-demi color-white ">
                       <ClassIcon />
                       &nbsp;My Classes
                     </div>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <div className="font-demi " onClick={logout}>
+                  <div className="font-demi color-white " onClick={logout}>
                     <ExitToAppIcon />
                     &nbsp;&nbsp;Logout
                   </div>

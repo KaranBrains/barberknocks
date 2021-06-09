@@ -928,7 +928,7 @@ color: rgb(8, 0, 0);
  background-color: #ffffff !important;
 }
 
-.bg-image .font-demi {
+.bg-image .color-white {
   color: #ffffff !important;
 }
 
@@ -1051,6 +1051,10 @@ height: 250px !important;
 .carousel-heading-2{
   font-weight: bold;
   font-size: 32px;
+}
+
+.pb-navbar-new-5{
+  padding-bottom: 50px !important;
 }
 
 .carousel-left-item{
@@ -1250,4 +1254,6 @@ height: 250px !important;
 
 .datepicker{
   margin: 0px !important;
+}
+
 }

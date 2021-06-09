@@ -11,7 +11,9 @@ import Carousel from 'react-bootstrap/Carousel'
 import Navbar from '../../components/navbar/Navabar_road'
 import {baseUrl} from "../../redux/api/index"
 import { allService } from "../../redux/actions/service";
+import { useRouter } from "next/router";
 import { AllStylist } from "../../redux/actions/stylist";
+import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -30,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 
 
 export default function HomeNew(){
+  const router = useRouter();
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
 
@@ -43,6 +46,7 @@ export default function HomeNew(){
   const allServices = useSelector(state => state.service?.AllData?.services);
   const allStylists = useSelector(state => state.stylist?.AllData?.stylists);
   console.log(allStylists)
+  console.log(allServices)
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
@@ -56,25 +60,29 @@ export default function HomeNew(){
            <div className="d-flex py-5 justify-content-center align-items-start flex-column text-white px-4">
              <span className="heading-1 font-demi">Beauty demands at doorstep</span>
              <span className="heading-2 font-regular">Book your mobile hair and beauty service <br></br>from top-stylists around the city today -</span>
-             <button className="btn btn-dark heading-button">Book Now</button>
+             <Link href={'/serviceLocation'}>
+               <a>
+              <button className="btn btn-dark heading-button">Book Now</button>
+               </a>
+             </Link>
            </div>
            </div>
          </div>
          <div className="row main-showcase-2 bg-customColor custom-padding-company align-items-center py-4">
              <div className="col-lg-4 custom-padding-showcase-2 py-3 col-md-4 col-sm-12 col-12 custom-margin h-250">
              <i class="fas fa-clock fa-4x mb-4 icon-color"></i>
-             <h4>24 hr availability</h4>
-             <h6>Arouond the clock booking availabiility</h6>
+             <p className="h4">24 hr availability</p>
+             <p className="h6">Arouond the clock booking availabiility</p>
              </div>
              <div className="col-lg-4 custom-padding-showcase-2 py-3 col-md-4 col-sm-12 col-12 custom-margin h-250">
              <i class="fas fa-dollar-sign fa-4x mb-4 icon-color"></i>
-             <h4>Affordable prices</h4>
-             <h6>Enjoy affordable mobile services from top stylists</h6>
+             <p className="h4">Affordable prices</p>
+             <p className="h6">Enjoy affordable mobile services from top stylists</p>
              </div>
              <div className="col-lg-4 py-3 custom-padding-showcase-2 col-md-4 col-sm-12 col-12 custom-margin h-250">
              <i class="fas fa-map-marked-alt fa-4x mb-4 icon-color"></i>
-             <h4>Anywhere, Anytime</h4>
-             <h6>Choose you preffered location and time slot as per your flexibility</h6>
+             <p className="h4">Anywhere, Anytime</p>
+             <p className="h6">Choose you preffered location and time slot as per your flexibility</p>
              </div>
            </div>
            <div className="pb-5">
@@ -85,17 +93,34 @@ export default function HomeNew(){
              {allServices && allServices.length>0 ? (
                         allServices.map(val => {
                             return (
-                              <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
+                            <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
+                              <Link href={'/serviceLocation?id=' + val._id}>
+                                <a>
                                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
                                   <img src={baseUrl + val.icon}  width={95} height={75}></img>
-                                  <h5 className="mt-2">{val.name}</h5>
+                                  <p className="mt-2 h5 text-dark">{val.name}</p>
                                 </div>
-                              </div>
+                                </a>
+                              </Link> 
+                            </div>
                             )
                         })
                     ) : (
                         ''
-                    )}   
+                    )}
+                  {allServices && allServices.length>0 ?
+                    (
+                      <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
+                      <Link href={'/serviceLocation'}>
+                       <a>
+                         <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
+                         <p className="mt-2 h4 text-dark">MORE...</p>
+                       </div>
+                       </a>
+                     </Link> 
+                     </div>
+                    ) : ( " " )
+                  }
              </div>
           </div>
            <div className="bg-customColor pb-5">
@@ -103,13 +128,13 @@ export default function HomeNew(){
            Expert Stylists
           </div>
           <div className="row custom-padding-company align-items-center">
-            {allServices && allServices.length>0 ? 
-                allServices.map((val,i)=>{
+            {allStylists && allStylists.length>0 ? 
+                allStylists.map((val,i)=>{
                 return (
                   <div className="col-lg-4 py-3 col-md-4 col-sm-12 col-12 custom-margin">
-                    <img className="stylist-image" src={baseUrl + val.icon}  width={280} height={300}></img>
-                    <h4 className="mt-3">{val.name}</h4>
-                    <h6 className="experience-color">{val.experience}</h6>
+                    <img className="stylist-image" src={baseUrl + val.img}  width={280} height={300}></img>
+                    <p className="mt-3 h4">{val.fullName}</p>
+                    <p className="experience-color h6">{val.experience}</p>
                   </div>
                 )
             }): ''}
