@@ -14,6 +14,7 @@ exports.addSlot = async (req, res) => {
     const inputSlot = {
         ...req.body,
         stylistName : stylist.fullName,
+        city: stylist.city,
         status : 'scheduled'
     }
     let newSlot = Slot(inputSlot);
@@ -84,5 +85,14 @@ exports.getSlotById = (req, res) => {
             return res.status(400).json({ msg: err.message });
         }
         return res.status(201).json({slot: slot});
+    })
+};
+
+exports.getSlotByLocation = (req, res) => {
+    Slot.find({city:req.query.city} , (err,slots) => {
+        if (err) {
+            return res.status(400).json({ msg: err.message });
+        }
+        return res.status(201).json({slots: slots});
     })
 };

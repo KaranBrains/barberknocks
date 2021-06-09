@@ -19,7 +19,7 @@ exports.addStylist = async (req,res,next) => {
     let extension = mime.extension(type);
     let fileName = req.body.fullName + '.' + extension;
     try {
-        fs.writeFileSync("./assets/images/" + fileName, imageBuffer, 'utf8');
+        fs.writeFileSync("./assets/images/barberknocks/" + fileName, imageBuffer, 'utf8');
         let product = {
             ...req.body,
             img : "images/" +  fileName
@@ -48,6 +48,22 @@ exports.addStylist = async (req,res,next) => {
 exports.getAll = async (req,res) => {
     try {
         Stylist.find({}, (err, stylists) => {
+            if (err) {
+                return res.status(400).json({ msg: err });
+            }
+
+            if (stylists) {
+                return res.status(200).json({ stylists: stylists });
+            }
+        });
+    } catch (e) {
+        return res.status(400).json({ msg: e });
+    } 
+}
+
+exports.getStylistsByService= async (req,res) => {
+    try {
+        Stylist.find({service:req.query.id , city:req.query.city}, (err, stylists) => {
             if (err) {
                 return res.status(400).json({ msg: err });
             }

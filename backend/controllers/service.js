@@ -19,7 +19,7 @@ exports.addService = async (req,res,next) => {
     let extension = mime.extension(type);
     let fileName = req.body.name + '.' + extension;
     try {
-        fs.writeFileSync("./assets/images/" + fileName, imageBuffer, 'utf8');
+        fs.writeFileSync("./assets/images/barberknocks/" + fileName, imageBuffer, 'utf8');
         let newService = {
             ...req.body,
             icon : "images/" +  fileName

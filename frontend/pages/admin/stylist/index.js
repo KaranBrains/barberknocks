@@ -23,7 +23,7 @@ export default function Stylist() {
   const allServices = useSelector(state => state.service?.AllData?.services);
   const allStylists = useSelector(state => state.stylist?.AllData?.stylists);
 
-  const initialState = { fullName: "", img: "", phone: "", email:"" ,service:""};
+  const initialState = { fullName: "", img: "", phone: "", email:"" ,service:"" ,city:""};
   const [showModal, setShowModal] = useState(false);
   const [formData, setformData] = useState(initialState);
   const [fileOneValue, setFileOneValue] = useState('');
@@ -115,6 +115,25 @@ export default function Stylist() {
                     }): ''}
                   </select>
                 </div>
+                <div className="form-group mt-4">
+                <label className="font-20 py-2">City</label>
+                <select
+                    required
+                    value={formData.city}
+                    onChange={(e) => {
+                      setformData({
+                        ...formData,
+                        [e.target.name]: e.target.value,
+                      });
+                    }}
+                    name="city"
+                    type="text"
+                    className="form-control"
+                  >
+                    <option value=""  disabled defaultValue>Select City</option>
+                    <option value="torronto" >Torronto</option>
+                  </select>
+                </div>
                 <div className="form-group">
                   <label className="font-20 py-2">Image</label>
                   <img src={fileOne} className="img-fluid"/>
@@ -202,6 +221,7 @@ export default function Stylist() {
                   <th scope="col">S.No</th>
                   <th scope="col">Image</th>    
                   <th scope="col">Name</th>
+                  <th scope="col">City</th>
                   <th scope="col">Service</th>
                   <th scope="col">Email</th>  
                   <th scope="col">Phone</th>   
@@ -225,6 +245,7 @@ export default function Stylist() {
                               />
                               </td>
                               <td className="user-name">{val.fullName}</td>
+                              <td className="user-name">{val.city}</td>
                               <td className="user-name">{val.service}</td>
                               <td>{val.email}</td>
                               <td>{val.phone}</td>
@@ -232,11 +253,11 @@ export default function Stylist() {
                               <td>
                               <Link href={'/admin/stylist/'+val._id}>
                                 <a>
-                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/instructor/'+[val._id])} >View Details</div>
+                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/stylist/'+[val._id])} >View Details</div>
                                 </a>
                               </Link>
                               </td>
-                              <td><div class="btn btn-danger" onClick={()=>deleteInstructor(val._id)}>Remove</div></td>
+                              <td><div class="btn btn-danger" onClick={()=>deleteStylist(val._id)}>Remove</div></td>
                           </tr>
                             )
                         })
