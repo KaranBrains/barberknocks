@@ -5,10 +5,11 @@ const routes = [
     'admin',
     'contact',
     'slot',
-    'instructor',
+    'stylist',
     'payment',
-    'ride',
-    'address'
+    // 'ride',
+    'address',
+    'services'
 ];
 
 module.exports = {

@@ -4,9 +4,8 @@ import { useDispatch , useSelector} from "react-redux";
 import { ReactReduxContext } from 'react-redux'
 import { useRouter } from "next/router";
 import { Modal } from "react-bootstrap";
-import { AddInstructor, AllInstructor, RemoveInstructor } from "../../../redux/actions/instructor";
+import { addService, allService, removeService } from "../../../redux/actions/service";
 import {baseUrl} from "../../../redux/api/index"
-import Link from "next/link";
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
   <div class="loader">Loading...</div>
 </div> });
@@ -16,12 +15,12 @@ export default function Instructor() {
   const dispatch = useDispatch();
 
   useEffect(() =>{
-    dispatch(AllInstructor());
+    dispatch(allService());
   },[])
 
-  const allInstructors = useSelector(state => state.instructor?.AllData?.instructors);
+  const allServices = useSelector(state => state.service?.AllData?.services);
 
-  const initialState = { fullName: "", img: "", phone: "", email:""};
+  const initialState = { name: "", icon: ""};
   const [showModal, setShowModal] = useState(false);
   const [formData, setformData] = useState(initialState);
   const [fileOneValue, setFileOneValue] = useState('');
@@ -37,10 +36,10 @@ export default function Instructor() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(AddInstructor(formData, router))
+    dispatch(addService(formData, router))
     .then(() =>{
       handleClose();
-      dispatch(AllInstructor());
+      dispatch(allService());
     }).catch(() =>{
     });
     setformData(initialState);
@@ -48,9 +47,9 @@ export default function Instructor() {
   };
 
   const deleteInstructor = (id) => {
-    dispatch(RemoveInstructor(id))
+    dispatch(removeService(id))
     .then(() =>{
-      dispatch(AllInstructor());
+      dispatch(allService());
     });
   }
 
@@ -68,30 +67,30 @@ export default function Instructor() {
         <Modal className="mt-5 modal-card" show={showModal} onHide={handleClose}>
           <Modal.Header closeButton>
             <Modal.Title>
-              <div className="font-bold ml-1">Add a Instructor</div>
+              <div className="font-bold ml-1">Add a Service</div>
             </Modal.Title>
           </Modal.Header>
           <Modal.Body>
           <form>
                 <div className="form-group mt-4">
-                <label className="font-20 py-2">Full Name</label>
+                <label className="font-20 py-2">Name</label>
                   <input
                     required
-                    value={formData.fullName}
+                    value={formData.name}
                     onChange={(e) => {
                       setformData({
                         ...formData,
                         [e.target.name]: e.target.value,
                       });
                     }}
-                    name="fullName"
+                    name="name"
                     type="text"
                     className="form-control"
-                    placeholder="Full Name"
+                    placeholder="Name"
                   />
                 </div>
                 <div className="form-group">
-                  <label className="font-20 py-2">Image</label>
+                  <label className="font-20 py-2">Icon</label>
                   <img src={fileOne} className="img-fluid"/>
                   <div className="btn font-20 font-bold bg-tertiaryColor w-100 mt-2" onClick={()=>document.getElementById('uploading')?.click()}>Upload</div>
                   <input
@@ -101,7 +100,7 @@ export default function Instructor() {
                         setFileOneValue(res);
                         setformData({
                           ...formData,
-                          img: res
+                          icon: res
                         });
                       })
                     }}
@@ -109,42 +108,8 @@ export default function Instructor() {
                     class="hidden"
                     id="uploading"
                     accept=".png, .jpg, .jpeg"
-                    placeholder="Instructor Image"
+                    placeholder="Service Image"
                     required
-                  />
-                </div>
-                <div className="form-group mt-4">
-                <label className="font-20 py-2">Phone</label>
-                  <input
-                    required
-                    value={formData.phone}
-                    onChange={(e) => {
-                      setformData({
-                        ...formData,
-                        [e.target.name]: e.target.value,
-                      });
-                    }}
-                    name="phone"
-                    type="text"
-                    className="form-control"
-                    placeholder="Mobile Number"
-                  />
-                </div>
-                <div className="form-group mt-4">
-                <label className="font-20 py-2">Email</label>
-                  <input
-                    required
-                    value={formData.email}
-                    onChange={(e) => {
-                      setformData({
-                        ...formData,
-                        [e.target.name]: e.target.value,
-                      });
-                    }}
-                    name="email"
-                    type="email"
-                    className="form-control"
-                    placeholder="Email"
                   />
                 </div>
                 <div className="text-center mt-5">
@@ -165,9 +130,9 @@ export default function Instructor() {
         <Sidebar />
         <div class="container padding-left-mobile-table">
           <div class="d-flex justify-content-between align-items-center">
-          <h3>Instructor</h3>
+          <h3>Service</h3>
           <button class="btn btn-primary" onClick={handleShow}>
-                Add Instructor
+                Add Service
           </button>
           </div>
           <div class="row mb-5 mt-3 user-table table-responsive">
@@ -177,16 +142,12 @@ export default function Instructor() {
                   <th scope="col">S.No</th>
                   <th scope="col">Image</th>    
                   <th scope="col">Name</th>
-                  <th scope="col">Email</th>  
-                  <th scope="col">Phone</th>   
-                  <th scope="col">Ratings</th>   
-                  <th scope="col">Action</th>  
-                  <th scope="col">Remove</th>               
+                  <th scope="col">Action</th>             
                 </tr>
               </thead>
               <tbody>
-              {allInstructors && allInstructors.length>0 ? (
-                        allInstructors.map(val => {
+              {allServices && allServices.length>0 ? (
+                        allServices.map(val => {
                           i++;
                             return (
                               <tr className="font-demi align-middle" key={val._id}>
@@ -194,21 +155,11 @@ export default function Instructor() {
                               <td>
                               <img
                               className="instructor_image"
-                              src={baseUrl + val.img}
+                              src={baseUrl + val.icon}
                               alt={val.fullName + " image"}
                               />
                               </td>
-                              <td className="user-name">{val.fullName}</td>
-                              <td>{val.email}</td>
-                              <td>{val.phone}</td>
-                              <td>Ratings</td>
-                              <td>
-                              <Link href={'/admin/instructor/'+val._id}>
-                                <a>
-                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/instructor/'+[val._id])} >View Details</div>
-                                </a>
-                              </Link>
-                              </td>
+                              <td className="user-name">{val.name}</td>
                               <td><div class="btn btn-danger" onClick={()=>deleteInstructor(val._id)}>Remove</div></td>
                           </tr>
                             )

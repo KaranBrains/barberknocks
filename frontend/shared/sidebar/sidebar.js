@@ -21,6 +21,7 @@ import Link from "next/link";
 import BookIcon from '@material-ui/icons/Book';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
+import RoomServiceIcon from '@material-ui/icons/RoomService';
 
 const drawerWidth = 240;
 
@@ -146,7 +147,7 @@ const useStyles = makeStyles((theme) => ({
           </div>
           <Divider />
           <List>
-            <ListItem button>
+            {/* <ListItem button>
               <ListItemIcon>
                 <Link href="/admin/dashboard">
                   <a><DashboardIcon /></a>
@@ -155,7 +156,7 @@ const useStyles = makeStyles((theme) => ({
               <Link href="/admin/dashboard">
                 <a><ListItemText primary="Dashboard" /></a>
               </Link>
-            </ListItem>
+            </ListItem> */}
             <ListItem button>
               <ListItemIcon>
                 <Link href="/admin/users">
@@ -168,12 +169,22 @@ const useStyles = makeStyles((theme) => ({
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <Link href="/admin/instructor">
+                <Link href="/admin/service">
+                  <a><RoomServiceIcon /></a>
+                </Link>
+              </ListItemIcon>
+              <Link href="/admin/service">
+                <a><ListItemText primary="Services" /></a>
+              </Link>
+            </ListItem>
+            <ListItem button>
+              <ListItemIcon>
+                <Link href="/admin/stylist">
                   <a><GroupIcon /></a>
                 </Link>
               </ListItemIcon>
-              <Link href="/admin/instructor">
-                <a><ListItemText primary="Instructor" /></a>
+              <Link href="/admin/stylist">
+                <a><ListItemText primary="Stylist" /></a>
               </Link>
             </ListItem>
             <ListItem button>

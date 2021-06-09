@@ -51,7 +51,7 @@ function Phone() {
                 stepSize: "0em",
               }}
               styleConfig={{
-                activeBgColor: "#00AFF5",
+                activeBgColor: "#730fe4",
                 completedBgColor: "#1e4c6b",
                 labelFontSize: "1rem",
                 circleFontSize: "1rem",

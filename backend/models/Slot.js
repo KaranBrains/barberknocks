@@ -9,15 +9,11 @@ const SlotSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  clientLimit: {
-    type: Number,
-    required: true,
-  },
-  instructor: {
+  stylist: {
     type: String,
     required: true,
   },
-  instructorName: {
+  stylistName: {
     type: String,
     required: true,
   },

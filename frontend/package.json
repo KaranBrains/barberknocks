@@ -27,6 +27,8 @@
     "react-bootstrap": "^1.6.1",
     "react-dom": "17.0.2",
     "react-form-stepper": "^1.4.1",
+    "react-horizontal-datepicker": "^2.0.3",
+    "react-horizontal-strip-datepicker": "^3.0.2",
     "react-otp-input": "^2.3.0",
     "react-redux": "^7.2.4",
     "react-router-dom": "^5.2.0",

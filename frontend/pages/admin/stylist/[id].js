@@ -3,7 +3,7 @@ import { useDispatch , useSelector} from "react-redux";
 import { ReactReduxContext } from 'react-redux'
 import { useRouter } from "next/router";
 import { Modal } from "react-bootstrap";
-import { GetInstructorById, UpdateInstructorById } from "../../../redux/actions/instructor";
+import { GetInstructorById, UpdateInstructorById } from "../../../redux/actions/stylist";
 import {baseUrl} from "../../../redux/api/index"
 import dynamic from 'next/dynamic';
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">

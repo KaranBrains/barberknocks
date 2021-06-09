@@ -1,19 +1,19 @@
 const Slot = require("../models/Slot");
-const Instructor = require("../models/Instructor");
+const Stylist = require("../models/Stylist");
 
 exports.addSlot = async (req, res) => {
     if (
         !req.body.date ||
         !req.body.time ||
-        !req.body.instructor ||
-        !req.body.clientLimit
+        !req.body.stylist ||
+        !req.body.price
     ) {
         return res.status(400).json({ msg: 'Invalid data' });
     }
-    const instructor = await Instructor.findById(req.body.instructor);
+    const stylist = await Stylist.findById(req.body.stylist);
     const inputSlot = {
         ...req.body,
-        instructorName : instructor.fullName,
+        stylistName : stylist.fullName,
         status : 'scheduled'
     }
     let newSlot = Slot(inputSlot);
@@ -39,15 +39,15 @@ exports.modifySlot = async (req, res) => {
         !req.query.id ||
         !req.body.date ||
         !req.body.time ||
-        !req.body.instructor ||
-        !req.body.clientLimit
+        !req.body.stylist ||
+        !req.body.price
          ) {
         return res.status(400).json({ msg: 'Invalid data' });
     }
-    const instructor = await Instructor.findById(req.body.instructor);
+    const stylist = await Stylist.findById(req.body.stylist);
     const updateSlot = {
         ...req.body,
-        instructorName : instructor.fullName
+        stylistName : stylist.fullName
     }
     Slot.findByIdAndUpdate(req.query.id, updateSlot , (err,slot) => {
         if (err) {

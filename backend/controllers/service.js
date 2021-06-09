@@ -1,9 +1,9 @@
-const Instructor = require("../models/Instructor");
+const Service = require("../models/Service");
 const mime = require('mime');
 const fs = require('fs');
 
-exports.addInstructor = async (req,res,next) => {
-    var matches = req.body.img.match(/^data:([A-Za-z-+/]+);base64,(.+)$/),
+exports.addService = async (req,res,next) => {
+    var matches = req.body.icon.match(/^data:([A-Za-z-+/]+);base64,(.+)$/),
     response = {}; 
     if (matches.length !== 3) {
         return res.status(400).send({
@@ -17,15 +17,15 @@ exports.addInstructor = async (req,res,next) => {
     let imageBuffer = decodedImg.data;
     let type = decodedImg.type;
     let extension = mime.extension(type);
-    let fileName = req.body.fullName + '.' + extension;
+    let fileName = req.body.name + '.' + extension;
     try {
         fs.writeFileSync("./assets/images/" + fileName, imageBuffer, 'utf8');
-        let product = {
+        let newService = {
             ...req.body,
-            img : "images/" +  fileName
+            icon : "images/" +  fileName
         }
-        let instructor = Instructor(product);
-        instructor.save()
+        let service = Service(newService);
+        service.save()
         .then((data,error)=>{
             if (error) {
                 return res.status(400).send({
@@ -33,7 +33,7 @@ exports.addInstructor = async (req,res,next) => {
                 });
             }
             return res.status(200).send({
-                msg: "Instructor Added succesfully",
+                msg: "Service Added succesfully",
                 data: data,
             }); 
         });
@@ -47,13 +47,13 @@ exports.addInstructor = async (req,res,next) => {
 // get all
 exports.getAll = async (req,res) => {
     try {
-        Instructor.find({}, (err, instructors) => {
+        Service.find({}, (err, services) => {
             if (err) {
                 return res.status(400).json({ msg: err });
             }
 
-            if (instructors) {
-                return res.status(200).json({ instructors: instructors });
+            if (services) {
+                return res.status(200).json({ services: services });
             }
         });
     } catch (e) {
@@ -61,22 +61,22 @@ exports.getAll = async (req,res) => {
     } 
 }
 
-exports.getInstructorById = (req, res) => {
-    Instructor.findById(req.query.id , (err, instructor) => {
+exports.getServiceById = (req, res) => {
+    Service.findById(req.query.id , (err, service) => {
         if (err) {
             return res.status(400).json({ msg: err });
         }
-        return res.status(201).json({instructor: instructor});
+        return res.status(201).json({service: service});
     })
 };
 
-exports.deleteInstructor = (req, res) => {
+exports.deleteService = (req, res) => {
     if ( !req.query.id ) {
         return res.status(400).json({ msg: 'Invalid data' });
     }
-    Instructor.findByIdAndDelete(req.query.id , (err,instructor) => {
+    Service.findByIdAndDelete(req.query.id , (err,instructor) => {
         if (err) {
-            return res.status(400).json({ msg: err });
+            return res.status(400).json({ msg: err.message });
         }
         return res.status(201).json(instructor);
     })

@@ -31,13 +31,18 @@ export const allSlot = () => axios.get(`${url}/all-slots`);
 export const removeSlot = (id) => axios.delete(`${url}/delete-slot?id=${id}`);
 export const updateSlotById = (id, editFormData) =>
   axios.put(`${url}/slot?id=${id}`, editFormData);
-export const addInstructor = (formdata) =>
-  axios.post(`${url}/add-instructor`, formdata);
-export const allInstructor = () => axios.get(`${url}/get-instructors`);
-export const removeInstructor = (id) =>
-  axios.delete(`${url}/delete-instructor?id=${id}`);
-export const getInstructorById = (id) =>
-  axios.get(`${url}/instructor?id=${id}`);
+export const addStylist = (formdata) =>
+  axios.post(`${url}/add-stylist`, formdata);
+export const allStylist = () => axios.get(`${url}/get-stylists`);
+export const removeStylist = (id) =>
+  axios.delete(`${url}/delete-stylist?id=${id}`);
+  export const addService = (formdata) =>
+  axios.post(`${url}/add-service`, formdata);
+export const allService = () => axios.get(`${url}/get-services`);
+export const removeService = (id) =>
+  axios.delete(`${url}/delete-services?id=${id}`);
+export const getStylistById = (id) =>
+  axios.get(`${url}/stylist?id=${id}`);
 export const getSlotById = (id) => axios.get(`${url}/slot?id=${id}`);
 export const getRideById = (id) => axios.get(`${url}/ride?id=${id}`);
 export const updateInstructor = (id, formdata) =>
