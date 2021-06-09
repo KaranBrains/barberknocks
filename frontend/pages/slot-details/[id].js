@@ -67,7 +67,7 @@ export default function InstructorId() {
               <div className="d-flex justify-content-between px-3 mt-1">
                 <div className="text-muted font-demi font-18">Instructor</div>
                 <div className="text-primaryColor font-bold font-18">
-                  {slot.instructorName}
+                  {slot.stylistName}
                 </div>
               </div>
               <div className="d-flex justify-content-between px-3 mt-3 mb-1">

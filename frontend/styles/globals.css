@@ -525,7 +525,7 @@ table tbody {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 800px;
+  min-height: 95vh;
 }
 
 .auth-bg-signup {
@@ -533,7 +533,7 @@ table tbody {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  height: 900px;
+  min-height: 900px;
 }
 
 .how-it-works {
@@ -1340,4 +1340,8 @@ table tbody {
     font-family: Avenir-bold;
     color: #fff;
   }
+}
+
+.border-service{
+  border: 2px solid var(--primaryColor);
 }
