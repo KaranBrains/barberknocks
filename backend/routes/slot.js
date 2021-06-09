@@ -6,6 +6,7 @@ router.put('/slot', slot.modifySlot);
 router.get('/all-slots', slot.getSlots);
 router.get('/slot', slot.getSlotById);
 router.get('/search-slot', slot.searchSlotByDate);
+router.get('/search-slot-city', slot.getSlotByLocation);
 router.delete('/delete-slot', slot.deleteSlot);
 
 module.exports = {

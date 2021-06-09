@@ -10,7 +10,7 @@ exports.contactUs = (req, res) => {
   }
   console.log(formData.email);
   const msg = {
-  to: "roadrulescanada@gmail.com",
+  to: "karanbains.bains@gmail.com",
   from: process.env.SENDGRID_EMAIL, // Change to your verified sender
   subject: `Query from ${formData.name} (${formData.email})`,
   text: 'Contact Message',
@@ -18,7 +18,6 @@ exports.contactUs = (req, res) => {
   }
   sgMail.send(msg)
   .then(info => {
-      console.log(info)
       res.status(200).send({msg: "Mail Sent Succesfully"})
   })
   .catch(err => {

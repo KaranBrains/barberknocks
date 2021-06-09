@@ -7,7 +7,7 @@ const routes = [
     'slot',
     'stylist',
     'payment',
-    // 'ride',
+     'booking',
     'address',
     'services'
 ];

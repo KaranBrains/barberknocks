@@ -314,6 +314,7 @@ export default function Slots() {
                   <th scope="col">Time</th>    
                   <th scope="col">Price</th>
                   <th scope="col">Stylist</th>    
+                  <th scope="col">City</th>   
                   <th scope="col">Action</th>
                   <th scope="col">Remove</th>               
                 </tr>
@@ -329,6 +330,7 @@ export default function Slots() {
                         <td>{val.time}</td>
                         <td>{val.price}</td>
                         <td>{val.stylistName}</td>
+                        <td>{val.city}</td>
                         <td><button class="btn btn-primary" onClick={() => EditSlot(val._id, val.date, val.time ,val.price, val.stylist)}>Edit</button></td>
                         <td><button class="btn btn-danger" onClick={() => deleteSlot(val._id)}>Remove</button></td>
                       </tr>
