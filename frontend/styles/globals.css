@@ -150,6 +150,9 @@ body {
   border: none !important;
   background: transparent !important;
 }
+a{
+  text-decoration: none !important;
+}
 .form-control {
   display: block;
   width: 100%;
@@ -160,7 +163,7 @@ body {
   color: var(--primaryColor) !important;
   background-color: var(--tertiaryColor) !important;
   background-clip: padding-box;
-  border: none !important;
+  border: 2px solid var(--primaryColor) !important;
   border-radius: 10px;
 }
 .btn-blue {
