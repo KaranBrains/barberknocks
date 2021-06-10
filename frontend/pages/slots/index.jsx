@@ -21,11 +21,16 @@ function DateSlot() {
     setTimeout(() => {
       const ele = document.getElementsByClassName("date-day-Item-selected");
       const newDate = ele[0].innerText.slice(4);
-      const filterSlots = allSlots.filter((slot) => {
+      let filterSlots = allSlots.filter((slot) => {
         if (new Date(slot.date).getDate() == newDate) {
           return slot;
         }
       });
+      // filterSlots = filterSlots.filter((slot) => {
+      //   if (!filterSlots.find((s) => s.time == slot.time)) {
+      //     return slot;
+      //   }
+      // });
       setDisplaySlots(filterSlots);
     }, 300);
   };
@@ -58,7 +63,7 @@ function DateSlot() {
             </div>
             <div
               className="slots px-lg-5 py-5 px-2"
-              style={{ minHeight: "50vh" }}
+              style={{ minHeight: "40vh" }}
             >
               {displaySlots
                 ? displaySlots.map((slot) => {
