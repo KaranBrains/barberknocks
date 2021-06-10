@@ -12,6 +12,9 @@ function DateSlot() {
   const today = new Date();
   const [selectedDate, setselectedDate] = useState(today);
   const router = useRouter();
+  const service = router?.query?.service;
+  const city = router?.query?.city;
+  console.log(service,city);
 
   const onSelectedDay = (date) => {
     setselectedDate(date);
@@ -19,11 +22,10 @@ function DateSlot() {
   useEffect(() => {
     dispatch(AllSlots());
     dispatch(AllStylist());
-  }, [selectedDate]);
+  }, [selectedDate,service,city]);
 
   let allSlots = useSelector((state) => state.slot?.slotData?.slots);
   const allStylists = useSelector((state) => state.stylist?.AllData?.stylists);
-  console.log(allSlots);
 
   return (
     <div className="container">
