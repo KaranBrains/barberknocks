@@ -24,7 +24,6 @@ export default function Booking() {
     displayBooking = myBookings;
   }
 
-
   function filterBySchedule(){
     setActiveClass({ 
         button1: "",
