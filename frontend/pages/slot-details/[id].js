@@ -26,24 +26,23 @@ export default function InstructorId() {
     }
   }, [id]);
   const openModal = () => {
-      if(profile){
-        router.push("/confirm-address/" + id);
-      }else{
-        swal({
-          text: `You need to login to continue`,
-          icon: "info",
-        });
-        router.push("/auth/login");
-      }
-    
+    if (profile) {
+      router.push("/confirm-address/" + id);
+    } else {
+      swal({
+        text: `You need to login to continue`,
+        icon: "info",
+      });
+      router.push("/auth/login");
+    }
   };
 
   return slot ? (
-    <>
+    <div className="auth-bg">
       <div className="container">
         <div className="row d-flex justify-content-center">
-          <div className="col-lg-7 col-md-8 col-sm-2 col-12">
-            <div className="card">
+          <div className="col-lg-7 col-md-8 col-sm-2 col-12 bg-white shadow my-5">
+            <div className="card my-3">
               <h2
                 className="card my-2 text-primaryColor text-center font-bold"
                 style={{ fontSize: "35px" }}
@@ -89,7 +88,7 @@ export default function InstructorId() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   ) : (
     ""
   );

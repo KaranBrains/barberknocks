@@ -5,6 +5,7 @@ import { AllSlots } from "../../redux/actions/slot";
 import { AllStylist } from "../../redux/actions/stylist";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { allSlot } from "../../redux/api";
 
 function DateSlot() {
   const dispatch = useDispatch();
@@ -22,10 +23,12 @@ function DateSlot() {
   useEffect(() => {
     dispatch(AllSlots());
     dispatch(AllStylist());
-  }, [selectedDate,service,city]);
+  }, [1]);
 
   let allSlots = useSelector((state) => state.slot?.slotData?.slots);
   const allStylists = useSelector((state) => state.stylist?.AllData?.stylists);
+  console.log(allStylists);
+  console.log(allSlots);
 
   return (
     <div className="container">

@@ -164,8 +164,7 @@ a {
   line-height: 1.5;
   color: var(--primaryColor) !important;
   background-color: var(--tertiaryColor) !important;
-  background-clip: padding-box;
-  border: 2px solid var(--primaryColor) !important;
+  background-clip: padding-box;  
   border-radius: 10px;
 }
 .btn-blue {
@@ -1343,5 +1342,5 @@ table tbody {
 }
 
 .border-service{
-  border: 2px solid var(--primaryColor);
+  border: 2px solid var(--primaryColor) !important;
 }
