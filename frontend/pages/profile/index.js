@@ -19,7 +19,7 @@ function UserProfile() {
           <div>
             <ul class="navbar-nav flex-column">
               <li class="nav-item heading-hover-main">
-                <a class="nav-link pl-3" style={{ marginLeft: "20px", fontSize:'20px' ,marginRight: '80px'}}>
+                <a class="nav-link pl-3" style={{ marginLeft: "20px", fontSize:'20px' ,marginRight: '50px'}}>
                   <span className="font-bold main-heading-hover text-primaryColor">
                     <SettingsIcon /> Settings
                   </span>
