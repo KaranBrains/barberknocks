@@ -2,10 +2,10 @@ import axios from "axios";
 
 export const url = "http://localhost:8082/api";
 export const paymentUrl = "http://localhost:8082/api/create-checkout-session";
-export const baseUrl = "http://localhost:8082/";
+// export const baseUrl = "http://localhost:8082/";
 
 // export const url = "https://www.pigameapp.com:8081/api";
-// export const baseUrl = "https://www.pigameapp.com:8081/";
+export const baseUrl = "https://www.pigameapp.com:8081/";
 // export const paymentUrl = "https://www.pigameapp.com:8081/api/create-checkout-session";
 // rebuild
 

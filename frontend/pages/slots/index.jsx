@@ -82,6 +82,9 @@ function DateSlot() {
                           document
                             .getElementById(slot._id)
                             .classList.toggle("selected");
+                          document.getElementById(
+                            "slots-instructor"
+                          ).style.visibility = "initial";
                         }}
                       >
                         {slot.time}
@@ -108,14 +111,15 @@ function DateSlot() {
           </div>
         </div>
       </div>
-      <div className="row">
+      <div className="row" id="slots-instructor">
         {allStylists && allStylists.length > 0
           ? allStylists.map((val, i) => {
               return (
-                <div className="col-lg-3 py-3 col-md-4 col-sm-12 col-12 custom-margin">                
+                <div className="col-lg-3 py-3 col-md-4 col-sm-12 col-12 custom-margin">
+                  {console.log(val)}
                   <img
                     className="img-fluid"
-                    src={`baseUrl${val.img}`}
+                    src={`${baseUrl}${val.img}`}
                     width={280}
                     height={300}
                   ></img>
