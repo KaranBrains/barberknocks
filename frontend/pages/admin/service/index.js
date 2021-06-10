@@ -128,7 +128,7 @@ export default function Instructor() {
         ""
       )}
         <Sidebar />
-        <div class="container padding-left-mobile-table">
+        <div class="admin-container padding-left-mobile-table">
           <div class="d-flex justify-content-between align-items-center">
           <h3>Service</h3>
           <button class="btn btn-primary" onClick={handleShow}>

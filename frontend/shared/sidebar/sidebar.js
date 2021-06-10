@@ -199,12 +199,12 @@ const useStyles = makeStyles((theme) => ({
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <Link href="/admin/all-rides">
+                <Link href="/admin/all-bookings">
                   <a><DirectionsCarIcon /></a>
                 </Link>
               </ListItemIcon>
-              <Link href="/admin/all-rides">
-                <a><ListItemText primary="All Rides" /></a>
+              <Link href="/admin/all-bookings">
+                <a><ListItemText primary="All Bookings" /></a>
               </Link>
             </ListItem>
             <ListItem button onClick={()=>{
