@@ -6,6 +6,7 @@ import { AllStylist } from "../../redux/actions/stylist";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { allSlot } from "../../redux/api";
+import { baseUrl } from "../../redux/api/index";
 
 function DateSlot() {
   const dispatch = useDispatch();
@@ -15,17 +16,29 @@ function DateSlot() {
   const router = useRouter();
   const service = router?.query?.service;
   const city = router?.query?.city;
-  console.log(service,city);
 
   const onSelectedDay = (date) => {
-    setselectedDate(date);
+    setTimeout(() => {
+      const ele = document.getElementsByClassName("date-day-Item-selected");
+      const newDate = ele[0].innerText.slice(4);
+      const filterSlots = allSlots.filter((slot) => {
+        if (new Date(slot.date).getDate() == newDate) {
+          return slot;
+        }
+      });
+      setDisplaySlots(filterSlots);
+    }, 300);
   };
+  let allSlots = useSelector((state) => state.slot?.slotData?.slots);
   useEffect(() => {
     dispatch(AllSlots());
     dispatch(AllStylist());
-  }, [1]);
+    if (allSlots) {
+      setDisplaySlots(allSlots);
+    }
+  }, [service, city]);
 
-  let allSlots = useSelector((state) => state.slot?.slotData?.slots);
+  const [displaySlots, setDisplaySlots] = useState(allSlots);
   const allStylists = useSelector((state) => state.stylist?.AllData?.stylists);
   console.log(allStylists);
   console.log(allSlots);
@@ -37,53 +50,47 @@ function DateSlot() {
           <div className="shadow">
             <div className="bg-primaryColor px-lg-5 px-2 pt-2">
               <ReactHorizontalDatePicker
-                selectedDay={onSelectedDay}
+                selectedDay={(date) => onSelectedDay(date)}
                 enableScroll={true}
-                enableDays={90}
+                enableDays={30}
+                enableDaysBefore={0}
               />
             </div>
             <div
               className="slots px-lg-5 py-5 px-2"
               style={{ minHeight: "50vh" }}
             >
-              {/* {weekDates?.map((weekDate) => (
-                <div>
-                  
-                </div>
-              ))} */}
-              {allSlots?.map((slot) => {
-                if (
-                  new Date(slot.date).getDate() == selectedDate.getDate() &&
-                  new Date(slot.date).getMonth() == selectedDate.getMonth()
-                ) {
-                  return (
-                    <div
-                      className="text-primaryColor font-demi py-2 text-center all-slot calendar-event mt-4"
-                      id={slot._id}
-                      onClick={async (e) => {
-                        e.preventDefault();
-                        document
-                          .getElementById(selected)
-                          ?.classList.toggle("calendar-event");
-                        document
-                          .getElementById(selected)
-                          ?.classList.toggle("selected");
-                        setselected(slot._id);
-                        document
-                          .getElementById(slot._id)
-                          .classList.toggle("calendar-event");
-                        document
-                          .getElementById(slot._id)
-                          .classList.toggle("selected");
-                      }}
-                    >
-                      {slot.time}
-                      <br />
-                      {slot.stylistName}
-                    </div>
-                  );
-                }
-              })}
+              {displaySlots
+                ? displaySlots.map((slot) => {
+                    console.log("hello");
+                    return (
+                      <div
+                        className="text-primaryColor font-demi py-2 text-center all-slot calendar-event mt-4"
+                        id={slot._id}
+                        onClick={async (e) => {
+                          e.preventDefault();
+                          document
+                            .getElementById(selected)
+                            ?.classList.toggle("calendar-event");
+                          document
+                            .getElementById(selected)
+                            ?.classList.toggle("selected");
+                          setselected(slot._id);
+                          document
+                            .getElementById(slot._id)
+                            .classList.toggle("calendar-event");
+                          document
+                            .getElementById(slot._id)
+                            .classList.toggle("selected");
+                        }}
+                      >
+                        {slot.time}
+                        <br />
+                        {slot.stylistName}
+                      </div>
+                    );
+                  })
+                : ""}
             </div>
             <div className="text-center mb-3">
               <button
@@ -100,6 +107,24 @@ function DateSlot() {
             </div>
           </div>
         </div>
+      </div>
+      <div className="row">
+        {allStylists && allStylists.length > 0
+          ? allStylists.map((val, i) => {
+              return (
+                <div className="col-lg-3 py-3 col-md-4 col-sm-12 col-12 custom-margin">                
+                  <img
+                    className="img-fluid"
+                    src={`baseUrl${val.img}`}
+                    width={280}
+                    height={300}
+                  ></img>
+                  <p className="mt-3 h4 font-bold">{val.fullName}</p>
+                  <p className="experience-color h6">{val.experience}</p>
+                </div>
+              );
+            })
+          : ""}
       </div>
     </div>
   );

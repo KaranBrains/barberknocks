@@ -12,6 +12,11 @@ body {
   --tertiaryColor: rgb(243, 239, 253);
 }
 
+.admin-container{
+  width: 90%;
+  margin-left: 5%;
+}
+
 /* Srollbar */
 ::-webkit-scrollbar {
   height: 3px !important;
@@ -990,6 +995,8 @@ table tbody {
 .width-60 {
   width: 60% !important;
 }
+
+
 
 .footer-image .img-fluid-custom {
   height: 100% !important;
