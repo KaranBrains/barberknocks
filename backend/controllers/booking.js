@@ -32,6 +32,7 @@ exports.addBookingCash= async (req, res) => {
             time : slot.time,
             date : slot.date,
             stylistName: slot.stylistName,
+            service: slot.service,
             address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
         }
         slot.status = "booked";

@@ -1,12 +1,12 @@
 import axios from "axios";
 
-// export const url = "http://localhost:8082/api";
-// export const paymentUrl = "http://localhost:8082/api/create-checkout-session";
-// export const baseUrl = "http://localhost:8082/";
+export const url = "http://localhost:8082/api";
+export const paymentUrl = "http://localhost:8082/api/create-checkout-session";
+export const baseUrl = "http://localhost:8082/";
 
-export const url = "https://www.pigameapp.com:8081/api";
-export const baseUrl = "https://www.pigameapp.com:8081/";
-export const paymentUrl = "https://www.pigameapp.com:8081/api/create-checkout-session";
+// export const url = "https://www.pigameapp.com:8081/api";
+// export const baseUrl = "https://www.pigameapp.com:8081/";
+// export const paymentUrl = "https://www.pigameapp.com:8081/api/create-checkout-session";
 // rebuild
 
 export const signIn = (formData) => axios.post(`${url}/login`, formData);
@@ -56,7 +56,7 @@ export const getUserByEmail = (email) =>
 export const endRide = (ride) =>
   axios.get(`${url}/end-ride?ride=${ride}`);
 export const confirmRideCash = (formData,address) =>
-  axios.post(`${url}/add-ride-cash?address=${address}`, formData);
+  axios.post(`${url}/add-booking-cash?address=${address}`, formData);
 export const confirmRideOnline = (session,address) =>
   axios.post(`${url}/confirm-ride-online?id=${session}&address=${address}`);
 export const payment = (formData) => axios.post(paymentUrl, formData);
