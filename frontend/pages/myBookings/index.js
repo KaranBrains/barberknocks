@@ -2,6 +2,7 @@ import React, {useState,useEffect} from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { useRouter } from "next/router";
 import { MyBookings } from "../../redux/actions/bookings";
+import Link from "next/link";
 
 export default function Booking() {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ export default function Booking() {
   const id = 1;
   const [modifiedBookings, setModifiedBookings] = useState({});
   const [activeClass, setActiveClass] = useState({
-      button1: "",
+      button1: "active",
       button2: "",
       button3: "",
   })
@@ -20,7 +21,7 @@ export default function Booking() {
     dispatch(MyBookings());
   },[])
 
-  if(myBookings && !modifiedBookings) {
+  if(myBookings) {
     displayBooking = myBookings;
   }
 
@@ -73,6 +74,7 @@ export default function Booking() {
             <div className="container mb-2" key={val._id}>
             <div className="row d-flex justify-content-center">
               <div className="w-100">
+                <Link href={"/booking-details/"+val._id}>
                 <div className="card">
                   <div
                     className="card mt-4 ride-card text-primaryColor font-medium p-3 font-18"
@@ -117,17 +119,19 @@ export default function Booking() {
                     </div>
                   </div>
                 </div>
+                </Link>
               </div>
             </div>
           </div>
            )})
        ): 
-       displayBooking && displayBooking.length>0 ? (
+       displayBooking && displayBooking.length>0 && !activeClass.button2 && !activeClass.button3? (
         displayBooking.map(val => {
           return(
        <div className="container mb-2" key={val._id}>
        <div className="row d-flex justify-content-center">
          <div className="w-100">
+         <Link href={"/booking-details/"+val._id}>
            <div className="card">
              <div
                className="card mt-4 ride-card text-primaryColor font-medium p-3 font-18"
@@ -172,6 +176,7 @@ export default function Booking() {
                </div>
              </div>
            </div>
+           </Link>
          </div>
        </div>
      </div>

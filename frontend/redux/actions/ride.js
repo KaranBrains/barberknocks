@@ -14,10 +14,10 @@ export const confirmRideCash = (slot ,router) => async (dispatch) => {
         const { data } = await api.confirmRideCash(formData,address);
         dispatch({ type: CONFIRM_RIDE_CASH, data });
         swal({
-            text: "Ride Booked",
+            text: "Booking Confirmed",
             icon: "success",
         });
-        router.push('/ride-details/'+data._id)
+        router.push('/booking-details/'+data._id)
     } catch (e) {
         console.log(e);
         swal({

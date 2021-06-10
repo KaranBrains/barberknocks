@@ -1,32 +1,31 @@
 import { useEffect,useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { useRouter } from "next/router";
-import { getRideById } from "../../redux/actions/ride";
-import { GetInstructorById } from "../../redux/actions/instructor";
+import { GetBookingById } from "../../redux/actions/bookings";
+import { GetStylistById } from "../../redux/actions/stylist";
 import { Modal } from "react-bootstrap";
 import swal from "sweetalert";
 
 export default function InstructorId() {
 
     const dispatch = useDispatch();
+    // test commit
     const router = useRouter();
     const initialState = { rating: 0, feedback: ""};
     const [showModal, setShowModal] = useState(false);
     const [formData, setformData] = useState(initialState);
     const id = router.query.id;
-    let ride = useSelector(state => {return state.ride?.rideData?.ride});
-    const instructorById = useSelector(state => state.instructor?.instructorById?.instructor);
+    let booking = useSelector(state => {return state.bookings?.BookingByID?.booking});
+    let stylist = useSelector(state => {console.log(state);return state.stylist?.stylistById?.stylist});
     useEffect(() =>{
         const id = router.query.id;
         if(id) {
-            dispatch(getRideById(id))
+            dispatch(GetBookingById(id))
             .then(()=>{
-              if(ride) {
-                dispatch(GetInstructorById(ride.instructor))
-              }
+              dispatch(GetStylistById(booking?.stylist));
             })
         }
-    },[id,ride?.instructor])
+    },[id,booking?.stylist])
 
     const provideFeedback=(e)=>{
       e.preventDefault();
@@ -99,7 +98,7 @@ export default function InstructorId() {
       ) : (
         ""
       )}
-      {ride && instructorById ? (
+      {booking && stylist ? (
             <>
             <div className="container">
               <div className="row d-flex justify-content-center">
@@ -108,7 +107,7 @@ export default function InstructorId() {
                     className="card my-3 text-primaryColor text-center font-bold"
                     style={{ fontSize: "35px" }}
                     >
-                      Ride Details
+                      Booking Details
                     </h2>
                   <div className="card border my-5">
                     <div className="d-flex justify-content-between px-3">
@@ -116,7 +115,7 @@ export default function InstructorId() {
                         Class Date
                       </div>
                       <div className="text-primaryColor font-bold font-18 mt-2">
-                        {ride?.date}
+                        {booking?.date}
                       </div>
                     </div>
                     <div className="d-flex justify-content-between px-3">
@@ -124,7 +123,7 @@ export default function InstructorId() {
                         Class Time
                       </div>
                       <div className="text-primaryColor font-bold font-18 mt-2">
-                        {ride?.time}
+                        {booking?.time}
                       </div>
                     </div>
                     <hr className="grey-hr-confirm" />
@@ -133,10 +132,10 @@ export default function InstructorId() {
                         Status
                       </div>
                       <div className="text-primary font-bold font-18 mt-2">
-                        {ride?.status == "scheduled" ? (
+                        {booking?.status == "scheduled" ? (
                           <span className="text-yellow">Scheduled</span>
                         ) : ''}
-                        {ride?.status == "completed" ? (
+                        {booking?.status == "completed" ? (
                           <span className="text-success">Completed</span>
                         ) : ''}
                       </div>
@@ -144,22 +143,22 @@ export default function InstructorId() {
                     <hr className="grey-hr-confirm" />
                     <div className="d-flex justify-content-between px-3">
                       <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
-                        Pickup
+                        Address
                       </div>
                       <div className="text-primary font-bold font-18 mt-2 mobile-hidden">
-                        {ride.address}
+                        {booking.address}
                       </div>
                       <div className="text-primary font-bold font-8 mt-2 desktop-hidden">
-                        {ride.address}
+                        {booking.address}
                       </div>
                     </div>
                     <hr className="grey-hr-confirm" />
                     <div className="d-flex justify-content-between px-3">
                       <div className="text-muted font-demi font-18 mt-2">
-                        Instructor
+                        Stylist
                       </div>
                       <div className="text-primaryColor font-bold font-18 mt-2">
-                        {instructorById?.fullName}
+                        {stylist?.fullName}
                       </div>
                     </div>
                     <div className="d-flex justify-content-between px-3">
@@ -167,7 +166,7 @@ export default function InstructorId() {
                         Contact Number
                       </div>
                       <div className="text-primaryColor font-bold font-18 mt-2">
-                      {instructorById?.phone}
+                      {stylist?.phone}
                       </div>
                     </div>
                     <div className="d-flex justify-content-between px-3">
@@ -175,7 +174,7 @@ export default function InstructorId() {
                         Email
                       </div>
                       <div className="text-primaryColor font-bold font-18 mt-2 mobile-hidden">
-                      {instructorById?.email}
+                      {stylist?.email}
                       </div>
                     </div>
                     <hr className="grey-hr-confirm" />
@@ -184,7 +183,7 @@ export default function InstructorId() {
                         Payment Mode
                       </div>
                       <div className="text-green font-bold font-18 mt-2">
-                        {ride?.modeOfPayment == "cash"?
+                        {booking?.modeOfPayment == "cash"?
                         'Cash' : 'Online'}
                       </div>
                     </div>
@@ -193,10 +192,10 @@ export default function InstructorId() {
                         Total
                       </div>
                       <div className="text-green font-bold font-18 mt-2">
-                      {ride?.price}
+                      {booking?.price}
                       </div>
                     </div>
-                    {/* { ride?.startedAt ? (
+                    {/* { booking?.startedAt ? (
                       <div className="d-flex justify-content-between px-3">
                         <div className="text-muted font-demi font-18 mt-2">
                           Started at
@@ -250,7 +249,7 @@ export default function InstructorId() {
                   </div>
                 </div>
               </div>
-              {ride.status=="completed"?(
+              {booking.status=="completed"?(
                 <div className="text-center mt-3">
                 <button
                   className="text-white bg-secondaryColor font-demi btn-blue submit-button mb-5"
