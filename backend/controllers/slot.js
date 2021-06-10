@@ -1,5 +1,6 @@
 const Slot = require("../models/Slot");
 const Stylist = require("../models/Stylist");
+const Service = require("../models/Service");
 
 exports.addSlot = async (req, res) => {
     if (
@@ -11,10 +12,12 @@ exports.addSlot = async (req, res) => {
         return res.status(400).json({ msg: 'Invalid data' });
     }
     const stylist = await Stylist.findById(req.body.stylist);
+    const service = await Service.findById(stylist.service);
     const inputSlot = {
         ...req.body,
         stylistName : stylist.fullName,
         city: stylist.city,
+        service: service.name,
         status : 'scheduled'
     }
     let newSlot = Slot(inputSlot);
@@ -46,9 +49,14 @@ exports.modifySlot = async (req, res) => {
         return res.status(400).json({ msg: 'Invalid data' });
     }
     const stylist = await Stylist.findById(req.body.stylist);
+    const service = await Service.findById(stylist.service);
+    const oldSlot = await Slot.findById(req.query.id);
     const updateSlot = {
         ...req.body,
-        stylistName : stylist.fullName
+        stylistName : stylist.fullName,
+        city: stylist.city,
+        service: service.name,
+        status : oldSlot.status
     }
     Slot.findByIdAndUpdate(req.query.id, updateSlot , (err,slot) => {
         if (err) {
