@@ -65,3 +65,4 @@ export const allBookings = () => axios.get(`${url}/all-bookings`);
 export const getUserById = (id) => axios.get(`${url}/admin/get-user?id=${id}`);
 export const getRides = (id) => axios.get(`${url}/my-rides?id=${id}`);
 export const getRidesById = (id) => axios.get(`${url}/ride?id=${id}`)
+export const myBookings = (id) => axios.get(`${url}/my-bookings?id=${id}`);
