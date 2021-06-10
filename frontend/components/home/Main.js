@@ -103,29 +103,40 @@ function HomeMain() {
                       </tr>
                     </thead>
                     <tbody>
-                        <tr>
+                      <tr>
                         {weekDates?.map((weekDate) => (
-                            <td>
-                            {weekSlots?.map((weekSlot) => (
+                          <td>
+                            {weekSlots?.map((weekSlot) =>
                               weekSlot.date == weekDate.date ? (
-                                <div 
-                                className="text-primaryColor font-demi py-2 text-center all-slot calendar-event mt-4" 
-                                id={weekSlot._id} 
-                                onClick={async (e)=>{
-                                  e.preventDefault();
-                                  document.getElementById(selected)?.classList.toggle("calendar-event"); 
-                                  document.getElementById(selected)?.classList.toggle("selected"); 
-                                  setselected(weekSlot._id)
-                                  document.getElementById(weekSlot._id).classList.toggle("calendar-event"); 
-                                  document.getElementById(weekSlot._id).classList.toggle("selected"); 
-                                }}>
-                                {weekSlot.time}
-                              </div>
-                              ) : ''
-                              ))}
-                            </td>
-                          ))}
-                        </tr>
+                                <div
+                                  className="text-primaryColor font-demi py-2 text-center all-slot calendar-event mt-4"
+                                  id={weekSlot._id}
+                                  onClick={async (e) => {
+                                    e.preventDefault();
+                                    document
+                                      .getElementById(selected)
+                                      ?.classList.toggle("calendar-event");
+                                    document
+                                      .getElementById(selected)
+                                      ?.classList.toggle("selected");
+                                    setselected(weekSlot._id);
+                                    document
+                                      .getElementById(weekSlot._id)
+                                      .classList.toggle("calendar-event");
+                                    document
+                                      .getElementById(weekSlot._id)
+                                      .classList.toggle("selected");
+                                  }}
+                                >
+                                  {weekSlot.time}                                  
+                                </div>
+                              ) : (
+                                ""
+                              )
+                            )}
+                          </td>
+                        ))}
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -135,9 +146,9 @@ function HomeMain() {
                     <button
                       className="text-white bg-secondaryColor font-demi px-lg-5 btn-blue submit-button"
                       type="submit"
-                      onClick={()=>{
+                      onClick={() => {
                         if (selected) {
-                          router.push('/slot-details/'+selected)
+                          router.push("/slot-details/" + selected);
                         }
                       }}
                     >

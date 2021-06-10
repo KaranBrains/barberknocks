@@ -44,9 +44,7 @@ export default function HomeNew(){
   },[])
 
   const allServices = useSelector(state => state.service?.AllData?.services);
-  const allStylists = useSelector(state => state.stylist?.AllData?.stylists);
-  console.log(allStylists)
-  console.log(allServices)
+  const allStylists = useSelector((state) => state.stylist?.AllData?.stylists);
 
   const handleChange = (panel) => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
