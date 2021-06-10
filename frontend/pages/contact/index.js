@@ -57,7 +57,7 @@ function Contact() {
                     <div className="input-group mt-4">
                       <input
                         type="text"
-                        className="form-control"
+                        className="form-control border-service"
                         name="name"
                         value={formData.name}
                         onChange={(e) => {
@@ -73,7 +73,7 @@ function Contact() {
                     <div className="input-group mt-4">
                       <input
                         type="email"
-                        className="form-control"
+                        className="form-control border-service"
                         name="email"
                         value={formData.email}
                         onChange={(e) => {
@@ -89,7 +89,7 @@ function Contact() {
                   <div className="input-group mt-4 w-50">
                     <textarea
                       type="text"
-                      className="form-control"
+                      className="form-control border-service"
                       name="message"
                       value={formData.message}
                       onChange={(e) => {

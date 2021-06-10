@@ -46,8 +46,8 @@ function ModePayment() {
                 stepSize: "0em",
               }}
               styleConfig={{
-                activeBgColor: "#00AFF5",
-                completedBgColor: "#1e4c6b",
+                activeBgColor: "#730fe4",
+                completedBgColor: "#420a83",
                 labelFontSize: "1rem",
                 circleFontSize: "1rem",
                 size: "3em",
@@ -58,37 +58,47 @@ function ModePayment() {
           </div>
         </div>
         <div className="row d-flex justify-content-center">
-        <div className="col-lg-6 col-md-8 col-sm-12 col-12">
+          <div className="col-lg-6 col-md-8 col-sm-12 col-12">
             <div className="card shadow px-lg-5 py-5 px-3 bg-white">
               <h1 className="text-center font-bold text-primaryColor mb-4">
-                Please select the mode  of payment..
+                Please select the mode of payment..
               </h1>
               <form>
                 <div className="mt-4">
                   <div class="form-check mb-4">
-                    <input class="form-check-input" 
-                    type="radio" 
-                    name="flexRadioDefault" 
-                    id="flexRadioDefault1" 
-                    onClick={()=>{
-                      setSelected("cash");
-                    }}/>
-                    <label class="form-check-label font-regular font-bold" for="flexRadioDefault1">
-                        Cash 
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                      onClick={() => {
+                        setSelected("cash");
+                      }}
+                    />
+                    <label
+                      class="form-check-label font-regular font-bold"
+                      for="flexRadioDefault1"
+                    >
+                      Cash
                     </label>
                   </div>
                 </div>
                 <div className="mt-4">
                   <div class="form-check mb-4">
-                    <input class="form-check-input" 
-                    type="radio" 
-                    name="flexRadioDefault" 
-                    id="flexRadioDefault1" 
-                    onClick={()=>{
-                      setSelected("online");
-                    }}/>
-                    <label class="form-check-label font-regular font-bold" for="flexRadioDefault1">
-                        Pay Online 
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                      onClick={() => {
+                        setSelected("online");
+                      }}
+                    />
+                    <label
+                      class="form-check-label font-regular font-bold"
+                      for="flexRadioDefault1"
+                    >
+                      Pay Online
                     </label>
                   </div>
                 </div>
@@ -103,15 +113,15 @@ function ModePayment() {
                 </div>
               </form>
             </div>
-              <div
-                className={`font-demi text-primaryColor text-center mt-4 py-3 px-3 bg-white ${styles.greyHover}`}
-                onClick={()=>{
-                  router.push("/add-new-address/"+id)
-                }}
-              >
-                Not in the list?{" "}
-                <span className="ml-2 text-secondaryColor">Add New</span>
-              </div>
+            <div
+              className={`font-demi text-primaryColor text-center mt-4 py-3 px-3 bg-white ${styles.greyHover}`}
+              onClick={() => {
+                router.push("/add-new-address/" + id);
+              }}
+            >
+              Not in the list?{" "}
+              <span className="ml-2 text-secondaryColor">Add New</span>
+            </div>
           </div>
         </div>
       </div>
