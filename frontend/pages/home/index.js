@@ -132,7 +132,7 @@ export default function HomeNew(){
                 allStylists.map((val,i)=>{
                 return (
                   <div className="col-lg-4 py-3 col-md-4 col-sm-12 col-12 custom-margin">
-                    <img className="stylist-image" src={baseUrl + val.img}  width={280} height={300}></img>
+                    <img className="stylist-image" src={baseUrl + val.img}  width={240} height={250}></img>
                     <p className="mt-3 h4">{val.fullName}</p>
                     <p className="experience-color h6">{val.experience}</p>
                   </div>
