@@ -341,6 +341,7 @@ export default function Slots() {
                   Date &#8645;
                 </th>
                 <th scope="col">Time</th>
+                <th scope="col">Status</th>
                 <th scope="col">Price</th>
                 <th scope="col">Stylist</th>
                 <th scope="col">City</th>
@@ -357,6 +358,7 @@ export default function Slots() {
                         <td>{i}</td>
                         <td className="user-name">{val.date}</td>
                         <td>{val.time}</td>
+                        <td>{val.status}</td>
                         <td>{val.price}</td>
                         <td>{val.stylistName}</td>
                         <td>{val.city}</td>

@@ -19,7 +19,8 @@ function Contact() {
   };
   return (
     <>
-      <div className="container my-5 bg-primaryColor py-5">
+    <div className="auth-bg py-5">
+    <div className="container bg-primaryColor">
         <h1 className="font-bold text-tertiaryColor text-center pt-5">
           Get in Touch
         </h1>
@@ -116,6 +117,7 @@ function Contact() {
           </div>
         </div>
       </div>
+    </div>
     </>
   );
 }

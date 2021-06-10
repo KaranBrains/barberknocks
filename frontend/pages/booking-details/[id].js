@@ -22,7 +22,9 @@ export default function InstructorId() {
         if(id) {
             dispatch(GetBookingById(id))
             .then(()=>{
-              dispatch(GetStylistById(booking?.stylist));
+              if(booking) {
+                dispatch(GetStylistById(booking?.stylist));
+              }
             })
         }
     },[id,booking?.stylist])

@@ -58,7 +58,7 @@ function MyApp({ Component, pageProps }) {
             </>
           ) : (
             route!="admin" &&  user && user.role=="user" ? (
-              route=="home" ? (
+              route=="home" || route==""? (
                 <>
                   <Home />  
                   <Footer />
@@ -78,7 +78,7 @@ function MyApp({ Component, pageProps }) {
                 {/* <Footer /> */}
                 </>
               ) : (
-                route=="home" ? (
+                route=="home" || route==""? (
                   <>
                   {/* <NavbarComponent /> */}
                       <Home />

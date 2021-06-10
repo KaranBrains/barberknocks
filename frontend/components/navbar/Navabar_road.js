@@ -44,7 +44,7 @@ function NavbarComponent() {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className={`${styles.mlAuto}`}>
             <Nav.Link
-              href="/about"
+              href="/serviceLocation"
               className="font-demi color-white font-17 px-3 navbar-item
                  text-center"
             >
@@ -65,11 +65,11 @@ function NavbarComponent() {
               Contact Us 
             </Nav.Link>
             <Nav.Link
-              href="/contact"
+              href="/about"
               className="font-demi color-white font-17
                   px-3 navbar-item  text-center"
             >
-              Join Us
+              About Us
             </Nav.Link>
             <Nav.Link
               href="/serviceLocation"
@@ -127,6 +127,7 @@ function NavbarComponent() {
               <NavDropdown
                 eventKey={1}
                 className="navbar-hidden"
+                style={{ marginRight: "60px !important"}}
                 title={
                   <div className="pull-left text-center">
                     <img

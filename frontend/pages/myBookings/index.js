@@ -62,11 +62,12 @@ export default function Booking() {
   }
 
   return (
+    <div>
     <div className="container">
         <div className="d-flex justify-content-center p-5">
-           <button onClick={MyAllBookings} className={"btn btn-outline-primary mx-3 " + activeClass.button1}>All Bookings</button>   
-           <button onClick={filterByCompleted} className={"btn btn-outline-primary mx-3 " + activeClass.button2}>Completed</button>   
-           <button onClick={filterBySchedule} className={"btn btn-outline-primary mx-3 " + activeClass.button3}>Scheduled</button>
+           <button onClick={MyAllBookings} className={"btn btn-outline-primary mx-3" + activeClass.button1}>All Bookings</button>   
+           <button onClick={filterByCompleted} className={"btn btn-outline-primary mx-3" + activeClass.button2}>Completed</button>   
+           <button onClick={filterBySchedule} className={"btn btn-outline-primary mx-3" + activeClass.button3}>Scheduled</button>
         </div>
        {modifiedBookings && modifiedBookings.length >0 ?(
            modifiedBookings.map(val => {
@@ -77,7 +78,7 @@ export default function Booking() {
                 <Link href={"/booking-details/"+val._id}>
                 <div className="card">
                   <div
-                    className="card mt-4 ride-card text-primaryColor font-medium p-3 font-18"
+                    className="card mt-4 ride-card text-primaryColor font-medium p-3 font-18 bg-white"
                     style={{ borderRadius: "10px" }}
                   >
                     <div className="row ">
@@ -134,7 +135,7 @@ export default function Booking() {
          <Link href={"/booking-details/"+val._id}>
            <div className="card">
              <div
-               className="card mt-4 ride-card text-primaryColor font-medium p-3 font-18"
+               className="card mt-4 ride-card text-primaryColor font-medium p-3 font-18 bg-white"
                style={{ borderRadius: "10px" }}
              >
                <div className="row ">
@@ -183,6 +184,7 @@ export default function Booking() {
       )})
        ) : ''}
   </div>
+    </div>
     );
   }
   

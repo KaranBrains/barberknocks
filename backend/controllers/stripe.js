@@ -79,6 +79,7 @@ exports.confirmRideOnline = async (req,res,next) => {
                 time : slot.time,
                 date : slot.date,
                 stylistName: slot.stylistName,
+                service: slot.service,
                 address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
             }
             slot.status = "booked";
@@ -108,7 +109,7 @@ exports.confirmRideOnline = async (req,res,next) => {
                           }
                           sgMail.send(msg)
                           .then(info => {
-                              return res.status(201).json({booking:ride});
+                              return res.status(201).json(ride);
                           })
                           .catch(err => {
                               res.status(400).send({msg: "Some error"})

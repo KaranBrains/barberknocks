@@ -38,5 +38,5 @@ app.use('/images', express.static(path.join('assets/images/barberknocks')));
 // })
 
 httpsServer.listen(8081, () => {
-    console.log("Server is running on port : 1234");
+    console.log("Server is running on port : 8081");
 });

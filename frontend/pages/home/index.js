@@ -127,7 +127,7 @@ export default function HomeNew(){
           </div>
           <div className="row custom-padding-company align-items-center">
             {allStylists && allStylists.length>0 ? 
-                allStylists.map((val,i)=>{
+                allStylists.slice(0,3).map((val,i)=>{
                 return (
                   <div className="col-lg-4 py-3 col-md-4 col-sm-12 col-12 custom-margin">
                     <img className="stylist-image" src={baseUrl + val.img}  width={240} height={250}></img>

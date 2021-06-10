@@ -52,10 +52,10 @@ export const confirmRideOnline = (router) => async (dispatch) => {
         const { data } = await api.confirmRideOnline(session,address);
         dispatch({ type: CONFIRM_RIDE_ONLINE, data });
         swal({
-            text: "Ride Booked",
+            text: "Booking Confirmed",
             icon: "success",
         });
-        router.push('/ride-details/'+data._id)
+        router.push('/booking-details/'+data._id)
     } catch (e) {
         swal({
             text: e.response?.data.msg,

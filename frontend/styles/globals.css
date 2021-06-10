@@ -17,6 +17,9 @@ body {
   margin-left: 5%;
 }
 
+.heading-image{
+  font-size: large;
+}
 /* Srollbar */
 ::-webkit-scrollbar {
   height: 3px !important;
@@ -249,6 +252,9 @@ a {
   }
 }
 @media (max-width: 426px) {
+  .heading-image{
+    font-size:medium;
+  }
   .rbc-event-content {
     font-size: 12px !important;
   }

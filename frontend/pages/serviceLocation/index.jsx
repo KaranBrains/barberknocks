@@ -39,7 +39,7 @@ function Login() {
     <div className="auth-bg">
       <div className="container py-5">
         <div className="row d-flex justify-content-center">
-          <div className="col-lg-10 col-md-8 col-sm-12 col-12">
+          <div className="col-lg-10 col-md-12 col-sm-12 col-12">
             <div className="card shadow px-3 px-lg-5 py-5 bg-white mt-5">
               <form onSubmit={handleSubmit}>
                 <div className="my-4">
