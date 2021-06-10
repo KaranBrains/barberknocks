@@ -29,7 +29,7 @@ function Address() {
               <li class="nav-item heading-hover-main">
                 <a
                   class="nav-link pl-3"
-                  style={{ marginLeft: "20px", fontSize: "20px" ,marginRight: '100px'}}
+                  style={{ marginLeft: "20px", fontSize: "20px" ,marginRight: '80px'}}
                 >
                   <span className="font-bold main-heading-hover text-primaryColor">
                     <SettingsIcon /> Settings

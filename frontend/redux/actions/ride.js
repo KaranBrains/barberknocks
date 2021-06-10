@@ -27,24 +27,6 @@ export const confirmRideCash = (slot ,router) => async (dispatch) => {
     }
 };
 
-export const endRide = (ride ,router) => async (dispatch) => {
-    try {
-        const { data } = await api.endRide(ride);
-        dispatch({ type: END_RIDE, data });
-        swal({
-            text: "Class Ended",
-            icon: "success",
-        });
-        router.push('/admin/all-rides')
-    } catch (e) {
-        console.log(e);
-        swal({
-            text: e.response?.data.msg,
-            icon: "error",
-        });
-    }
-};
-
 export const confirmRideOnline = (router) => async (dispatch) => {
     try {
         const session = localStorage.getItem("session");
