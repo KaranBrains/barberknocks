@@ -3,47 +3,48 @@ import { useState, useEffect } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { useRouter } from "next/router";
 import { Modal } from "react-bootstrap";
-import { AllRidesDetails } from "../../../redux/actions/rides";
+import { AllBookingsDetails } from "../../../redux/actions/bookings.js";
 import Link from "next/link";
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
   <div class="loader">Loading...</div>
 </div> });
 
-export default function AllRides() {
+export default function AllBookings() {
   var i = 0;
   const dispatch = useDispatch();
   const router = useRouter();
-  const [sortedRides, setSortedRides] = useState({});
+  const [sortedBookings, setSortedBookings] = useState({});
   const [ascending, setAscending] = useState(true);
 
   useEffect(() =>{
-    dispatch(AllRidesDetails());
+    dispatch(AllBookingsDetails());
   },[])
 
-  let allRides = useSelector(state => state.rides?.AllRides?.allRides);
+  let allBookings = useSelector(state => {return state.bookings?.AllBbookings?.allBookings});
+  console.log(allBookings);
 
-  allRides = sortedRides.length > 0 ? sortedRides : allRides;
+  allBookings = sortedBookings.length > 0 ? sortedBookings : allBookings;
   const sortDate = ()=>{
     if (ascending) {
-        allRides = allRides.sort(function(a,b){
+        allBookings = allBookings.sort(function(a,b){
             return  new Date(a.date) -  new Date(b.date);
         });
         setAscending(false);
     } else {
-        allRides = allRides.sort(function(a,b){
+        allBookings = allBookings.sort(function(a,b){
             return  new Date(b.date) -  new Date(a.date);
         });
         setAscending(true);
     }
-    setSortedRides(allRides);
+    setSortedBookings(allBookings);
 }
 
   return (
       <div>
         <Sidebar />
-        <div class="container padding-left-mobile-table">
+        <div class="admin-container padding-left-mobile-table">
           <div class="d-flex justify-content-between align-items-center">
-          <h3>All Rides</h3>
+          <h3>All Bookings</h3>
           </div>
           <div class="row mb-5 mt-3 user-table table-responsive">
             <table class="table table-striped font-bold">
@@ -52,7 +53,7 @@ export default function AllRides() {
                   <th scope="col">S.No</th>
                   <th scope="col" onClick={sortDate}>Date &#8645;</th>
                   <th scope="col">Client</th>    
-                  <th scope="col">Instructor</th>
+                  <th scope="col">Stylist</th>
                   <th scope="col">Status</th>   
                   <th scope="col">Payment</th>   
                   <th scope="col">Ratings</th> 
@@ -61,22 +62,22 @@ export default function AllRides() {
                 </tr>
               </thead>
               <tbody>
-              {allRides && allRides.length > 0? (
-                        allRides.map(val => {
+              {allBookings && allBookings.length > 0? (
+                        allBookings.map(val => {
                           i++;
                             return (
                               <tr className="font-demi align-middle" key={val._id}>
                               <td>{i}</td>
                               <th className="user-name">{val?.date}</th>
                               <td className="user-name">{val.clientName}</td>
-                              <td className="user-name">{val.instructorName}</td>
+                              <td className="user-name">{val.stylistName}</td>
                               <td>{val.status}</td>
                               <td>{val.modeOfPayment}</td>
                               <td>{val.rating?(<span>{val.rating} &#9733;</span>):"No Ratings"}</td>
                               <td>
-                              <Link href={'/admin/all-rides/'+val._id}>
+                              <Link href={'/admin/all-bookings/'+val._id}>
                                 <a>
-                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/all-rides/'+[val._id])} >View Details</div>
+                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/all-bookings/'+[val._id])} >View Details</div>
                                 </a>
                               </Link>
                               </td>

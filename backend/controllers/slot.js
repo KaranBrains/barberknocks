@@ -89,7 +89,7 @@ exports.getSlotById = (req, res) => {
 };
 
 exports.getSlotByLocation = (req, res) => {
-    Slot.find({city:req.query.city} , (err,slots) => {
+    Slot.find({city:req.query.city , service:req.query.service} , (err,slots) => {
         if (err) {
             return res.status(400).json({ msg: err.message });
         }
