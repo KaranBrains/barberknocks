@@ -1345,3 +1345,22 @@ table tbody {
 .border-service{
   border: 2px solid var(--primaryColor);
 }
+
+.bookings-card{
+  margin: auto !important;
+  border-radius: 20px !important;
+  width: 100%;
+  border: 1px solid black !important;
+}
+
+.w-150{
+  min-width: 150px;
+}
+
+.hr-custom{
+  height: 100% !important;
+  width: 5px !important;
+  background-color: black !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}

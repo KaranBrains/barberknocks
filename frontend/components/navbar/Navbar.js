@@ -106,11 +106,11 @@ function NavbarComponent() {
             ) : ''}
             {isLoggedIn ? (
             <Nav.Link
-              href="/ride"
+              href="/myBookings"
               className="font-demi font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
-            My Classes
+            My Bookings
           </Nav.Link>
             ) : ''}
           {isLoggedIn ? (
@@ -152,10 +152,10 @@ function NavbarComponent() {
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link href="/ride">
+                  <Link href="/myBookings">
                     <div className="font-demi ">
                       <ClassIcon />
-                      &nbsp;My Classes
+                      &nbsp;My Bookings
                     </div>
                   </Link>
                 </NavDropdown.Item>
