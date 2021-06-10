@@ -10,9 +10,10 @@ function Login() {
   const initialState = { city: "torronto", service: "" };
   const [formData, setformData] = useState(initialState);
   const router = useRouter();
-  const [serviceId, setServiceId] = useState(router?.query?.id);
+  const [serviceId, setServiceId] = useState('');
   const dispatch = useDispatch();
   useEffect(() => {
+    setServiceId(router?.query?.id)
     dispatch(allService());
   }, [serviceId]);
 
@@ -66,15 +67,15 @@ function Login() {
                         return (
                           <div className="col-lg-4 col-md-6 col-sm-12 col-12 mt-4">                            
                             <div className="card" onClick={()=>{
-                              setServiceId(val._id);
-                              setformData({
-                                ...formData,
-                                service: serviceId,
-                              });
-                              console.log(formData);
+                              console.log(val._id)
+                                setformData({
+                                  ...formData,
+                                  service: val._id,
+                                })
+                                console.log(formData);
                             }}>
                                 <a>
-                                  <div className={`popular-service-card text-center align-items-center px-3 py-3 ${serviceId == val._id && "border-service"}`}>
+                                  <div className={`popular-service-card text-center align-items-center px-3 py-3 ${formData.service == val._id && "border-service"}`}>
                                     <img
                                       src={baseUrl + val.icon}
                                       width={70}
