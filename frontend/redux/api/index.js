@@ -47,7 +47,7 @@ export const removeService = (id) =>
 export const getStylistById = (id) =>
   axios.get(`${url}/stylist?id=${id}`);
 export const getSlotById = (id) => axios.get(`${url}/slot?id=${id}`);
-export const getBookingById = (id) => axios.get(`${url}/booking?id=${id}`);
+export const getBookingsById = (id) => axios.get(`${url}/booking?id=${id}`);
 export const updateInstructor = (id, formdata) =>
   axios.put(`${url}/update-instructor?id=${id}`, formdata);
 export const addAddress = (formdata, email) =>

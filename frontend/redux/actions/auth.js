@@ -27,7 +27,7 @@ export const signIn = (formData, router) => async (dispatch) => {
       window.location.href="/admin/users";
       return;
     }
-    window.location.href="/";
+    window.location.href="/home";
     swal({
       text: `You are logged in as ${role}`,
       icon: "success",

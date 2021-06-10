@@ -82,7 +82,7 @@ exports.getStylistById = (req, res) => {
         if (err) {
             return res.status(400).json({ msg: err });
         }
-        return res.status(201).json({Stylist: Stylist});
+        return res.status(201).json({stylist: stylist});
     })
 };
 
