@@ -17,7 +17,7 @@ function NavbarComponent() {
   const dispatch = useDispatch();
   const logout = () => {
     dispatch({ type: LOGOUT });
-    router.push("/");
+    router.push("/home");
   };
   const [isLoggedIn, setisLoggedIn] = useState(null);
   useEffect(() => {
@@ -32,7 +32,7 @@ function NavbarComponent() {
         collapseOnSelect={true}
         variant="light"
       >
-        <Navbar.Brand href="/" className="font-demi color-white mx-0">
+        <Navbar.Brand href="/home" className="font-demi color-white mx-0">
           {/* <img
             src="/images/logo-roadrules.svg"
             alt="logo"
@@ -81,7 +81,7 @@ function NavbarComponent() {
             {!isLoggedIn ? (
               <Nav.Link
               href="/auth/login"
-              className="font-demi color-white font-17
+              className="font-demi font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
               Login/Signup
@@ -89,7 +89,7 @@ function NavbarComponent() {
             ) : (
               <Nav.Link
               href="/profile"
-              className="font-demi color-white font-17
+              className="font-demi font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
               User Profile
@@ -98,7 +98,7 @@ function NavbarComponent() {
           {isLoggedIn ? (
             <Nav.Link
               href="/address"
-              className="font-demi color-white font-17
+              className="font-demi font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
             Addresses
@@ -135,9 +135,8 @@ function NavbarComponent() {
                       alt="user pic"
                       width="30"
                       height="30"
-                      className="mr-1"
                       alt=""
-                      style={{ borderRadius: "50%" }}
+                      style={{ borderRadius: "50%", marginRight: "60px !important" }}
                     />
                   </div>
                 }
@@ -145,7 +144,7 @@ function NavbarComponent() {
               >
                 <NavDropdown.Item>
                   <Link href="/profile">
-                    <div className="font-demi color-white ">
+                    <div className="font-demi ">
                       <SettingsIcon />
                       &nbsp;User Profile
                     </div>
@@ -153,14 +152,14 @@ function NavbarComponent() {
                 </NavDropdown.Item>
                 <NavDropdown.Item>
                   <Link href="/myBookings">
-                    <div className="font-demi color-white ">
+                    <div className="font-demi ">
                       <ClassIcon />
                       &nbsp;My Bookings
                     </div>
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <div className="font-demi color-white " onClick={logout}>
+                  <div className="font-demi " onClick={logout}>
                     <ExitToAppIcon />
                     &nbsp;&nbsp;Logout
                   </div>
@@ -172,14 +171,13 @@ function NavbarComponent() {
                 title={
                   <div className="pull-left">
                     <img
-                      className="thumbnail-image"
+                      className="thumbnail-image image-margin"
                       src="/images/profile_avatar.png"
                       alt="user pic"
                       width="30"
                       height="30"
-                      className="mr-5"
                       alt=""
-                      style={{ borderRadius: "50%" }}
+                      style={{ borderRadius: "50%",marginRight: "60px !important" }}
                     />
                   </div>
                 }

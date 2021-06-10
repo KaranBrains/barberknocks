@@ -49,7 +49,7 @@ function MyApp({ Component, pageProps }) {
           {/* <NavbarComponent /> */}
           {/* {allowed ? <Component {...pageProps}/>  : <Home /> } */}
           <Home />  
-          {/* <Footer /> */}
+          <Footer />
         </>
         ) : (
           route!="admin" &&  user && user.role=="admin" ? (
@@ -58,11 +58,18 @@ function MyApp({ Component, pageProps }) {
             </>
           ) : (
             route!="admin" &&  user && user.role=="user" ? (
-              <>
-              <NavbarComponent />
-                  <Component {...pageProps}/>
-              {/* <Footer /> */}
-              </>
+              route=="home" ? (
+                <>
+                  <Home />  
+                  <Footer />
+                </>
+              ) : (
+                <>
+                <NavbarComponent />
+                    <Component {...pageProps}/>
+                {/* <Footer /> */}
+                </>
+              )
             ) : (
               !user && route=="admin" ? (
                 <>

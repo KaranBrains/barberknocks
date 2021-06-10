@@ -19,7 +19,7 @@ function UserProfile() {
           <div>
             <ul class="navbar-nav flex-column">
               <li class="nav-item heading-hover-main">
-                <a class="nav-link pl-3" style={{ marginLeft: "20px", fontSize:'20px' }}>
+                <a class="nav-link pl-3" style={{ marginLeft: "20px", fontSize:'20px' ,marginRight: '100px'}}>
                   <span className="font-bold main-heading-hover text-primaryColor">
                     <SettingsIcon /> Settings
                   </span>
@@ -86,14 +86,14 @@ function UserProfile() {
                     disabled
                   />
                 </div>
-                <div className="text-center mt-5 mb-3">
+                {/* <div className="text-center mt-5 mb-3">
                   <button
                     className="text-white bg-secondaryColor font-demi btn-blue w-100 submit-button"
                     type="submit"
                   >
                     Edit
                   </button>
-                </div>
+                </div> */}
               </form>
             </div>
             </div>

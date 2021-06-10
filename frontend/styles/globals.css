@@ -1349,10 +1349,7 @@ table tbody {
 }
 
 .border-service{
-<<<<<<< HEAD
   border: 2px solid var(--primaryColor) !important;
-=======
-  border: 2px solid var(--primaryColor);
 }
 
 .bookings-card{
@@ -1372,5 +1369,8 @@ table tbody {
   background-color: black !important;
   margin: 0 !important;
   padding: 0 !important;
->>>>>>> c41af3f7dabeb4b0a6c0130459dba20cfc1c7a76
+}
+
+#slots-instructor{
+  visibility: hidden;
 }

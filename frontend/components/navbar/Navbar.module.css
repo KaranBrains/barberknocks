@@ -11,7 +11,9 @@
 .mlAuto{
     margin-left: auto;
 }
-
+.image-margin{
+  margin-right: 60px !important;
+}
 @media(max-width: 536px){
   .logo{
     height: 60px;

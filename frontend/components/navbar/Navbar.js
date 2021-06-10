@@ -32,7 +32,7 @@ function NavbarComponent() {
         collapseOnSelect={true}
         variant="light"
       >
-        <Navbar.Brand href="/" className="font-demi mx-0">
+        <Navbar.Brand href="/home" className="font-demi mx-0">
           {/* <img
             src="/images/logo-roadrules.svg"
             alt="logo"
@@ -135,9 +135,8 @@ function NavbarComponent() {
                       alt="user pic"
                       width="30"
                       height="30"
-                      className="mr-1"
                       alt=""
-                      style={{ borderRadius: "50%" }}
+                      style={{ borderRadius: "50%" , marginRight: "60px !important"}}
                     />
                   </div>
                 }
@@ -177,9 +176,8 @@ function NavbarComponent() {
                       alt="user pic"
                       width="30"
                       height="30"
-                      className="mr-5"
                       alt=""
-                      style={{ borderRadius: "50%" }}
+                      style={{ borderRadius: "50%", marginRight: "60px !important" }}
                     />
                   </div>
                 }
