@@ -31,7 +31,7 @@ function Contact() {
           <i>Fields marked with an asterisk (*) are required.</i>
         </p>
         <div className="d-flex justify-content-center">
-          <div className="text-tertiaryColor text-center font-medium font-25 mt-4 px-lg-3 px-3">
+          <div className="text-tertiaryColor text-center font-medium font-25 mt-4 px-lg-3 px-2">
             <PhoneIcon fontSize="large" />
             <a href="tel:+91-8077265082">
               <p className="font-16 text-tertiaryColor text-center font-medium mt-2">
@@ -99,7 +99,7 @@ function Contact() {
                         });
                       }}
                       placeholder="Message (*)"
-                      rows="4"
+                      rows="3"
                     ></textarea>
                   </div>
                 </div>

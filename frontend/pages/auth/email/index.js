@@ -50,7 +50,7 @@ function Email() {
                 stepSize: "0em",
               }}
               styleConfig={{
-                activeBgColor: "#730fe4",
+                activeBgColor: "#420a83",
                 completedBgColor: "#1e4c6b",
                 labelFontSize: "1rem",
                 circleFontSize: "1rem",
