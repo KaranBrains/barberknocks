@@ -35,7 +35,7 @@ export const AllBookingsDetails = () => async (dispatch) => {
       const { data } = await api.getBookingsById(id);
       dispatch({ type: GET_BOOKING_BY_ID, data });
     } catch (e) {
-      console.log(e.response);
+      console.log(e);
       swal({
         text: e.response?.data.msg,
         icon: "error",

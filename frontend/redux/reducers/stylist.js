@@ -14,6 +14,7 @@ export default (state = { AllData: null, stylistById: null}, action) => {
       case ADMIN_REMOVE_STYLIST:
         return { ...state};
       case ADMIN_GET_STYLIST_BY_ID:
+        console.log(action?.data)
         return { ...state, stylistById :action?.data};
       case ADMIN_STYLIST_UPDATE:
         return { ...state};
