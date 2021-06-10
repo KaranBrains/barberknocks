@@ -12,6 +12,11 @@ body {
   --tertiaryColor: rgb(243, 239, 253);
 }
 
+.admin-container{
+  width: 90%;
+  margin-left: 5%;
+}
+
 /* Srollbar */
 ::-webkit-scrollbar {
   height: 3px !important;
@@ -164,8 +169,7 @@ a {
   line-height: 1.5;
   color: var(--primaryColor) !important;
   background-color: var(--tertiaryColor) !important;
-  background-clip: padding-box;
-  border: 2px solid var(--primaryColor) !important;
+  background-clip: padding-box;  
   border-radius: 10px;
 }
 .btn-blue {
@@ -992,6 +996,8 @@ table tbody {
   width: 60% !important;
 }
 
+
+
 .footer-image .img-fluid-custom {
   height: 100% !important;
   vertical-align: top !important;
@@ -1344,4 +1350,27 @@ table tbody {
 
 .border-service{
   border: 2px solid var(--primaryColor);
+}
+
+.bookings-card{
+  margin: auto !important;
+  border-radius: 20px !important;
+  width: 100%;
+  border: 1px solid black !important;
+}
+
+.w-150{
+  min-width: 150px;
+}
+
+.hr-custom{
+  height: 100% !important;
+  width: 5px !important;
+  background-color: black !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#slots-instructor{
+  visibility: hidden;
 }

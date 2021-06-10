@@ -7,6 +7,7 @@ import user from "./user";
 import rides from "./rides";
 import ride from "./ride";
 import service from "./service";
+import bookings from "./bookings";
 
 const rootReducer = combineReducers({
   main,
@@ -16,7 +17,9 @@ const rootReducer = combineReducers({
   contact,
   rides,
   ride,
-  service
+  service,
+  bookings,
+  service,
 });
 
 export default rootReducer;

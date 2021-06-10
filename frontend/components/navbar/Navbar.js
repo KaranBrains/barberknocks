@@ -32,7 +32,7 @@ function NavbarComponent() {
         collapseOnSelect={true}
         variant="light"
       >
-        <Navbar.Brand href="/" className="font-demi mx-0">
+        <Navbar.Brand href="/home" className="font-demi mx-0">
           {/* <img
             src="/images/logo-roadrules.svg"
             alt="logo"
@@ -106,11 +106,11 @@ function NavbarComponent() {
             ) : ''}
             {isLoggedIn ? (
             <Nav.Link
-              href="/ride"
+              href="/myBookings"
               className="font-demi font-17
                   px-3 navbar-item  text-center navbar-desktop-hidden"
             >
-            My Classes
+            My Bookings
           </Nav.Link>
             ) : ''}
           {isLoggedIn ? (
@@ -135,9 +135,8 @@ function NavbarComponent() {
                       alt="user pic"
                       width="30"
                       height="30"
-                      className="mr-1"
                       alt=""
-                      style={{ borderRadius: "50%" }}
+                      style={{ borderRadius: "50%" , marginRight: "60px !important"}}
                     />
                   </div>
                 }
@@ -152,10 +151,10 @@ function NavbarComponent() {
                   </Link>
                 </NavDropdown.Item>
                 <NavDropdown.Item>
-                  <Link href="/ride">
+                  <Link href="/myBookings">
                     <div className="font-demi ">
                       <ClassIcon />
-                      &nbsp;My Classes
+                      &nbsp;My Bookings
                     </div>
                   </Link>
                 </NavDropdown.Item>
@@ -177,9 +176,8 @@ function NavbarComponent() {
                       alt="user pic"
                       width="30"
                       height="30"
-                      className="mr-5"
                       alt=""
-                      style={{ borderRadius: "50%" }}
+                      style={{ borderRadius: "50%", marginRight: "60px !important" }}
                     />
                   </div>
                 }

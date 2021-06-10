@@ -22,6 +22,7 @@ import BookIcon from '@material-ui/icons/Book';
 import DirectionsCarIcon from '@material-ui/icons/DirectionsCar';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import RoomServiceIcon from '@material-ui/icons/RoomService';
+import CollectionsBookmarkIcon from '@material-ui/icons/CollectionsBookmark';
 
 const drawerWidth = 240;
 
@@ -190,7 +191,7 @@ const useStyles = makeStyles((theme) => ({
             <ListItem button>
               <ListItemIcon>
                 <Link href="/admin/slots">
-                  <a><BookIcon /></a>
+                  <a><DashboardIcon /></a>
                 </Link>
               </ListItemIcon>
               <Link href="/admin/slots">
@@ -199,12 +200,12 @@ const useStyles = makeStyles((theme) => ({
             </ListItem>
             <ListItem button>
               <ListItemIcon>
-                <Link href="/admin/all-rides">
-                  <a><DirectionsCarIcon /></a>
+                <Link href="/admin/all-bookings">
+                  <a><CollectionsBookmarkIcon /></a>
                 </Link>
               </ListItemIcon>
-              <Link href="/admin/all-rides">
-                <a><ListItemText primary="All Rides" /></a>
+              <Link href="/admin/all-bookings">
+                <a><ListItemText primary="All Bookings" /></a>
               </Link>
             </ListItem>
             <ListItem button onClick={()=>{

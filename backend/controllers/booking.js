@@ -32,6 +32,7 @@ exports.addBookingCash= async (req, res) => {
             time : slot.time,
             date : slot.date,
             stylistName: slot.stylistName,
+            service: slot.service,
             address : address.street + ',' + address.province + ',' + address.city + ',' +  address.postalCode
         }
         slot.status = "booked";
@@ -120,36 +121,36 @@ exports.myBookings = async (req, res) => {
 //     }
 // };
 
-// exports.allRides = async (req, res) => {
-//     try {
-//         Ride.find({}, (err,rides)=>{
-//             if (err) {
-//                 return res.status(400).json({ msg: err.message });
-//             }
-//             return res.status(201).json({ allRides : rides });
-//         })
-//     } catch (err) {
-//         return res.status(400).json({ msg: err.message });
-//     }
-// };
+exports.allBookings = async (req, res) => {
+    try {
+        Booking.find({}, (err,bookings)=>{
+            if (err) {
+                return res.status(400).json({ msg: err.message });
+            }
+            return res.status(201).json({ allBookings : bookings });
+        })
+    } catch (err) {
+        return res.status(400).json({ msg: err.message });
+    }
+};
 
-// exports.getRideById = async (req, res) => {
-//     try {
-//         if (
-//             !req.query.id
-//         ) {
-//             return res.status(400).json({ msg: 'Invalid data' });
-//         }
-//         Ride.findById(req.query.id, (err,ride)=>{
-//             if (err) {
-//                 return res.status(400).json({ msg: err.message });
-//             }
-//             return res.status(201).json({ ride : ride });
-//         })
-//     } catch (err) {
-//         return res.status(400).json({ msg: err.message });
-//     }
-// };
+exports.getBookingById = async (req, res) => {
+    try {
+        if (
+            !req.query.id
+        ) {
+            return res.status(400).json({ msg: 'Invalid data' });
+        }
+        Booking.findById(req.query.id, ( err, booking )=>{
+            if (err) {
+                return res.status(400).json({ msg: err.message });
+            }
+            return res.status(201).json({ booking : booking });
+        })
+    } catch (err) {
+        return res.status(400).json({ msg: err.message });
+    }
+};
 
 // exports.feedback = async (req, res) => {
 //     try {

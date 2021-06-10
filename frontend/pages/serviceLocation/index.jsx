@@ -4,25 +4,35 @@ import { useRouter } from "next/router";
 import { allService } from "../../redux/actions/service";
 import Link from "next/link";
 import { baseUrl } from "../../redux/api/index";
+import swal from "sweetalert";
 
 function Login() {
-  const initialState = { email: "", password: "" };
+  const initialState = { city: "torronto", service: "" };
   const [formData, setformData] = useState(initialState);
-  const dispatch = useDispatch();
   const router = useRouter();
-  console.log(router.query);
-  const serviceId = router.query.id
+  const [serviceId, setServiceId] = useState('');
+  const dispatch = useDispatch();
   useEffect(() => {
+    setServiceId(router?.query?.id)
     dispatch(allService());
-  }, []);
+  }, [serviceId]);
 
   const allServices = useSelector((state) => state.service?.AllData?.services);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // dispatch(signIn(formData, router));
+    if (!formData.city || !formData.service) {
+      swal({
+        text: "You need to select both the entries",
+        icon: "info",
+      });
+      return;
+    } else {
+      router.push(`/slots?city=${formData.city}&service=${formData.service}`);
+    }
     // setformData(initialState);
-    router.push('/slots')
+    // router.push('/slots')
   };
 
   return (
@@ -44,9 +54,9 @@ function Login() {
                         [e.target.name]: e.target.value,
                       });
                     }}
-                    name="Location"                   
+                    name="city"                   
                     className="form-control pb-2 font-medium"
-                  ><option value="toronto" className="font-medium">Toronto</option></select>
+                  ><option value="toronto" className="font-medium" default value="torronto">Torronto</option></select>
                 </div>
                 <label className="font-demi text-primaryColor mt-5">
                   Services
@@ -56,10 +66,16 @@ function Login() {
                     ? allServices.map((val) => {                      
                         return (
                           <div className="col-lg-4 col-md-6 col-sm-12 col-12 mt-4">                            
-                            <div className="card">
-                              <Link href={"/serviceLocation?id=" + val._id}>
+                            <div className="card" onClick={()=>{
+                              console.log(val._id)
+                                setformData({
+                                  ...formData,
+                                  service: val._id,
+                                })
+                                console.log(formData);
+                            }}>
                                 <a>
-                                  <div className={`popular-service-card text-center align-items-center px-3 py-3 ${serviceId == val._id && "border-service"}`}>
+                                  <div className={`popular-service-card text-center align-items-center px-3 py-3 ${formData.service == val._id && "border-service"}`}>
                                     <img
                                       src={baseUrl + val.icon}
                                       width={70}
@@ -70,7 +86,6 @@ function Login() {
                                     </p>
                                   </div>
                                 </a>
-                              </Link>
                             </div>
                           </div>
                         );
