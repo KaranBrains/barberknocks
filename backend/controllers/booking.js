@@ -11,13 +11,13 @@ exports.addBookingCash= async (req, res) => {
         if (
             !req.body.slot ||
             !req.body.client ||
-            !req.body.address
+            !req.query.address
         ) {
             return res.status(400).json({ msg: 'Invalid data' });
         }
         const slot = await Slot.findById(req.body.slot);
         const client = await User.findById(req.body.client);
-        const address = client.address.filter(a=> a._id==req.body.address)[0];
+        const address = client.address.filter(a=> a._id==req.query.address)[0];
         if (slot.booking) {
             return res.status(400).json({ msg: "Slot already booked!" });
         }
@@ -66,7 +66,7 @@ exports.addBookingCash= async (req, res) => {
                       sgMail.send(msg)
                       .then(info => {
                           console.log(info)
-                          return res.status(201).json({booking:ride});
+                          return res.status(201).json(ride);
                       })
                       .catch(err => {
                           res.status(400).send({msg: "Some error"})
