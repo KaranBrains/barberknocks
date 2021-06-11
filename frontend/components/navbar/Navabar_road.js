@@ -82,7 +82,7 @@ function NavbarComponent() {
               <Nav.Link
               href="/auth/login"
               className="font-demi font-17
-                  px-3 navbar-item  text-center navbar-desktop-hidden"
+                  px-3 navbar-item  text-center navbar-desktop-hidden color-white"
             >
               Login/Signup
             </Nav.Link>
@@ -90,7 +90,7 @@ function NavbarComponent() {
               <Nav.Link
               href="/profile"
               className="font-demi font-17
-                  px-3 navbar-item  text-center navbar-desktop-hidden"
+                  px-3 navbar-item  text-center navbar-desktop-hidden color-white"
             >
               User Profile
             </Nav.Link>
@@ -99,7 +99,7 @@ function NavbarComponent() {
             <Nav.Link
               href="/address"
               className="font-demi font-17
-                  px-3 navbar-item  text-center navbar-desktop-hidden"
+                  px-3 navbar-item  text-center navbar-desktop-hidden color-white"
             >
             Addresses
           </Nav.Link>
@@ -108,7 +108,7 @@ function NavbarComponent() {
             <Nav.Link
               href="/myBookings"
               className="font-demi color-white font-17
-                  px-3 navbar-item  text-center navbar-desktop-hidden"
+                  px-3 navbar-item  text-center navbar-desktop-hidden color-white"
             >
             My Bookings
           </Nav.Link>
@@ -116,7 +116,7 @@ function NavbarComponent() {
           {isLoggedIn ? (
             <Nav.Link
               className="font-demi color-white font-17
-                  px-3 navbar-item text-white bg-secondaryColor text-center navbar-desktop-hidden"
+                  px-3 navbar-item text-white bg-secondaryColor text-center navbar-desktop-hidden color-white"
                   onClick={logout}
             >
             Logout
