@@ -24,7 +24,7 @@ export default function Users() {
 
   const user = useSelector(state => state.user?.UsersById);
 
-  let allRides = useSelector(state => state.user?.UsersById?.rides);
+  let allRides = useSelector(state => { return state.user?.UsersById?.bookings});
 
   allRides = sortedRides.length > 0 ? sortedRides : allRides;
   const sortDate = ()=>{
@@ -70,7 +70,7 @@ export default function Users() {
          </div>
         </div>
         <div class="container padding-left-mobile-table">
-          <h3>Rides</h3>
+          <h3>Bookings</h3>
           <div class="row mb-5 mt-3 user-table table-responsive">
             <table class="table table-striped font-bold">
               <thead>
@@ -78,7 +78,7 @@ export default function Users() {
                   <th scope="col">S.No</th>
                   <th scope="col" onClick={sortDate}>Date &#8645;</th>
                   <th scope="col">Client</th>
-                  <th scope="col">Instructor</th>
+                  <th scope="col">Stylist</th>
                   <th scope="col">Payment</th>  
                   <th scope="col">Status</th>   
                   <th scope="col">Ratings</th>
@@ -94,7 +94,7 @@ export default function Users() {
                               <td>{i}</td>
                               <th className="user-name">{val?.date}</th>
                               <td className="user-name">{val?.clientName}</td>
-                              <td className="user-name">{val?.instructorName}</td>
+                              <td className="user-name">{val?.stylistName}</td>
                               <td>{val.modeOfPayment}</td>
                               <td>{val?.status}</td>
                               <td>{val.rating?(<span>{val.rating} &#9733;</span>):"No Ratings"}</td>
