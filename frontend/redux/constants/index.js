@@ -33,6 +33,8 @@ export const END_RIDE = "END_RIDE";
 export const SERVICE_SLOT = "SERVICE_SLOT";
 export const GET_UPCOMING_RIDES = "GET_UPCOMING_RIDES";
 export const CONFIRM_RIDE_CASH = "CONFIRM_RIDE_CASH";
+export const END_BOOKING = "END_BOOKING";
+export const GIVE_FEEDBACK = "GIVE_FEEDBACK";
 
 export const ADMIN_SLOT_ADD = "ADMIN_SLOT_ADD";
 export const ADMIN_SERVICE_ADD = "ADMIN_SERVICE_ADD";

@@ -99,9 +99,9 @@ export default function Users() {
                               <td>{val?.status}</td>
                               <td>{val.rating?(<span>{val.rating} &#9733;</span>):"No Ratings"}</td>
                               <td>
-                              <Link href={'/admin/all-rides/'+val._id}>
+                              <Link href={'/admin/all-bookings/'+val._id}>
                                 <a>
-                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/all-rides/'+[val._id])} >View Details</div>
+                                <div class="btn btn-primary user-button" onClick={() => router.push('/admin/all-bookings/'+[val._id])} >View Details</div>
                                 </a>
                               </Link>
                               </td>

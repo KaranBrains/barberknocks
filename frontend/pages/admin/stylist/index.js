@@ -7,6 +7,7 @@ import { AddStylist, AllStylist, RemoveStylist } from "../../../redux/actions/st
 import { allService,} from "../../../redux/actions/service";
 import {baseUrl} from "../../../redux/api/index"
 import Link from "next/link";
+
 const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
   <div class="loader">Loading...</div>
 </div> });

@@ -5,8 +5,8 @@ router.post('/add-booking-cash', booking.addBookingCash);
 router.get('/my-bookings', booking.myBookings);
 router.get('/all-bookings', booking.allBookings);
 router.get('/booking', booking.getBookingById);
-// router.get('/end-ride', ride.endRide);
-// router.post('/feedback', ride.feedback);
+router.get('/end-booking', booking.endBooking);
+router.post('/feedback', booking.feedback);
 
 module.exports = {
   router: router,

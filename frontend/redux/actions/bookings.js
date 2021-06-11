@@ -1,5 +1,5 @@
 import * as api from "../api";
-import { GET_MY_BOOKINGS, ALL_BOOKINGS,GET_BOOKING_BY_ID } from "../constants/index";
+import { GET_MY_BOOKINGS, ALL_BOOKINGS,GET_BOOKING_BY_ID ,END_BOOKING ,GIVE_FEEDBACK} from "../constants/index";
 import swal from "sweetalert";
 import jwt from "jwt-decode";
 
@@ -34,6 +34,32 @@ export const AllBookingsDetails = () => async (dispatch) => {
     try {
       const { data } = await api.getBookingsById(id);
       dispatch({ type: GET_BOOKING_BY_ID, data });
+    } catch (e) {
+      console.log(e);
+      swal({
+        text: e.response?.data.msg,
+        icon: "error",
+    });
+  }
+  }
+
+  export const GiveFeedback = (fomrData,id) => async (dispatch) => {
+    try {
+      const { data } = await api.giveFeedback(fomrData,id);
+      dispatch({ type: GIVE_FEEDBACK, data });
+    } catch (e) {
+      console.log(e);
+      swal({
+        text: e.response?.data.msg,
+        icon: "error",
+    });
+  }
+  }
+
+  export const endBooking = (id) => async (dispatch) => {
+    try {
+      const { data } = await api.endBooking(id);
+      dispatch({ type: END_BOOKING, data });
     } catch (e) {
       console.log(e);
       swal({

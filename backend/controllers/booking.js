@@ -97,29 +97,29 @@ exports.myBookings = async (req, res) => {
     }
 };
 
-// exports.endRide = async (req, res) => {
-//     try {
-//         if (
-//             !req.query.ride
-//         ) {
-//             return res.status(400).json({ msg: 'Invalid data' });
-//         }
-//         Booking.findById(req.query.ride, (err,ride)=>{
-//             if (err) {
-//                 return res.status(400).json({ msg: err.message });
-//             }
-//             ride.status = "completed";
-//             ride.save((err,ride)=>{
-//                 if (err) {
-//                     return res.status(400).json({ msg: err.message });
-//                 }
-//                 return res.status(201).json({ msg : "Ride Ended" });
-//             })
-//         })
-//     } catch (err) {
-//         return res.status(400).json({ msg: err.message });
-//     }
-// };
+exports.endBooking = async (req, res) => {
+    try {
+        if (
+            !req.query.booking
+        ) {
+            return res.status(400).json({ msg: 'Invalid data' });
+        }
+        Booking.findById(req.query.booking, (err,booking)=>{
+            if (err) {
+                return res.status(400).json({ msg: err.message });
+            }
+            booking.status = "completed";
+            booking.save((err,booking)=>{
+                if (err) {
+                    return res.status(400).json({ msg: err.message });
+                }
+                return res.status(201).json({ msg : "Ride Ended" });
+            })
+        })
+    } catch (err) {
+        return res.status(400).json({ msg: err.message });
+    }
+};
 
 exports.allBookings = async (req, res) => {
     try {
@@ -152,40 +152,40 @@ exports.getBookingById = async (req, res) => {
     }
 };
 
-// exports.feedback = async (req, res) => {
-//     try {
-//         if (
-//             !req.query.ride ||
-//             !req.body.rating
-//         ) {
-//             return res.status(400).json({ msg: 'Invalid data' });
-//         }
-//         const ride = await Ride.findById(req.query.ride);
-//         const instructor = await Instructor.findById(ride.instructor);
-//         const feedback = {
-//             stars : req.body.rating,
-//             feedback : req.body.feedback? req.body.feedback : 'No Feedback Given.',
-//             ride : ride._id,
-//             clientName : ride.clientName
-//         }
-//         ride.rating = req.body.rating;
-//         ride.feedback = req.body.feedback? req.body.feedback : 'No Feedback Given.';
-//         await ride.save((err) => {
-//             if (err) {
-//                 console.log(err);
-//                 return res.status(400).json({ msg: err.message });
-//             }
-//         })
-//         instructor.rating.push(feedback);
-//         await instructor.save((err,instructor) => {
-//             if (err) {
-//                 console.log(err);
-//                 return res.status(400).json({ msg: err.message });
-//             }
-//             return res.status(200).json({ feedback: instructor });
-//         })
-//     } catch (err) {
-//         console.log(err);
-//         return res.status(400).json({ msg: err.message });
-//     }
-// };
+exports.feedback = async (req, res) => {
+    try {
+        if (
+            !req.query.booking ||
+            !req.body.rating
+        ) {
+            return res.status(400).json({ msg: 'Invalid data' });
+        }
+        const booking = await Booking.findById(req.query.booking);
+        const stylist = await Stylist.findById(booking.stylist);
+        const feedback = {
+            stars : req.body.rating,
+            feedback : req.body.feedback? req.body.feedback : 'No Feedback Given.',
+            booking : booking._id,
+            clientName : booking.clientName
+        }
+        booking.rating = req.body.rating;
+        booking.feedback = req.body.feedback? req.body.feedback : 'No Feedback Given.';
+        await booking.save((err) => {
+            if (err) {
+                console.log(err);
+                return res.status(400).json({ msg: err.message });
+            }
+        })
+        stylist.rating.push(feedback);
+        await stylist.save((err,stylist) => {
+            if (err) {
+                console.log(err);
+                return res.status(400).json({ msg: err.message });
+            }
+            return res.status(200).json({ feedback: stylist });
+        })
+    } catch (err) {
+        console.log(err);
+        return res.status(400).json({ msg: err.message });
+    }
+};

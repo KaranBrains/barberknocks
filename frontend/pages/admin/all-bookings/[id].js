@@ -1,10 +1,14 @@
 import { useEffect,useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { useRouter } from "next/router";
-import { GetBookingById , GiveFeedback } from "../../redux/actions/bookings";
-import { GetStylistById } from "../../redux/actions/stylist";
+import dynamic from 'next/dynamic';
+import { GetBookingById ,endBooking} from "../../../redux/actions/bookings";
+import { GetStylistById } from "../../../redux/actions/stylist";
 import { Modal } from "react-bootstrap";
 import swal from "sweetalert";
+const Sidebar = dynamic(() => import('../../../shared/sidebar/sidebar'), { ssr: false, loading: () => <div class="main-loader-div">
+  <div class="loader">Loading...</div>
+</div> });
 
 export default function InstructorId() {
 
@@ -29,80 +33,17 @@ export default function InstructorId() {
         }
     },[id,booking?.stylist])
 
-    const provideFeedback=(e)=>{
+    const endBookingSubmit=(e)=>{
       e.preventDefault();
-      setShowModal(false);
-      dispatch(GiveFeedback(formData,id))
+      dispatch(endBooking(booking?._id))
       .then(()=>{
-        swal({
-          text: "Feedback Submitted",
-          icon: "success",
-        });
-        router.push("/myBookings");
-      })
+          router.push("/admin/all-bookings");
+      });
     }
 
     return(
       <>
-      {showModal ? (
-        <Modal className="mt-5 modal-card" show={showModal} onHide={()=>{
-          setShowModal(false);
-        }}>
-          <Modal.Header closeButton>
-            <Modal.Title>
-              <div className="font-bold ml-1">Give Feedback</div>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body>
-          <form onSubmit={(e)=>provideFeedback(e)}>
-                <div className="form-group mt-4">
-                <label className="font-20 py-2">Rating</label>
-                  <input
-                    required
-                    value={formData.price}
-                    onChange={(e) => {
-                      setformData({
-                        ...formData,
-                        [e.target.name]: e.target.value,
-                      });
-                    }}
-                    name="rating"
-                    type="number"
-                    className="form-control"
-                    placeholder="Rating (out of 5)" min="1" max="5"
-                  />
-                </div>
-                <div className="form-group mt-4">
-                <label className="font-20 py-2">Feedback</label>
-                  <input
-                    required
-                    value={formData.price}
-                    onChange={(e) => {
-                      setformData({
-                        ...formData,
-                        [e.target.name]: e.target.value,
-                      });
-                    }}
-                    name="feedback"
-                    type="textarea"
-                    className="form-control"
-                    placeholder="Feedback"
-                  />
-                </div>
-                <div className="text-center mt-5">
-                  <button
-                    className="text-white bg-secondaryColor font-demi btn-blue submit-button"
-                    type="submit"
-                  >
-                    Submit
-                  </button>
-                </div>
-              </form>
-          </Modal.Body>
-        </Modal>
-      ) : (
-        ""
-      )}
+      <Sidebar />
       {booking && stylist ? (
             <>
             <div className="container">
@@ -139,6 +80,14 @@ export default function InstructorId() {
                         {booking?.service}
                       </div>
                     </div>
+                    <div className="d-flex justify-content-between px-3">
+                      <div className="text-muted font-demi font-18 mt-2">
+                        Client
+                      </div>
+                      <div className="text-primaryColor font-bold font-18 mt-2">
+                        {booking?.clientName}
+                      </div>
+                    </div>
                     <hr className="grey-hr-confirm" />
                     <div className="d-flex justify-content-between px-3">
                       <div className="text-muted font-demi font-18 mt-2">
@@ -151,14 +100,6 @@ export default function InstructorId() {
                         {booking?.status == "completed" ? (
                           <span className="text-success">Completed</span>
                         ) : ''}
-                      </div>
-                    </div>
-                    <div className="d-flex justify-content-between px-3">
-                      <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
-                        Rating
-                      </div>
-                      <div className="text-primary font-bold font-18 mt-2 mobile-hidden">
-                        {booking.rating}
                       </div>
                     </div>
                     <hr className="grey-hr-confirm" />
@@ -270,16 +211,14 @@ export default function InstructorId() {
                   </div>
                 </div>
               </div>
-              {booking.status=="completed" && !booking.rating?(
+              {booking.status!="completed"?(
                 <div className="text-center mt-3">
                 <button
                   className="text-white bg-secondaryColor font-demi btn-blue submit-button mb-5"
                   type="submit"
-                  onClick={()=>{
-                    setShowModal(true);
-                  }}
+                  onClick={endBookingSubmit}
                 >
-                  Give Feedback
+                  End Booking
                 </button>
               </div>
               ):''}

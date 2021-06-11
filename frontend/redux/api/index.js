@@ -2,9 +2,9 @@ import axios from "axios";
 
 // export const url = "http://localhost:8082/api";
 // export const paymentUrl = "http://localhost:8082/api/create-checkout-session";
-// export const baseUrl = "http://localhost:8082/";
+// // export const baseUrl = "http://localhost:8082/";
 
-// export const url = "https://www.pigameapp.com:8081/api";
+// // export const url = "https://www.pigameapp.com:8081/api";
 // export const baseUrl = "https://www.pigameapp.com:8081/";
 
 export const url = "https://www.pigameapp.com:8081/api";
@@ -71,3 +71,5 @@ export const getUserById = (id) => axios.get(`${url}/admin/get-user?id=${id}`);
 export const getRides = (id) => axios.get(`${url}/my-rides?id=${id}`);
 export const getRidesById = (id) => axios.get(`${url}/ride?id=${id}`)
 export const myBookings = (id) => axios.get(`${url}/my-bookings?id=${id}`);
+export const endBooking = (id) => axios.get(`${url}/end-booking?booking=${id}`);
+export const giveFeedback = (formData,id) => axios.post(`${url}/feedback?booking=${id}`,formData);

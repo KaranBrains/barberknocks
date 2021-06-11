@@ -1,6 +1,6 @@
-import { GET_MY_BOOKINGS, ALL_BOOKINGS, GET_BOOKING_BY_ID } from "../constants/index"
+import { GET_MY_BOOKINGS, ALL_BOOKINGS, GET_BOOKING_BY_ID ,END_BOOKING , GIVE_FEEDBACK} from "../constants/index"
 
-export default (state = { MyBookingData: null, AllBbookings: null, BookingByID: null}, action) => {
+export default (state = { MyBookingData: null, AllBbookings: null, BookingByID: null , endBooking: null ,feedback: null}, action) => {
     switch (action.type) {
     case GET_MY_BOOKINGS:
         return { ...state, MyBookingData: action?.data};
@@ -10,6 +10,12 @@ export default (state = { MyBookingData: null, AllBbookings: null, BookingByID: 
       case GET_BOOKING_BY_ID:
         console.log(action?.data)
       return { ...state, BookingByID : action?.data};
+      case END_BOOKING:
+        console.log(action?.data)
+      return { ...state, endBooking : action?.data};
+      case GIVE_FEEDBACK:
+        console.log(action?.data)
+      return { ...state, feedback : action?.data};
       default:
         return state;
     }
