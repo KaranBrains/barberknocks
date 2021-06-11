@@ -4,7 +4,8 @@ import {
   ADMIN_ALL_SLOT, 
   ADMIN_REMOVE_SLOT, 
   ADMIN_UPDATE_BY_ID,
-  GET_SLOT_BY_ID 
+  GET_SLOT_BY_ID ,
+  SERVICE_SLOT
 } from "../constants/index";
 import swal from "sweetalert";
 
@@ -31,6 +32,19 @@ export const AllSlots = () => async (dispatch) => {
   try {
     const { data } = await api.allSlot();
     dispatch({ type: ADMIN_ALL_SLOT, data });
+  } catch (e) {
+    console.log(e);
+    swal({
+      text: e.response?.data.msg,
+      icon: "error",
+    });
+}
+};
+
+export const serviceSlots = (service,city) => async (dispatch) => {
+  try {
+    const { data } = await api.serviceSlot(service,city);
+    dispatch({ type: SERVICE_SLOT, data });
   } catch (e) {
     console.log(e);
     swal({

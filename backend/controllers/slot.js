@@ -96,8 +96,9 @@ exports.getSlotById = (req, res) => {
     })
 };
 
-exports.getSlotByLocation = (req, res) => {
-    Slot.find({city:req.query.city , service:req.query.service} , (err,slots) => {
+exports.getSlotByLocation = async (req, res) => {
+    const service = await Service.findById(req.query.service);
+    Slot.find({city:req.query.city , service:service.name} , (err,slots) => {
         if (err) {
             return res.status(400).json({ msg: err.message });
         }

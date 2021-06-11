@@ -1,7 +1,7 @@
 import ReactHorizontalDatePicker from "react-horizontal-strip-datepicker";
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AllSlots } from "../../redux/actions/slot";
+import { AllSlots , serviceSlots } from "../../redux/actions/slot";
 import { AllStylist } from "../../redux/actions/stylist";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -45,9 +45,11 @@ function DateSlot() {
       setDisplaySlots(refinedFilterSlots);
     }, 300);
   };
-  let allSlots = useSelector((state) => state.slot?.slotData?.slots);
+  let allSlots = useSelector((state) => {console.log(state);return state.slot?.serviceSlot?.slots});
   useEffect(() => {
-    dispatch(AllSlots());
+    if (service,city) {
+      dispatch(serviceSlots(service,city));
+    }
     dispatch(AllStylist());
     if (allSlots) {
       let filterSlots = allSlots.filter((slot) => {

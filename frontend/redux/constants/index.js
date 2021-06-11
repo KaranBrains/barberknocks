@@ -30,6 +30,7 @@ export const CONTACT_US = "CONTACT_US";
 export const ADMIN_RIDES = "ADMIN_RIDES";
 export const ADMIN_RIDE = "ADMIN_RIDE";
 export const END_RIDE = "END_RIDE";
+export const SERVICE_SLOT = "SERVICE_SLOT";
 export const GET_UPCOMING_RIDES = "GET_UPCOMING_RIDES";
 export const CONFIRM_RIDE_CASH = "CONFIRM_RIDE_CASH";
 
