@@ -102,6 +102,14 @@ export default function InstructorId() {
                         ) : ''}
                       </div>
                     </div>
+                    <div className="d-flex justify-content-between px-3">
+                      <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
+                        Rating
+                      </div>
+                      <div className="text-primary font-bold font-18 mt-2 mobile-hidden">
+                        {booking.rating}
+                      </div>
+                    </div>
                     <hr className="grey-hr-confirm" />
                     <div className="d-flex justify-content-between px-3">
                       <div className="text-muted font-demi font-18 mt-2 mobile-hidden">
