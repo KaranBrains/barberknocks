@@ -30,6 +30,7 @@ export default function Booking() {
         button1: "",
         button2: "",
         button3: "active",
+        button4: ""
     })
    let myBookingsSchedule = myBookings?.filter((val)=>{
         return val.status === "scheduled";
@@ -43,9 +44,24 @@ export default function Booking() {
         button1: "",
         button2: "active",
         button3: "",
+        button4: ""
     })
     let myBookingsCompleted = myBookings?.filter((val)=>{
         return val.status === "completed";
+    })
+    setModifiedBookings(myBookingsCompleted);
+    displayBooking = null;
+  }
+
+  function filterByCancelled(){
+    setActiveClass({ 
+        button1: "",
+        button2: "",
+        button3: "",
+        button4: "active"
+    })
+    let myBookingsCompleted = myBookings?.filter((val)=>{
+        return val.status === "cancelled";
     })
     setModifiedBookings(myBookingsCompleted);
     displayBooking = null;
@@ -56,6 +72,7 @@ export default function Booking() {
         button1: "active",
         button2: "",
         button3: "",
+        button4: ""
     })
     setModifiedBookings(myBookings);
     displayBooking = null;
@@ -68,6 +85,7 @@ export default function Booking() {
            <button onClick={MyAllBookings} className={"btn btn-outline-primary mx-3" + activeClass.button1}>All Bookings</button>   
            <button onClick={filterByCompleted} className={"btn btn-outline-primary mx-3" + activeClass.button2}>Completed</button>   
            <button onClick={filterBySchedule} className={"btn btn-outline-primary mx-3" + activeClass.button3}>Scheduled</button>
+           <button onClick={filterByCancelled} className={"btn btn-outline-primary mx-3" + activeClass.button3}>Cancelled</button>
         </div>
        {modifiedBookings && modifiedBookings.length >0 ?(
            modifiedBookings.map(val => {
@@ -100,16 +118,25 @@ export default function Booking() {
                                style={{ marginTop: "4px" }}
                                className="text-white btn-success status-button"
                              >
-                                 {val.status}
+                                 Completed
                              </div>
-                          ):(
-                            <div
-                            style={{ marginTop: "4px" }}
-                            className="text-white btn-primary status-button"
-                          >
-                              {val.status}
-                          </div>
-                          )}
+                          ): ''}
+                           { val?.status=="cancelled" ? (
+                              <div
+                              style={{ marginTop: "4px" }}
+                              className="text-white btn-danger status-button"
+                            >
+                                Cancelled
+                            </div>
+                            ) : ''}
+                            {val?.status=="scheduled" ? (
+                              <div
+                              style={{ marginTop: "4px" }}
+                              className="text-white btn-primary status-button"
+                            >
+                                Scheduled
+                            </div>
+                            ) : ''}
                         </div>
                         <div className="text-center mt-1 d-flex justify-content-start mb-2  ">
                           <p>
@@ -152,21 +179,30 @@ export default function Booking() {
                  </div>
                  <div className="col-lg-6 col-md-6 col-sm-6 col-6 text-primaryColor font-bold">
                    <div className="d-flex justify-content-start mb-3 text-muted">
-                     {val?.status=="completed" ? (
+                   {val?.status=="completed" ? (
                           <div
                           style={{ marginTop: "4px" }}
                           className="text-white btn-success status-button"
                         >
-                            {val.status}
+                            Completed
                         </div>
-                     ):(
-                       <div
-                       style={{ marginTop: "4px" }}
-                       className="text-white btn-primary status-button"
-                     >
-                         {val.status}
-                     </div>
-                     )}
+                    ): ''}
+                      { val?.status=="cancelled" ? (
+                        <div
+                        style={{ marginTop: "4px" }}
+                        className="text-white btn-danger status-button"
+                      >
+                          Cancelled
+                      </div>
+                      ) : ''}
+                      {val?.status=="scheduled" ? (
+                        <div
+                        style={{ marginTop: "4px" }}
+                        className="text-white btn-primary status-button"
+                      >
+                          Scheduled
+                      </div>
+                      ) : ''}
                    </div>
                    <div className="text-center mt-1 d-flex justify-content-start mb-2  ">
                      <p>

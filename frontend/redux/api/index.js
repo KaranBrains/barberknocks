@@ -28,6 +28,8 @@ export const verifyPhoneOtp = (otp, email, phone) =>
   axios.post(`${url}/verify-phone-otp?phone=${phone}&email=${email}`, {
     verificationCode: otp,
   });
+export const cancelBookingById = (id) =>
+  axios.post(`${url}/cancel-booking?id=${id}`);
 export const changePassword = (body) =>
   axios.put(`${url}/change-password`, body);
 

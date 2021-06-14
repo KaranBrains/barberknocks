@@ -212,7 +212,8 @@ a {
 }
 
 .status-button {
-  width: 100px;
+  width: 120px;
+  text-align: center;
   border-radius: 3px;
   padding-left: 4px;
 }

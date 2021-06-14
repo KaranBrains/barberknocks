@@ -121,6 +121,30 @@ exports.endBooking = async (req, res) => {
     }
 };
 
+exports.cancelBooking = async (req, res) => {
+    try {
+        if (
+            !req.query.id
+        ) {
+            return res.status(400).json({ msg: 'Invalid data' });
+        }
+        Booking.findById(req.query.id, (err,booking)=>{
+            if (err) {
+                return res.status(400).json({ msg: err.message });
+            }
+            booking.status = "cancelled";
+            booking.save((err,booking)=>{
+                if (err) {
+                    return res.status(400).json({ msg: err.message });
+                }
+                return res.status(201).json({ msg : "Booking Cancelled" });
+            })
+        })
+    } catch (err) {
+        return res.status(400).json({ msg: err.message });
+    }
+};
+
 exports.allBookings = async (req, res) => {
     try {
         Booking.find({}, (err,bookings)=>{

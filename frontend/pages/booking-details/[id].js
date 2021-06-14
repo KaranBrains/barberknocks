@@ -1,7 +1,7 @@
 import { useEffect,useState } from "react";
 import { useDispatch , useSelector} from "react-redux";
 import { useRouter } from "next/router";
-import { GetBookingById , GiveFeedback } from "../../redux/actions/bookings";
+import { GetBookingById , GiveFeedback , cancelBookingById} from "../../redux/actions/bookings";
 import { GetStylistById } from "../../redux/actions/stylist";
 import { Modal } from "react-bootstrap";
 import swal from "sweetalert";
@@ -36,6 +36,19 @@ export default function InstructorId() {
       .then(()=>{
         swal({
           text: "Feedback Submitted",
+          icon: "success",
+        });
+        router.push("/myBookings");
+      })
+    }
+
+    const cancelBooking=(e)=>{
+      e.preventDefault();
+      setShowModal(false);
+      dispatch(cancelBookingById(id))
+      .then(()=>{
+        swal({
+          text: "Booking Cancelled",
           icon: "success",
         });
         router.push("/myBookings");
@@ -150,6 +163,9 @@ export default function InstructorId() {
                         ) : ''}
                         {booking?.status == "completed" ? (
                           <span className="text-success">Completed</span>
+                        ) : ''}
+                        {booking?.status == "cancelled" ? (
+                          <span className="text-danger">Cancelled</span>
                         ) : ''}
                       </div>
                     </div>
@@ -282,6 +298,17 @@ export default function InstructorId() {
                   }}
                 >
                   Give Feedback
+                </button>
+              </div>
+              ):''}
+              {booking.status=="scheduled" && !booking.rating?(
+                <div className="text-center mt-3">
+                <button
+                  className="text-white btn-danger font-demi btn-blue submit-button mb-5"
+                  type="submit"
+                  onClick={cancelBooking}
+                >
+                  Cancel Booking
                 </button>
               </div>
               ):''}
