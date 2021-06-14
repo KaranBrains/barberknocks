@@ -57,7 +57,7 @@ function Footer() {
               >
                 Inquiries
               </h3>
-              <Link href="/contact">
+              <Link href="/become-stylist">
                 <div className="font-demi font-17 mb-lg-3 mb-2 hoverable">
                 Become a stylist ? 
                 </div>

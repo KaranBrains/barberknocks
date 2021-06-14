@@ -14,7 +14,6 @@ export const AddStylist = (formData, router) => async (dispatch) => {
         text: "Stylist Added",
         icon: "success",
       });
-      router.push("/admin/stylist");
     } catch (e) {
       console.log(e.response);
       swal({

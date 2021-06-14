@@ -91,12 +91,12 @@ export default function HomeNew(){
           {allServices && allServices.length>0 ? (
                      allServices.map(val => {
                          return (
-                         <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
+                         <div className="col-lg-3 col-md-4 col-sm-6 col-6 px-lg-5 py-3">
                            <Link href={'/serviceLocation?id=' + val._id}>
                              <a>
-                             <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                               <img src={baseUrl + val.icon}  width={60} height={60}></img>
-                               <p className="mt-2 h5 text-dark">{val.name}</p>
+                             <div className="popular-service-card d-flex w-100 flex-column justify-content-center align-items-center px-3 py-3">
+                               <img src={baseUrl + val.icon} className="service-image" width={60} height={60}></img>
+                               <p className="mt-2 service-name h5 text-dark">{val.name}</p>
                              </div>
                              </a>
                            </Link> 
@@ -108,11 +108,11 @@ export default function HomeNew(){
                  )}
                {allServices && allServices.length>0 ?
                  (
-                   <div className="col-lg-3 col-md-6 col-sm-12 col-12 px-5 py-3">
+                   <div className="col-lg-3  col-md-4 col-sm-6 col-6  px-lg-5 py-3">
                    <Link href={'/serviceLocation'}>
                     <a>
                       <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                      <p className="mt-2 h4 text-dark">MORE...</p>
+                      <p className="mt-2 service-name h5 text-dark">MORE...</p>
                     </div>
                     </a>
                   </Link> 

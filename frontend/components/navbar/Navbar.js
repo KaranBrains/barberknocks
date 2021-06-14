@@ -32,7 +32,7 @@ function NavbarComponent() {
         collapseOnSelect={true}
         variant="light"
       >
-        <Navbar.Brand href="/home" className="font-demi mx-5">
+        <Navbar.Brand href="/home" className="font-demi ml-5">
           {/* <img
             src="/images/logo-roadrules.svg"
             alt="logo"
