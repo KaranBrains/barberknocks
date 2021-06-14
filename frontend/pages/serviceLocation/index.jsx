@@ -75,13 +75,14 @@ function Login() {
                                 console.log(formData);
                             }}>
                                 <a>
-                                  <div className={`popular-service-card text-center align-items-center px-3 py-3 ${formData.service == val._id && "border-service"}`}>
+                                  <div className={`popular-service-card text-center align-items-center px-4 py-3 ${formData.service == val._id && "border-service"}`}>
                                     <img
                                       src={baseUrl + val.icon}
-                                      width={70}
-                                      height={70}
+                                      className="mt-2"
+                                      width={50}
+                                      height={50}
                                     ></img>
-                                    <p className="mt-2 font-demi text-dark font-20 ">
+                                    <p className="mt-2 font-demi text-dark font-20 mt-3">
                                       {val.name}
                                     </p>
                                   </div>

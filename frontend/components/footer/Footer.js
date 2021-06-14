@@ -9,7 +9,7 @@ function Footer() {
         <div className="row border-top-custom">
          <div className="pt-5 width-60">
            <div className="row  pl-5">
-           <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
+           <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4 px-5">
             <div className="card">
               <h3
                 className="font-weight-bold mb-4"
@@ -29,7 +29,7 @@ function Footer() {
               </Link>
             </div>
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
+          <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4 px-5">
             <div className="card">
               <h3
                 className="font-weight-bold mb-4"
@@ -49,7 +49,7 @@ function Footer() {
               </Link>
             </div>
           </div>
-          <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4">
+          <div className="col-lg-4 col-md-4 col-sm-12 col-12 mt-4 px-5">
             <div className="card">
               <h3
                 className="font-weight-bold mb-4"
@@ -70,7 +70,7 @@ function Footer() {
             </div>
            </div>
            <div className="row pt-2">
-            <div className="col-lg-12 col-md-12 col-sm-12 col-12 my-4">
+            <div className="col-lg-12 col-md-12 col-sm-12 col-12 my-4 px-5">
             <div className="card">
                 <div className="d-flex flex-row">
                   <Link href="/linkedin">

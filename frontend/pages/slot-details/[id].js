@@ -41,7 +41,7 @@ export default function InstructorId() {
     <div className="auth-bg">
       <div className="container">
         <div className="row d-flex justify-content-center">
-          <div className="col-lg-7 col-md-8 col-sm-2 col-12 bg-white shadow my-5">
+          <div className="col-lg-7 col-md-8 col-sm-10 col-10 bg-white shadow my-5">
             <div className="card my-3">
               <h2
                 className="card my-2 text-primaryColor text-center font-bold"

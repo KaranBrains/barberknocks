@@ -17,7 +17,8 @@ import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '100%',
+    width: '90%',
+    marginLeft: "5%"
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -56,28 +57,28 @@ export default function HomeNew(){
            <div className="main-showcase-content">
            <Navbar />
            <div className="d-flex py-5 justify-content-center align-items-start flex-column text-white px-4">
-             <span className="heading-1 font-demi">Beauty demands at doorstep</span>
-             <span className="heading-2 font-regular">Book your mobile hair and beauty service <br></br>from top-stylists around the city today -</span>
+             <span className="heading-1 font-demi px-5">Beauty demands at doorstep</span>
+             <span className="heading-2 font-regular px-5">Book your mobile hair and beauty service <br></br>from top-stylists around the city today -</span>
              <Link href={'/serviceLocation'}>
                <a>
-              <button className="btn btn-dark heading-button">Book Now</button>
+              <button className="btn btn-dark heading-button px-5">Book Now</button>
                </a>
              </Link>
            </div>
            </div>
          </div>
-         <div className="row main-showcase-2 bg-customColor custom-padding-company align-items-center py-4">
-             <div className="col-lg-4 custom-padding-showcase-2 py-3 col-md-4 col-sm-12 col-12 custom-margin h-250">
+         <div className="row main-showcase-2 bg-customColor custom-padding-company align-items-center py-4 px-5">
+             <div className="col-lg-3 custom-padding-showcase-2 py-3 col-md-4 col-sm-12 col-12 custom-margin h-250 px-5">
              <i class="fas fa-clock fa-4x mb-4 icon-color"></i>
              <p className="h4">24 hr availability</p>
              <p className="h6">Arouond the clock booking availabiility</p>
              </div>
-             <div className="col-lg-4 custom-padding-showcase-2 py-3 col-md-4 col-sm-12 col-12 custom-margin h-250">
+             <div className="col-lg-3 custom-padding-showcase-2 py-3 col-md-4 col-sm-12 col-12 custom-margin h-250 px-5">
              <i class="fas fa-dollar-sign fa-4x mb-4 icon-color"></i>
              <p className="h4">Affordable prices</p>
              <p className="h6">Enjoy affordable mobile services from top stylists</p>
              </div>
-             <div className="col-lg-4 py-3 custom-padding-showcase-2 col-md-4 col-sm-12 col-12 custom-margin h-250">
+             <div className="col-lg-3 py-3 custom-padding-showcase-2 col-md-4 col-sm-12 col-12 custom-margin h-250 px-5">
              <i class="fas fa-map-marked-alt fa-4x mb-4 icon-color"></i>
              <p className="h4">Anywhere, Anytime</p>
              <p className="h6">Choose you preffered location and time slot as per your flexibility</p>
@@ -87,7 +88,7 @@ export default function HomeNew(){
              <div className="font-56 py-4 text-center">
                 Popular Services 
              </div>
-             <div className="row py-5">
+             <div className="row py-5 px-5">
              {allServices && allServices.length>0 ? (
                         allServices.map(val => {
                             return (
@@ -95,7 +96,7 @@ export default function HomeNew(){
                               <Link href={'/serviceLocation?id=' + val._id}>
                                 <a>
                                 <div className="popular-service-card d-flex flex-column justify-content-center align-items-center px-3 py-3">
-                                  <img src={baseUrl + val.icon}  width={95} height={75}></img>
+                                  <img src={baseUrl + val.icon}  width={60} height={60}></img>
                                   <p className="mt-2 h5 text-dark">{val.name}</p>
                                 </div>
                                 </a>
@@ -125,11 +126,11 @@ export default function HomeNew(){
            <div className="font-56 py-4 text-center">
            Expert Stylists
           </div>
-          <div className="row custom-padding-company align-items-center">
+          <div className="row custom-padding-company align-items-center px-5">
             {allStylists && allStylists.length>0 ? 
                 allStylists.slice(0,3).map((val,i)=>{
                 return (
-                  <div className="col-lg-4 py-3 col-md-4 col-sm-12 col-12 custom-margin">
+                  <div className="col-lg-4 py-3 col-md-4 col-sm-4 col-4 custom-margin">
                     <img className="stylist-image" src={baseUrl + val.img}  width={240} height={250}></img>
                     <p className="mt-3 h4">{val.fullName}</p>
                     <p className="experience-color h6">{val.experience}</p>
@@ -138,7 +139,7 @@ export default function HomeNew(){
             }): ''}
            </div>
           </div>
-          <div className="d-flex">
+          <div className="d-flex col-lg-10 ml-lg-5 col-12">
             <div className="col-lg-4 h-322 carousel-left-item col-md-4 col-sm-12 col-12 width-carousel-left-item">
             <Image
                   src="/images/Group_11.svg"
@@ -255,7 +256,7 @@ export default function HomeNew(){
       </Accordion>
            </div>
           </div>
-         <div className="pb-5">
+         {/* <div className="pb-5">
            <div className="font-56 pb-3 pt-4 text-center">
             Supported By
           </div>
@@ -270,7 +271,7 @@ export default function HomeNew(){
               <Image src="/images/innova.png"  width={200} height={100}></Image>
              </div>
            </div>
-        </div>
+        </div> */}
         
        </div>
     )

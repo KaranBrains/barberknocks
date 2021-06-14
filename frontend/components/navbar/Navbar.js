@@ -27,12 +27,12 @@ function NavbarComponent() {
     <div className="bg-image">
       <Navbar
         expand="lg"
-        className="nav-background navbar align-items-center pt-3 px-5"
+        className="nav-background navbar align-items-center pt-3 pl-5"
         sticky="top"
         collapseOnSelect={true}
         variant="light"
       >
-        <Navbar.Brand href="/home" className="font-demi mx-0">
+        <Navbar.Brand href="/home" className="font-demi mx-5">
           {/* <img
             src="/images/logo-roadrules.svg"
             alt="logo"

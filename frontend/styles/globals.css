@@ -960,6 +960,18 @@ table tbody {
   margin: auto !important;
 }
 
+@media (max-width: 845px) {
+  .stylist-image {
+    height: 130px !important;
+    width: 100px !important;
+  }
+}
+@media (max-width: 428px) {
+  .stylist-image {
+    height: 70px !important;
+    width: 50px !important;
+  }
+}
 @media (min-width: 991px) and (max-width: 1100px) {
   .popular-service-card {
     width: 180px !important;

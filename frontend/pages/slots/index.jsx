@@ -37,6 +37,7 @@ function DateSlot() {
         }
       });
       let refinedFilterSlots = [] ;
+      setFilteredSlots(filterSlots);
       filterSlots.forEach(slot=>{
           if (!refinedFilterSlots?.find((s) => s.time == slot.time && s._id!=slot._id)) {
             refinedFilterSlots.push(slot);
@@ -62,6 +63,7 @@ function DateSlot() {
   }, [service, city]);
 
   const [displaySlots, setDisplaySlots] = useState(allSlots);
+  const [filteredSlots, setFilteredSlots] = useState(allSlots);
   const [displayStylists, setDisplayStylists] = useState();
   const allStylists = useSelector((state) => state.stylist?.AllData?.stylists);
 
@@ -135,7 +137,7 @@ function DateSlot() {
             </div>
             <div id="slots-instructor" >
             <p className="mt-3 h4 font-bold mb-4 text-center">Available Stylists</p>
-              <div className="row mb-5" >
+              <div className="row mb-5 px-3" >
                 {displayStylists && displayStylists.length > 0
                   ? displayStylists.map((val, i) => {
                       return (
@@ -143,9 +145,9 @@ function DateSlot() {
                           className="col-lg-3 py-3 col-md-4 col-sm-4 col-4 custom-margin"
                           id={val._id}
                           onClick={()=>{
-                            const selectedSlot = displaySlots.find(d=>d._id === selected);
-                            console.log(displaySlots);
-                            setselected(displaySlots.find(d=>d.stylist === val._id && d.time===selectedSlot.time)._id);
+                            const selectedSlot = filteredSlots.find(d=>d._id === selected);
+                            console.log(filteredSlots);
+                            setselected(filteredSlots.find(d=>d.stylist === val._id && d.time===selectedSlot.time)._id);
                             document.getElementById(val._id)?.classList.toggle("border");
                           }}>
                           <img
