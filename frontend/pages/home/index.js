@@ -17,18 +17,22 @@ import Link from "next/link";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '90%',
-    marginLeft: "5%"
+    width: '94%',
+    marginLeft: "3%"
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
     flexBasis: '33.33%',
     flexShrink: 0,
+    fontFamily: "Avenir-demi",
   },
   secondaryHeading: {
     fontSize: theme.typography.pxToRem(15),
     color: theme.palette.text.secondary,
   },
+  fontDemi: {
+    fontFamily: "Avenir-demi"
+  }
 }));
 
 
@@ -197,7 +201,7 @@ export default function HomeNew(){
           <Typography className={classes.heading}>General settings</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography className={classes.fontDemi}>
             Nulla facilisi. Phasellus sollicitudin nulla et quam mattis feugiat. Aliquam eget
             maximus est, id dignissim quam.
           </Typography>
@@ -211,11 +215,11 @@ export default function HomeNew(){
         >
           <Typography className={classes.heading}>Users</Typography>
           <Typography className={classes.secondaryHeading}>
-            You are currently not an owner
+            {/* You are currently not an owner */}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography className={classes.fontDemi}>
             Donec placerat, lectus sed mattis semper, neque lectus feugiat lectus, varius pulvinar
             diam eros in elit. Pellentesque convallis laoreet laoreet.
           </Typography>
@@ -229,11 +233,11 @@ export default function HomeNew(){
         >
           <Typography className={classes.heading}>Advanced settings</Typography>
           <Typography className={classes.secondaryHeading}>
-            Filtering has been entirely disabled for whole web server
+            {/* Filtering has been entirely disabled for whole web server */}
           </Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography className={classes.fontDemi}>
             Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
             vitae egestas augue. Duis vel est augue.
           </Typography>
@@ -248,7 +252,7 @@ export default function HomeNew(){
           <Typography className={classes.heading}>Personal data</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>
+          <Typography className={classes.fontDemi}>
             Nunc vitae orci ultricies, auctor nunc in, volutpat nisl. Integer sit amet egestas eros,
             vitae egestas augue. Duis vel est augue.
           </Typography>
