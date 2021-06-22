@@ -8,7 +8,8 @@ export const confirmRideCash = (slot ,router) => async (dispatch) => {
         const user = jwt(localStorage.getItem("token"));
         const formData = {
             slot : slot,
-            client: user.id
+            client: user.id,
+            address: address
         }
         const address = localStorage.getItem("address");
         const { data } = await api.confirmRideCash(formData,address);
